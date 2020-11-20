@@ -1,0 +1,168 @@
+syntax = "proto3";
+/**
+ * @file protos/anymetrica/request.proto
+ * @package anymetrica.request
+ *
+ * Request and response entities
+ */
+package anymetrica.request;
+
+option java_package = "com.anymetrica.request";
+
+import "credential.proto";
+import "entity.proto";
+import "metadata.proto";
+import "relation.proto";
+
+// The possible values for the `more_results` field.
+enum MoreResultsType {
+  // Unspecified. This value is never used.
+  MORE_RESULTS_TYPE_UNSPECIFIED = 0;
+
+  // There may be additional batches to fetch from this query.
+  NOT_FINISHED = 1;
+
+  // The query is finished, but there may be more results after the limit.
+  MORE_RESULTS_AFTER_LIMIT = 2;
+
+  // The query is finished, but there may be more results after the end
+  // cursor.
+  MORE_RESULTS_AFTER_CURSOR = 4;
+
+  // The query is finished, and there are no more results.
+  NO_MORE_RESULTS = 3;
+}
+
+// The sort direction.
+enum Direction {
+  // Unspecified. This value must not be used.
+  DIRECTION_UNSPECIFIED = 0;
+
+  // Ascending.
+  ASCENDING = 1;
+
+  // Descending.
+  DESCENDING = 2;
+}
+
+// The desired order for a specific property.
+message PropertyOrder {
+
+  // The property to order by.
+  string property = 1;
+
+  // The direction to order by. Defaults to `ASCENDING`.
+  Direction direction = 2;
+}
+
+// Request metadata
+message RequestMetadata {
+  // Credential
+  anymetrica.credential.Credential credential = 2;
+
+  // Result entities
+  repeated PropertyOrder order = 4;
+
+  // The number of results to skip.
+  //
+  // Applies before limit, but after all other constraints. Must be >= 0 if
+  // specified.
+  uint32 offset = 6;
+
+  // The maximum number of results to return.
+  //
+  // Applies after all other constraints.
+  // Must be >= 0 if specified.
+  uint32 limit = 8;
+
+  // Discovery parameter
+  // Moved from list request
+  // Limit request scope and response to this entity kinds
+  repeated anymetrica.entity.EntityType types = 14;
+
+  // Discovery parameter
+  // Graph traverse depth
+  // 16 by default
+  uint32 traverse_depth = 32;
+
+  // Discovery parameter
+  // Discovery will go against DAG edges direction as well if reverse edges are granting such permission
+  bool two_way_discovery = 34;
+
+  // Discovery parameter
+  // Limit discovery to entities that reachable by path containing only defined relation types list
+  repeated anymetrica.relation.RelationType relation_types = 38;
+}
+
+// Response metadata
+message ResponseMetadata {
+  // Credential
+  anymetrica.credential.Credential credential = 2;
+
+  // The number of results skipped, typically because of an offset.
+  int32 skipped_results = 16;
+
+  // The state of the query after the current batch.
+  MoreResultsType more_results = 18;
+
+  // Reads the version of the document at the given time.
+  // This may not be older than 60 seconds.
+  google.protobuf.Timestamp read_time = 20;
+
+  // Graph traverse depth
+  // 16 by default
+  uint32 used_traverse_depth = 10;
+}
+
+// Shallow Entities (metadata only) or IDs list request
+message ListRequest {
+  // Request metadata
+  anymetrica.request.RequestMetadata request = 2;
+  // Response metadata
+  anymetrica.request.ResponseMetadata response = 4;
+
+  // Result entities
+
+  // Entity Metadata
+  repeated anymetrica.metadata.ShallowEntity entities = 8;
+
+  // Array of entity ID which to retrieve or from which start discover search
+  repeated string ids = 12;
+
+  // Limit request scope and response to this entity kinds
+  repeated anymetrica.entity.EntityType types = 14 [deprecated=true];
+}
+
+// Empty RPC response
+message EmptyResponse {
+}
+
+// Transfer ownership operation message
+message TransferOwnership {
+  // Owned entity
+  string entity_id = 1;
+  // New owner ID
+  string new_owner_id = 2;
+}
+
+// Transfer ownership operation messages
+message TransferOwnerships {
+  // Request metadata
+  RequestMetadata request = 2;
+  // Response metadata
+  ResponseMetadata response = 4;
+
+  // Ownership transfer requests
+  repeated TransferOwnership transfer_ownerships = 1;
+}
+
+// List of Metadata
+message ShallowEntities {
+  // Request metadata
+  RequestMetadata request = 2;
+  // Response metadata
+  ResponseMetadata response = 4;
+
+  // Entities list
+  repeated anymetrica.metadata.ShallowEntity entities = 8;
+}

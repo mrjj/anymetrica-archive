@@ -1,0 +1,20 @@
+{
+  "ml:build:cpu": "npm run ml:pytorch:build:cpu && npm run ml:sv:build:cpu",
+  "ml:build:cuda": "npm run ml:pytorch:build:cuda && npm run ml:sv:build:cuda",
+  "ml:img2vec:build": "./scripts/img2vec_build.sh",
+  "ml:mystem:build": "./scripts/mystem_build.sh",
+  "ml:mystem:run": "./scripts/mystem_run.sh",
+  "ml:pytorch:build:cpu": "./scripts/pytorch_build_cpu.sh",
+  "ml:pytorch:build:cuda": "./scripts/pytorch_build_cuda.sh",
+  "ml:spectrogram": "babel-node ./scripts/spectrogram.js",
+  "ml:sv:build:cpu": "./scripts/sv_build_cpu.sh",
+  "ml:sv:build:cuda": "./scripts/sv_build_cuda.sh",
+  "ml:sv:preprocess": "./scripts/sv_preprocess.sh",
+  "ml:sv:train:cpu": "./scripts/sv_train_cpu.sh",
+  "ml:sv:train:cuda": "./scripts/sv_train_cuda.sh",
+  "ml:vad:build": "./scripts/webrtc_vad_build.sh",
+  "ml:vad:run": "./scripts/webrtc_vad_run.sh",
+  "ml:wav2letter:build:cuda": "./scripts/wav2letter_build_cuda.sh"
+}
+npm run ml:vad:run /Users/ilyakutukov/projects/anymetrica/DATA/output/ideal-01s /Users/ilyakutukov/projects/anymetrica/DATA/output/ideal-01s
+babel-node ./scripts/spectrogram.js ./~data/downloads/ideal-01s/ideal-01x01.mp4 ./~data/output/ideal-01s

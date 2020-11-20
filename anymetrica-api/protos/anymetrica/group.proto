@@ -1,0 +1,38 @@
+syntax = "proto3";
+/**
+ * @file protos/anymetrica/group.proto
+ * @package anymetrica.group
+ *
+ * This package defines Group - entity that coud act according to its own will
+ * GroupsPage are driven by the same core business logic but could have different subtypes
+ * with different payload
+ */
+package anymetrica.group;
+
+option java_package = "com.anymetrica.group";
+
+import "metadata.proto";
+import "request.proto";
+
+// Group
+message Group {
+  // Unique Entity identifier
+  string id = 1;
+
+   // Entity Metadata
+  anymetrica.metadata.Metadata metadata = 2;
+
+  // Group name
+  string name = 8;
+}
+
+// List of Group Entity
+message Groups {
+  // Request metadata
+  anymetrica.request.RequestMetadata request = 2;
+  // Response metadata
+  anymetrica.request.ResponseMetadata response = 4;
+
+  // Result entities
+  repeated Group entities = 8;
+}

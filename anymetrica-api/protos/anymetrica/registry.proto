@@ -1,0 +1,140 @@
+syntax = "proto3";
+/**
+ * @file protos/anymetrica/registry.proto
+ * @package anymetrica.registry
+ *
+ * This package defines interface for Registry service that manages AnyMetrica core business entities.
+ * TODO(Ilya): Add Interfaces and Resource Quotes relations
+ */
+
+package anymetrica.registry;
+option java_package = "com.anymetrica.registry";
+option java_outer_classname = "AnymetricaRegistry";
+
+import public "heartbeat.proto";
+import public "relation.proto";
+import public "contact.proto";
+import public "credential.proto";
+import public "organization.proto";
+import public "device.proto";
+import public "file.proto";
+import public "vad.proto";
+import public "group.proto";
+import public "human.proto";
+import public "vehicle.proto";
+import public "entity.proto";
+import public "location.proto";
+import public "postal_address.proto";
+import public "request.proto";
+import public "operation.proto";
+import public "waveform.proto";
+import public "demo_request.proto";
+
+// Registry service - core business logic of AnyMetrica
+service RegistryService {
+
+  // Make Heartbeat request for health check or determine RPC requests delay
+  // Could be executed by non-authenticated party
+  rpc Heartbeat (anymetrica.heartbeat.Heartbeat) returns (anymetrica.heartbeat.Heartbeat);
+
+  // Get Entities metadata
+  rpc GetMetadata (anymetrica.request.ListRequest) returns (anymetrica.request.ShallowEntities);
+  // Delete entities
+  rpc Delete (anymetrica.request.ListRequest) returns (anymetrica.request.ShallowEntities);
+  // Discover related entities
+  rpc Discover (anymetrica.request.ListRequest) returns (anymetrica.relation.Relations);
+
+  // Merge entities relations
+  rpc MergeRelations (anymetrica.relation.Relations) returns (anymetrica.relation.Relations);
+  // Remove entities relations
+  rpc RemoveRelations (anymetrica.relation.Relations) returns (anymetrica.relation.Relations);
+  // Set entities relations (replace all existing)
+  rpc ReplaceRelations (anymetrica.relation.Relations) returns (anymetrica.relation.Relations);
+  // Transfer ownership of entities
+  rpc TransferOwnership (anymetrica.request.TransferOwnerships) returns (anymetrica.request.TransferOwnerships);
+
+  // Create/Update OTP records
+  rpc MergeOTPs (anymetrica.credential.OTPs) returns (anymetrica.credential.OTPs);
+  // Get OTP records by their IDs
+  rpc GetOTPs (anymetrica.request.ListRequest) returns (anymetrica.credential.OTPs);
+
+  // Create/Update TOTP records
+  rpc MergeTOTPs (anymetrica.credential.TOTPs) returns (anymetrica.credential.TOTPs);
+  // Get TOTP records by their IDs
+  rpc GetTOTPs (anymetrica.request.ListRequest) returns (anymetrica.credential.TOTPs);
+
+  // Create/Update SessionToken records
+  rpc MergeSessionTokens (anymetrica.credential.SessionTokens) returns (anymetrica.credential.SessionTokens);
+  // Get SessionToken records by their IDs
+  rpc GetSessionTokens (anymetrica.request.ListRequest) returns (anymetrica.credential.SessionTokens);
+
+  // Create/Update UsernamePassword records
+  rpc MergeUsernamePasswords (anymetrica.credential.UsernamePasswords) returns (anymetrica.credential.UsernamePasswords);
+  // Get UsernamePassword records by their IDs
+  rpc GetUsernamePasswords (anymetrica.request.ListRequest) returns (anymetrica.credential.UsernamePasswords);
+
+  // Create/Update Organization records
+  rpc MergeOrganizations (anymetrica.organization.Organizations) returns (anymetrica.organization.Organizations);
+  // Get Organization records by their IDs
+  rpc GetOrganizations (anymetrica.request.ListRequest) returns (anymetrica.organization.Organizations);
+
+  // Create/Update Human records
+  rpc MergeHumans (anymetrica.human.Humans) returns (anymetrica.human.Humans);
+  // Get Human records by their IDs
+  rpc GetHumans (anymetrica.request.ListRequest) returns (anymetrica.human.Humans);
+
+  // Create/Update Device records
+  rpc MergeDevices (anymetrica.device.Devices) returns (anymetrica.device.Devices);
+  // Get Device records by their IDs
+  rpc GetDevices (anymetrica.request.ListRequest) returns (anymetrica.device.Devices);
+
+  // Create/Update Vehicle records
+  rpc MergeVehicles (anymetrica.vehicle.Vehicles) returns (anymetrica.vehicle.Vehicles);
+  // Get Vehicle records by their IDs
+  rpc GetVehicles (anymetrica.request.ListRequest) returns (anymetrica.vehicle.Vehicles);
+
+  // Create/Update Contact records
+  rpc MergeContacts (anymetrica.contact.Contacts) returns (anymetrica.contact.Contacts);
+  // Get Contact records by their IDs
+  rpc GetContacts (anymetrica.request.ListRequest) returns (anymetrica.contact.Contacts);
+
+  // Create/Update Group records
+  rpc MergeGroups (anymetrica.group.Groups) returns (anymetrica.group.Groups);
+  // Get Group records by their IDs
+  rpc GetGroups (anymetrica.request.ListRequest) returns (anymetrica.group.Groups);
+
+  // Create/Update Location records
+  rpc MergeLocations (anymetrica.group.Groups) returns (anymetrica.location.Locations);
+  // Get Location records by their IDs
+  rpc GetLocations (anymetrica.request.ListRequest) returns (anymetrica.location.Locations);
+
+  // Create/Update Postal Address records
+  rpc MergePostalAddresses (anymetrica.group.Groups) returns (anymetrica.postal_address.PostalAddresses);
+  // Get Postal Address records by their IDs
+  rpc GetPostalAddresses (anymetrica.request.ListRequest) returns (anymetrica.postal_address.PostalAddresses);
+
+  // Create/Update File records
+  rpc MergeFiles (anymetrica.file.Files) returns (anymetrica.file.Files);
+  // Get File records by their IDs
+  rpc GetFiles (anymetrica.request.ListRequest) returns (anymetrica.file.Files);
+
+  // Create/Update Waveforms records
+  rpc MergeWaveforms (anymetrica.waveform.Waveforms) returns (anymetrica.waveform.Waveforms);
+  // Get Waveforms records by their IDs
+  rpc GetWaveforms (anymetrica.request.ListRequest) returns (anymetrica.waveform.Waveforms);
+
+  // Create/Update Vad Result records
+  rpc MergeVadResults (anymetrica.vad.VadResults) returns (anymetrica.vad.VadResults);
+  // Get Vad Result records
+  rpc GetVadResults (anymetrica.request.ListRequest) returns (anymetrica.vad.VadResults);
+
+  // Create/Update Operation records
+  rpc MergeOperations(anymetrica.operation.Operations) returns (anymetrica.operation.Operations);
+  // Get Operation records
+  rpc GetOperations(anymetrica.request.ListRequest) returns (anymetrica.operation.Operations);
+  // Cancel Operations
+  rpc CancelOperations(anymetrica.request.ListRequest) returns (anymetrica.operation.Operations);
+
+  // Request Demo
+  rpc RequestDemo(anymetrica.demo_request.DemoRequest) returns (anymetrica.request.EmptyResponse);
+}

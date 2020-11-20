@@ -1,0 +1,19 @@
+{
+    "settings": {},
+    "listeners": {
+        "*:8071": {
+            "application": "anymetrica-unit"
+        }
+    },
+
+    "applications": {
+        "mynodeapp": {
+            "type": "external",
+            "executable": "/path/to/app.js",
+            "processes": {
+                "max": 10,
+                "spare": 5
+            }
+        }
+    }
+}

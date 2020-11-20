@@ -1,0 +1,13 @@
+image: node:10.13.0-alpine
+
+pipelines:
+  default:
+    - step:
+        caches:
+          - node
+        script:
+          - npm install yarn -g
+          - yarn bootstrap
+          - npm test
+          - npm build:grpc:client
+          - npm build:android

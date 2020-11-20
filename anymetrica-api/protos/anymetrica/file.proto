@@ -1,0 +1,141 @@
+syntax = "proto3";
+/**
+ * @file protos/anymetrica/file.proto
+ * @package anymetrica.file
+ * @description This package defines interface for file service
+ *               that manages media blobs receiving/storage/streaming.
+ * Useful:
+ * https://github.com/googleapis/googleapis/blob/master/google/ads/googleads/v0/enums/mime_type.proto
+ * https://github.com/googleapis/googleapis/blob/master/google/ads/googleads/v0/enums/media_type.proto
+ */
+
+package anymetrica.file;
+option java_package = "com.anymetrica.file";
+
+import "metadata.proto";
+import "request.proto";
+import "google/protobuf/timestamp.proto";
+
+// If known, the hash function used to compute this digest.
+enum HashType {
+  // Unknown
+  HASH_TYPE_UNSPECIFIED = 0;
+
+  // Plain Text
+  HASH_TYPE_PLAIN_TEXT = 8;
+
+  // MD5
+  HASH_TYPE_MD5 = 12;
+
+  // SHA-0
+  HASH_TYPE_SHA_0_160 = 16;
+
+  // SHA-1
+  HASH_TYPE_SHA_1_160 = 32;
+
+  // SHA-2
+  HASH_TYPE_SHA_2_224 = 48;
+  HASH_TYPE_SHA_2_256 = 49;
+  HASH_TYPE_SHA_2_384 = 50;
+  HASH_TYPE_SHA_2_512 = 51;
+  HASH_TYPE_SHA_2_512_256 = 52;
+  HASH_TYPE_SHA_2_512_224 = 53;
+
+  // SipHash
+  HASH_TYPE_SIP_HASH_32 = 64;
+  HASH_TYPE_SIP_HASH_64 = 65;
+
+  // City
+  HASH_TYPE_CITY_64 = 80;
+  HASH_TYPE_CITY_128 = 81;
+  HASH_TYPE_CITY128_CRC = 82;
+
+  // Metro
+  HASH_TYPE_METRO_32 = 96;
+  HASH_TYPE_METRO_64 = 97;
+  HASH_TYPE_METRO_128 = 98;
+  HASH_TYPE_METRO_128_CRC = 99;
+
+}
+
+// Container message for hash values.
+message Hash {
+  // The type of hash that was performed.
+  HashType type = 8;
+
+  // The hash value.
+  bytes value = 16;
+}
+
+// [IANA Registered Content Types] https://www.iana.org/assignments/media-types/media-types.xhtml
+// Content Type is big directory containing Media Type
+enum ContentType {
+
+  // The Content Type has not been specified
+  CONTENT_TYPE_UNSPECIFIED = 0;
+
+  application = 100;
+  audio = 200;
+  example = 300;
+  font = 400;
+  image = 500;
+  message = 600;
+  model = 700;
+  multipart = 800;
+  text = 900;
+  video = 1000;
+}
+
+// File record
+message File {
+  // Unique Entity identifier
+  string id = 1;
+  // Entity Metadata
+  anymetrica.metadata.Metadata metadata = 2;
+
+  // File could self-contain chunks or be composed from chunks entities binary data
+  bytes content = 8;
+
+  // Content size in bytes
+  int64 size_bytes = 16;
+
+  // Known hashes values
+  repeated Hash hashes = 32;
+
+  // File name
+  string name = 64;
+
+  // IANA registered Content Type
+  // @example: for `audio/ogg` it will be `audio`
+  ContentType content_type = 68;
+
+  // IANA registered Media Type string
+  // @example: for `audio/ogg` it will be `ogg`
+  string media_type = 70;
+
+  // Media start ts
+  google.protobuf.Timestamp media_start_ts = 84;
+
+  // Media end ts
+  google.protobuf.Timestamp media_end_ts = 86;
+
+  // `picture` or `video` media width in pixels
+  int32 media_width_px = 128;
+
+  // `picture` or `video` media height in pixels
+  int32 media_height_px = 132;
+
+  // Is content archived
+  bool is_archive = 168;
+}
+
+// List of File entities
+message Files {
+  // Request metadata
+  anymetrica.request.RequestMetadata request = 2;
+  // Response metadata
+  anymetrica.request.ResponseMetadata response = 4;
+
+  // Result entities
+  repeated File entities = 8;
+}

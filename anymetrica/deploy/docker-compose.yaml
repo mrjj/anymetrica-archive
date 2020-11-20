@@ -1,0 +1,90 @@
+version: '3.7'
+# Ports example:
+# ports:
+#   - "80:8000" # Map TCP port 8000 in the container to port 80 on the Docker host.
+#   - "443:8443"
+
+services:
+  agensgraph-primary:
+#    image: registry.pbc.technology/anymetrica/agensgraph:v2.1.0
+    image: bitnine/agensgraph:v2.1.0
+    container_name: agensgraph-primary
+    volumes:
+      - agens-primary-volume:/home/agens/AgensGraph/data/
+    restart: always
+    user: "agens"
+    environment:
+      - AGENS_PORT=5432
+      - AGENS_HOST=0.0.0.0
+    command: "tail -f /dev/null"
+
+  mongodb-primary:
+    image: mongo:4.0.6
+    container_name: mongodb-primary
+    volumes:
+      - ${DOCKER_VOLUMES:-/home/docker/volumes}/blobstore-mongodb-primary:/data/db
+    restart: always
+    environment:
+      - PORT=28017
+      - HOST=0.0.0.0
+      - MONGO_INITDB_ROOT_USERNAME=anymetrica-registry
+      - MONGO_INITDB_ROOT_PASSWORD=YE5AjQsKebRUdGDYOTLuWn50
+
+  anymetrica-registry:
+    depends_on:
+      - agensgraph-primary
+      - mongodb-primary
+    image: registry.pbc.technology/anymetrica/registry:latest
+    working_dir: /home/node/app
+    user: "node"
+    environment:
+      - NODE_ENV=production
+      - AGENS_PORT=5432
+      - AGENS_HOST=agensgraph-primary
+      - GRPC_PORT=60001
+      - GRPC_HOST=0.0.0.0
+    command: "yarn run start:server"
+    restart: always
+
+  registry-proxy:
+    depends_on:
+      - anymetrica-registry
+    image: registry.pbc.technology/anymetrica/registry:latest
+    working_dir: /home/node/app
+    user: "node"
+    environment:
+      - NODE_ENV=production
+      - PORT=9001
+      - HOST=0.0.0.0
+      - GRPC_PORT=60001
+      - GRPC_HOST=anymetrica-registry
+    command: "yarn run start:proxy"
+    restart: always
+
+  anymetrica-scope:
+    depends_on:
+      - registry-proxy
+    image: registry.pbc.technology/anymetrica/scope:latest
+    ports:
+      - 3000:3000
+    restart: always
+
+  nginx-proxy:
+    depends_on:
+      - anymetrica-scope
+    image: registry.pbc.technology/anymetrica/nginx:1.15.9-alpine
+    ports:
+      - 80:80
+      - 443:443
+    environment:
+      - HOST=localhost
+    volumes:
+      - ./certs/:/etc/nginx/certs/
+      - ./nginx/nginx.conf:/etc/nginx/nginx.conf
+    restart: always
+
+networks:
+  overlay:
+
+volumes:
+  agens-primary-volume:

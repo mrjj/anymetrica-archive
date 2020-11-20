@@ -1,0 +1,768 @@
+{
+  ".anymetrica.contact.ContactType": {
+    "comment": "Type of Contact information record",
+    "filename": "anymetrica/contact.proto",
+    "fullName": ".anymetrica.contact.ContactType",
+    "name": "ContactType",
+    "values": [
+      {
+        "default": true,
+        "number": 0,
+        "value": "CONTACT_UNSPECIFIED"
+      },
+      {
+        "number": 1,
+        "value": "CONTACT_OTHER"
+      },
+      {
+        "number": 16,
+        "value": "CONTACT_PHONE"
+      },
+      {
+        "number": 17,
+        "value": "CONTACT_EMAIL"
+      },
+      {
+        "number": 18,
+        "value": "CONTACT_FAX"
+      },
+      {
+        "number": 32,
+        "value": "CONTACT_JABBER"
+      },
+      {
+        "number": 33,
+        "value": "CONTACT_DISCORD"
+      },
+      {
+        "number": 34,
+        "value": "CONTACT_SKYPE"
+      },
+      {
+        "number": 35,
+        "value": "CONTACT_MSN"
+      },
+      {
+        "number": 36,
+        "value": "CONTACT_ICQ"
+      },
+      {
+        "number": 128,
+        "value": "CONTACT_FACEBOOK_ID"
+      },
+      {
+        "number": 129,
+        "value": "CONTACT_BADOO_LOGIN"
+      },
+      {
+        "number": 130,
+        "value": "CONTACT_BAIDU_ID"
+      },
+      {
+        "number": 131,
+        "value": "CONTACT_VKONTAKTE_ID"
+      }
+    ]
+  },
+  ".anymetrica.device.DeviceType": {
+    "comment": "Generic device types options\n\n[Mostly taken from](https://github.com/roscopecoltran/krakend-admin/blob/f27bc4ee41d133f35301ef2fabf606cdce51b47b/shared/public/downloads/v2/specs/amazonaws.com/mgh/2017-05-31/swagger.proto)",
+    "filename": "anymetrica/device.proto",
+    "fullName": ".anymetrica.device.DeviceType",
+    "name": "DeviceType",
+    "values": [
+      {
+        "comment": "Type not specified",
+        "default": true,
+        "number": 0,
+        "value": "UNSPECIFIED"
+      },
+      {
+        "comment": "Non-standard category",
+        "number": 1,
+        "value": "OTHER"
+      },
+      {
+        "comment": "Polymorphic device (e.g. phone emulator)",
+        "number": 2,
+        "value": "POLYMORPHIC"
+      },
+      {
+        "comment": "Mobile phone",
+        "number": 4,
+        "value": "PHONE"
+      },
+      {
+        "comment": "Tablet",
+        "number": 8,
+        "value": "TABLET"
+      },
+      {
+        "comment": "Desktop/Laptop Computer",
+        "number": 12,
+        "value": "DESKTOP"
+      },
+      {
+        "comment": "Electronic tag (incl. passive)",
+        "number": 16,
+        "value": "TAG"
+      },
+      {
+        "comment": "Electronic badge (incl. passive)",
+        "number": 18,
+        "value": "BADGE"
+      },
+      {
+        "comment": "Smart Watch",
+        "number": 24,
+        "value": "SMART_WATCH"
+      },
+      {
+        "comment": "Generic fitness Device",
+        "number": 25,
+        "value": "FITNESS_DEVICE"
+      },
+      {
+        "comment": "Sound recording device",
+        "number": 32,
+        "value": "SOUND_RECORDER"
+      },
+      {
+        "comment": "Video recording device",
+        "number": 33,
+        "value": "VIDEO_RECORDER"
+      },
+      {
+        "comment": "Robotic device (non-vehicle)",
+        "number": 64,
+        "value": "ROBOTIC"
+      }
+    ]
+  },
+  ".anymetrica.entity.EntityType": {
+    "comment": "@enum EntityType\n\nEntity type names",
+    "filename": "anymetrica/entity.proto",
+    "fullName": ".anymetrica.entity.EntityType",
+    "name": "EntityType",
+    "values": [
+      {
+        "default": true,
+        "number": 0,
+        "value": "EntityUnknown"
+      },
+      {
+        "number": 1,
+        "value": "PostalAddress"
+      },
+      {
+        "number": 2,
+        "value": "Waveform"
+      },
+      {
+        "number": 3,
+        "value": "Group"
+      },
+      {
+        "number": 4,
+        "value": "Relation"
+      },
+      {
+        "number": 5,
+        "value": "DemoRequestInfo"
+      },
+      {
+        "number": 6,
+        "value": "File"
+      },
+      {
+        "number": 7,
+        "value": "SessionToken"
+      },
+      {
+        "number": 9,
+        "value": "Operation"
+      },
+      {
+        "number": 11,
+        "value": "Organization"
+      },
+      {
+        "number": 16,
+        "value": "VadResult"
+      },
+      {
+        "number": 18,
+        "value": "TOTP"
+      },
+      {
+        "number": 20,
+        "value": "Vehicle"
+      },
+      {
+        "number": 21,
+        "value": "Device"
+      },
+      {
+        "number": 23,
+        "value": "Contact"
+      },
+      {
+        "number": 27,
+        "value": "Location"
+      },
+      {
+        "number": 28,
+        "value": "UsernamePassword"
+      },
+      {
+        "number": 29,
+        "value": "Human"
+      },
+      {
+        "number": 32,
+        "value": "OTP"
+      }
+    ]
+  },
+  ".anymetrica.entity.EntityTypePlural": {
+    "comment": "@enum EntityTypePlural\n\nEntity plural type names",
+    "filename": "anymetrica/entity.proto",
+    "fullName": ".anymetrica.entity.EntityTypePlural",
+    "name": "EntityTypePlural",
+    "values": [
+      {
+        "default": true,
+        "number": 0,
+        "value": "EntitiesUnknown"
+      },
+      {
+        "number": 1,
+        "value": "PostalAddresses"
+      },
+      {
+        "number": 2,
+        "value": "Waveforms"
+      },
+      {
+        "number": 3,
+        "value": "Groups"
+      },
+      {
+        "number": 6,
+        "value": "Files"
+      },
+      {
+        "number": 7,
+        "value": "SessionTokens"
+      },
+      {
+        "number": 9,
+        "value": "Operations"
+      },
+      {
+        "number": 11,
+        "value": "Organizations"
+      },
+      {
+        "number": 16,
+        "value": "VadResults"
+      },
+      {
+        "number": 18,
+        "value": "TOTPs"
+      },
+      {
+        "number": 20,
+        "value": "Vehicles"
+      },
+      {
+        "number": 21,
+        "value": "Devices"
+      },
+      {
+        "number": 23,
+        "value": "Contacts"
+      },
+      {
+        "number": 27,
+        "value": "Locations"
+      },
+      {
+        "number": 28,
+        "value": "UsernamePasswords"
+      },
+      {
+        "number": 29,
+        "value": "Humans"
+      },
+      {
+        "number": 32,
+        "value": "OTPs"
+      }
+    ]
+  },
+  ".anymetrica.file.ContentType": {
+    "comment": "[IANA Registered Content Types] https://www.iana.org/assignments/media-types/media-types.xhtml\nContent Type is big directory containing Media Type",
+    "filename": "anymetrica/file.proto",
+    "fullName": ".anymetrica.file.ContentType",
+    "name": "ContentType",
+    "values": [
+      {
+        "comment": "The Content Type has not been specified",
+        "default": true,
+        "number": 0,
+        "value": "CONTENT_TYPE_UNSPECIFIED"
+      },
+      {
+        "number": 100,
+        "value": "application"
+      },
+      {
+        "number": 200,
+        "value": "audio"
+      },
+      {
+        "number": 300,
+        "value": "example"
+      },
+      {
+        "number": 400,
+        "value": "font"
+      },
+      {
+        "number": 500,
+        "value": "image"
+      },
+      {
+        "number": 600,
+        "value": "message"
+      },
+      {
+        "number": 700,
+        "value": "model"
+      },
+      {
+        "number": 800,
+        "value": "multipart"
+      },
+      {
+        "number": 900,
+        "value": "text"
+      },
+      {
+        "number": 1000,
+        "value": "video"
+      }
+    ]
+  },
+  ".anymetrica.file.HashType": {
+    "comment": "If known, the hash function used to compute this digest.",
+    "filename": "anymetrica/file.proto",
+    "fullName": ".anymetrica.file.HashType",
+    "name": "HashType",
+    "values": [
+      {
+        "comment": "Unknown",
+        "default": true,
+        "number": 0,
+        "value": "HASH_TYPE_UNSPECIFIED"
+      },
+      {
+        "comment": "Plain Text",
+        "number": 8,
+        "value": "HASH_TYPE_PLAIN_TEXT"
+      },
+      {
+        "comment": "MD5",
+        "number": 12,
+        "value": "HASH_TYPE_MD5"
+      },
+      {
+        "comment": "SHA-0",
+        "number": 16,
+        "value": "HASH_TYPE_SHA_0_160"
+      },
+      {
+        "comment": "SHA-1",
+        "number": 32,
+        "value": "HASH_TYPE_SHA_1_160"
+      },
+      {
+        "comment": "SHA-2",
+        "number": 48,
+        "value": "HASH_TYPE_SHA_2_224"
+      },
+      {
+        "number": 49,
+        "value": "HASH_TYPE_SHA_2_256"
+      },
+      {
+        "number": 50,
+        "value": "HASH_TYPE_SHA_2_384"
+      },
+      {
+        "number": 51,
+        "value": "HASH_TYPE_SHA_2_512"
+      },
+      {
+        "number": 52,
+        "value": "HASH_TYPE_SHA_2_512_256"
+      },
+      {
+        "number": 53,
+        "value": "HASH_TYPE_SHA_2_512_224"
+      },
+      {
+        "comment": "SipHash",
+        "number": 64,
+        "value": "HASH_TYPE_SIP_HASH_32"
+      },
+      {
+        "number": 65,
+        "value": "HASH_TYPE_SIP_HASH_64"
+      },
+      {
+        "comment": "City",
+        "number": 80,
+        "value": "HASH_TYPE_CITY_64"
+      },
+      {
+        "number": 81,
+        "value": "HASH_TYPE_CITY_128"
+      },
+      {
+        "number": 82,
+        "value": "HASH_TYPE_CITY128_CRC"
+      },
+      {
+        "comment": "Metro",
+        "number": 96,
+        "value": "HASH_TYPE_METRO_32"
+      },
+      {
+        "number": 97,
+        "value": "HASH_TYPE_METRO_64"
+      },
+      {
+        "number": 98,
+        "value": "HASH_TYPE_METRO_128"
+      },
+      {
+        "number": 99,
+        "value": "HASH_TYPE_METRO_128_CRC"
+      }
+    ]
+  },
+  ".anymetrica.relation.RelationType": {
+    "comment": "Access Level types",
+    "filename": "anymetrica/relation.proto",
+    "fullName": ".anymetrica.relation.RelationType",
+    "name": "RelationType",
+    "values": [
+      {
+        "comment": "No access granted. This type of edges could be purged automatically, but could be preserved for history management purposes.",
+        "default": true,
+        "number": 0,
+        "value": "RESTRICTED"
+      },
+      {
+        "comment": "Gives control over read and reset trigger",
+        "number": 1,
+        "value": "CAN_RESET"
+      },
+      {
+        "comment": "Defines ability to read information both metadata and payload about entity and same access to everything it represents.",
+        "number": 3,
+        "value": "CAN_READ"
+      },
+      {
+        "comment": "Defines permission to update content of entity payload not affecting any of its accessRules (including access accessRules? TBD)",
+        "number": 7,
+        "value": "CAN_WRITE"
+      },
+      {
+        "comment": "Gives ability to discover entity.",
+        "number": 15,
+        "value": "CAN_READ_RELATIONS"
+      },
+      {
+        "comment": "Gives ability to re-link entity relations (including access rights).",
+        "number": 31,
+        "value": "CAN_WRITE_RELATIONS"
+      },
+      {
+        "comment": "Entity owner that means all entities related that way should have same lifecycle as user profile.\nOwnership supposing wide access but with exception if operation may violate core business logic\nor will create some conflict/integrity situation which not possible to resolve for owner user.\nE.g. user is owner for his single E-Mail record, but system will reject its deletion request\nuntil any alternative email record that resolving conflict will be provided.",
+        "number": 64,
+        "value": "OWNS"
+      },
+      {
+        "comment": "On permissions level it works like Owner but semantically this does not means that target entity is something\nuser manages as his own __private thing__ like his named `Human` profile or `Credential` records\nso its better for temporary owners or managing public entities.\nAlso there are supposed to be single owner for entity, but many administrators are possible.\nThis difference should be considered at UI client applications level and may affect entities traverse order\nbut `Administrator` = `Owner` at permissions level.",
+        "number": 66,
+        "value": "ADMINISTRATING"
+      },
+      {
+        "comment": "Entity creator, its completely metadata level relation that should not have direct effect on permission level\nbut may affect API discovery priorities and discovery output filtering (mostly for UI needs)",
+        "number": 68,
+        "value": "CREATED"
+      },
+      {
+        "comment": "Entity acting as separate part of other entity that means access level similar to compound parent",
+        "number": 72,
+        "value": "HAVE_PART"
+      },
+      {
+        "comment": "Organisations and groups could have members",
+        "number": 78,
+        "value": "HAVE_MEMBER"
+      },
+      {
+        "comment": "Operation input and other kinds of inputs",
+        "number": 80,
+        "value": "INPUT"
+      },
+      {
+        "comment": "Operation output and other kinds of outputs",
+        "number": 82,
+        "value": "OUTPUT"
+      },
+      {
+        "comment": "Work contact",
+        "number": 104,
+        "value": "CONTACT_WORK"
+      },
+      {
+        "comment": "Work group contact",
+        "number": 106,
+        "value": "CONTACT_WORK_GROUP"
+      },
+      {
+        "comment": "Personal use contact",
+        "number": 110,
+        "value": "CONTACT_PERSONAL"
+      },
+      {
+        "comment": "Family contact",
+        "number": 112,
+        "value": "CONTACT_FAMILY"
+      },
+      {
+        "comment": "Contact of organisation related to many agents/agents group",
+        "number": 116,
+        "value": "CONTACT_ORGANISATION"
+      },
+      {
+        "comment": "Family contact",
+        "number": 120,
+        "value": "CONTACT_NOTICED_USAGE"
+      },
+      {
+        "comment": "Don't use this contact against defined agent for live actions",
+        "number": 128,
+        "value": "CONTACT_DO_NOT_CALL"
+      }
+    ]
+  },
+  ".anymetrica.request.Direction": {
+    "comment": "The sort direction.",
+    "filename": "anymetrica/request.proto",
+    "fullName": ".anymetrica.request.Direction",
+    "name": "Direction",
+    "values": [
+      {
+        "comment": "Unspecified. This value must not be used.",
+        "default": true,
+        "number": 0,
+        "value": "DIRECTION_UNSPECIFIED"
+      },
+      {
+        "comment": "Ascending.",
+        "number": 1,
+        "value": "ASCENDING"
+      },
+      {
+        "comment": "Descending.",
+        "number": 2,
+        "value": "DESCENDING"
+      }
+    ]
+  },
+  ".anymetrica.request.MoreResultsType": {
+    "comment": "The possible values for the `more_results` field.",
+    "filename": "anymetrica/request.proto",
+    "fullName": ".anymetrica.request.MoreResultsType",
+    "name": "MoreResultsType",
+    "values": [
+      {
+        "comment": "Unspecified. This value is never used.",
+        "default": true,
+        "number": 0,
+        "value": "MORE_RESULTS_TYPE_UNSPECIFIED"
+      },
+      {
+        "comment": "There may be additional batches to fetch from this query.",
+        "number": 1,
+        "value": "NOT_FINISHED"
+      },
+      {
+        "comment": "The query is finished, but there may be more results after the limit.",
+        "number": 2,
+        "value": "MORE_RESULTS_AFTER_LIMIT"
+      },
+      {
+        "comment": "The query is finished, and there are no more results.",
+        "number": 3,
+        "value": "NO_MORE_RESULTS"
+      },
+      {
+        "comment": "The query is finished, but there may be more results after the end\ncursor.",
+        "number": 4,
+        "value": "MORE_RESULTS_AFTER_CURSOR"
+      }
+    ]
+  },
+  ".anymetrica.vad.RecognitionConfig.AudioEncoding": {
+    "comment": "Audio encoding of the data sent in the audio message. All encodings support\nonly 1 channel (mono) audio. Only `FLAC` and `WAV` include a header that\ndescribes the bytes of audio that follow the header. The other encodings\nare raw audio bytes with no header.\n\nFor best results, the audio source should be captured and transmitted using\na lossless encoding (`FLAC` or `LINEAR16`). Recognition accuracy may be\nreduced if lossy codecs, which include the other codecs listed in\nthis section, are used to capture or transmit the audio, particularly if\nbackground noise is present.",
+    "filename": "anymetrica/vad.proto",
+    "fullName": ".anymetrica.vad.RecognitionConfig.AudioEncoding",
+    "name": "AudioEncoding",
+    "values": [
+      {
+        "comment": "Not specified. Will return result [google.rpc.Code.INVALID_ARGUMENT][google.rpc.Code.INVALID_ARGUMENT].",
+        "default": true,
+        "number": 0,
+        "value": "ENCODING_UNSPECIFIED"
+      },
+      {
+        "comment": "Uncompressed 16-bit signed little-endian samples (Linear PCM).",
+        "number": 1,
+        "value": "LINEAR16"
+      },
+      {
+        "comment": "[`FLAC`](https://xiph.org/flac/documentation.html) (Free Lossless Audio\nCodec) is the recommended encoding because it is\nlossless--therefore recognition is not compromised--and\nrequires only about half the bandwidth of `LINEAR16`. `FLAC` stream\nencoding supports 16-bit and 24-bit samples, however, not all fields in\n`STREAMINFO` are supported.",
+        "number": 2,
+        "value": "FLAC"
+      },
+      {
+        "comment": "8-bit samples that compand 14-bit audio samples using G.711 PCMU/mu-law.",
+        "number": 3,
+        "value": "MULAW"
+      },
+      {
+        "comment": "Adaptive Multi-Rate Narrowband codec. `sample_rate_hertz` must be 8000.",
+        "number": 4,
+        "value": "AMR"
+      },
+      {
+        "comment": "Adaptive Multi-Rate Wideband codec. `sample_rate_hertz` must be 16000.",
+        "number": 5,
+        "value": "AMR_WB"
+      },
+      {
+        "comment": "Opus encoded audio frames in Ogg container\n([OggOpus](https://wiki.xiph.org/OggOpus)).\n`sample_rate_hertz` must be 16000.",
+        "number": 6,
+        "value": "OGG_OPUS"
+      },
+      {
+        "comment": "Although the use of lossy encodings is not recommended, if a very low\nbitrate encoding is required, `OGG_OPUS` is highly preferred over\nSpeex encoding. The [Speex](https://speex.org/)  encoding supported by\nCloud Speech API has a header byte in each block, as in MIME type\n`audio/x-speex-with-header-byte`.\nIt is a variant of the RTP Speex encoding defined in\n[RFC 5574](https://tools.ietf.org/html/rfc5574).\nThe stream is a sequence of blocks, one block per RTP packet. Each block\nstarts with a byte containing the length of the block, in bytes, followed\nby one or more frames of Speex data, padded to an integral number of\nbytes (octets) as specified in RFC 5574. In other words, each RTP header\nis replaced with a single byte containing the block length. Only Speex\nwideband is supported. `sample_rate_hertz` must be 16000.",
+        "number": 7,
+        "value": "SPEEX_WITH_HEADER_BYTE"
+      }
+    ]
+  },
+  ".anymetrica.vad.VadEventType": {
+    "comment": "Vad events\nhttps://www.npmjs.com/package/node-vad",
+    "filename": "anymetrica/vad.proto",
+    "fullName": ".anymetrica.vad.VadEventType",
+    "name": "VadEventType",
+    "values": [
+      {
+        "default": true,
+        "number": 0,
+        "value": "VAD_EVENT_UNSPECIFIED"
+      },
+      {
+        "number": 2,
+        "value": "VAD_EVENT_SILENCE"
+      },
+      {
+        "number": 4,
+        "value": "VAD_EVENT_NOISE"
+      },
+      {
+        "number": 8,
+        "value": "VAD_EVENT_VOICE"
+      },
+      {
+        "number": 16,
+        "value": "VAD_EVENT_VOICE_MULTI"
+      }
+    ]
+  },
+  ".anymetrica.vehicle.VehicleType": {
+    "comment": "Vehicle type",
+    "filename": "anymetrica/vehicle.proto",
+    "fullName": ".anymetrica.vehicle.VehicleType",
+    "name": "VehicleType",
+    "values": [
+      {
+        "default": true,
+        "number": 0,
+        "value": "VEHICLE_UNSPECIFIED"
+      },
+      {
+        "number": 1,
+        "value": "VEHICLE_OTHER"
+      },
+      {
+        "comment": "Wheel",
+        "number": 8,
+        "value": "VEHICLE_CAR"
+      },
+      {
+        "number": 9,
+        "value": "VEHICLE_TRUCK"
+      },
+      {
+        "number": 10,
+        "value": "VEHICLE_TRAILER"
+      },
+      {
+        "number": 32,
+        "value": "VEHICLE_MOTORCYCLE"
+      },
+      {
+        "number": 64,
+        "value": "VEHICLE_TRACTOR"
+      },
+      {
+        "comment": "Watercraft",
+        "number": 128,
+        "value": "VEHICLE_WATERCRAFT_UNSPECIFIED"
+      },
+      {
+        "number": 129,
+        "value": "VEHICLE_WATERCRAFT_OTHER"
+      },
+      {
+        "number": 140,
+        "value": "VEHICLE_WATERCRAFT_SHIP"
+      },
+      {
+        "number": 141,
+        "value": "VEHICLE_WATERCRAFT_BOAT"
+      },
+      {
+        "comment": "Aircraft",
+        "number": 192,
+        "value": "VEHICLE_AIRCRAFT_UNSPECIFIED"
+      },
+      {
+        "number": 193,
+        "value": "VEHICLE_AIRCRAFT_OTHER"
+      },
+      {
+        "number": 224,
+        "value": "VEHICLE_AIRCRAFT_PLANE"
+      }
+    ]
+  }
+}

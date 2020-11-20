@@ -1,0 +1,285 @@
+/* @flow */
+/**
+ * @fileOverview RPC Entity types
+ */
+
+/**
+ * @section TYPES
+ */
+
+/**
+ * @type TEntityType
+ * 
+ * Entity type names
+ */
+export type TEntityType = 'EntityUnknown' | 'Contact' | 'DemoRequestInfo' | 'Device' | 'File' | 'Group' | 'Human' | 'Location' | 'OTP' | 'Operation' | 'Organization' | 'PostalAddress' | 'Relation' | 'SessionToken' | 'TOTP' | 'UsernamePassword' | 'VadResult' | 'Vehicle' | 'Waveform';
+
+/**
+ * @type TEntityTypePlural
+ * 
+ * Entity plural type names
+ */
+export type TEntityTypePlural = 'EntitiesUnknown' | 'Contacts' | 'Devices' | 'Files' | 'Groups' | 'Humans' | 'Locations' | 'OTPs' | 'Operations' | 'Organizations' | 'PostalAddresses' | 'SessionTokens' | 'TOTPs' | 'UsernamePasswords' | 'VadResults' | 'Vehicles' | 'Waveforms';
+
+/**
+ * @section CONSTANTS
+ */
+
+
+/**
+ * @const EntityUnknown
+ */
+export const EntityUnknown: TEntityType = 'EntityUnknown';
+
+/**
+ * @const Contact
+ */
+export const Contact: TEntityType = 'Contact';
+
+/**
+ * @const DemoRequestInfo
+ */
+export const DemoRequestInfo: TEntityType = 'DemoRequestInfo';
+
+/**
+ * @const Device
+ */
+export const Device: TEntityType = 'Device';
+
+/**
+ * @const File
+ */
+export const File: TEntityType = 'File';
+
+/**
+ * @const Group
+ */
+export const Group: TEntityType = 'Group';
+
+/**
+ * @const Human
+ */
+export const Human: TEntityType = 'Human';
+
+/**
+ * @const Location
+ */
+export const Location: TEntityType = 'Location';
+
+/**
+ * @const OTP
+ */
+export const OTP: TEntityType = 'OTP';
+
+/**
+ * @const Operation
+ */
+export const Operation: TEntityType = 'Operation';
+
+/**
+ * @const Organization
+ */
+export const Organization: TEntityType = 'Organization';
+
+/**
+ * @const PostalAddress
+ */
+export const PostalAddress: TEntityType = 'PostalAddress';
+
+/**
+ * @const Relation
+ */
+export const Relation: TEntityType = 'Relation';
+
+/**
+ * @const SessionToken
+ */
+export const SessionToken: TEntityType = 'SessionToken';
+
+/**
+ * @const TOTP
+ */
+export const TOTP: TEntityType = 'TOTP';
+
+/**
+ * @const UsernamePassword
+ */
+export const UsernamePassword: TEntityType = 'UsernamePassword';
+
+/**
+ * @const VadResult
+ */
+export const VadResult: TEntityType = 'VadResult';
+
+/**
+ * @const Vehicle
+ */
+export const Vehicle: TEntityType = 'Vehicle';
+
+/**
+ * @const Waveform
+ */
+export const Waveform: TEntityType = 'Waveform';
+
+/**
+ * @const ENTITY_TYPE
+ * 
+ * Entity type names
+ */
+export const ENTITY_TYPE: { [TEntityType]: TEntityType } = {
+  EntityUnknown: EntityUnknown,
+  Contact: Contact,
+  DemoRequestInfo: DemoRequestInfo,
+  Device: Device,
+  File: File,
+  Group: Group,
+  Human: Human,
+  Location: Location,
+  OTP: OTP,
+  Operation: Operation,
+  Organization: Organization,
+  PostalAddress: PostalAddress,
+  Relation: Relation,
+  SessionToken: SessionToken,
+  TOTP: TOTP,
+  UsernamePassword: UsernamePassword,
+  VadResult: VadResult,
+  Vehicle: Vehicle,
+  Waveform: Waveform,
+};
+
+
+/**
+ * @const EntitiesUnknown
+ */
+export const EntitiesUnknown: TEntityTypePlural = 'EntitiesUnknown';
+
+/**
+ * @const Contacts
+ */
+export const Contacts: TEntityTypePlural = 'Contacts';
+
+/**
+ * @const Devices
+ */
+export const Devices: TEntityTypePlural = 'Devices';
+
+/**
+ * @const Files
+ */
+export const Files: TEntityTypePlural = 'Files';
+
+/**
+ * @const Groups
+ */
+export const Groups: TEntityTypePlural = 'Groups';
+
+/**
+ * @const Humans
+ */
+export const Humans: TEntityTypePlural = 'Humans';
+
+/**
+ * @const Locations
+ */
+export const Locations: TEntityTypePlural = 'Locations';
+
+/**
+ * @const OTPs
+ */
+export const OTPs: TEntityTypePlural = 'OTPs';
+
+/**
+ * @const Operations
+ */
+export const Operations: TEntityTypePlural = 'Operations';
+
+/**
+ * @const Organizations
+ */
+export const Organizations: TEntityTypePlural = 'Organizations';
+
+/**
+ * @const PostalAddresses
+ */
+export const PostalAddresses: TEntityTypePlural = 'PostalAddresses';
+
+/**
+ * @const SessionTokens
+ */
+export const SessionTokens: TEntityTypePlural = 'SessionTokens';
+
+/**
+ * @const TOTPs
+ */
+export const TOTPs: TEntityTypePlural = 'TOTPs';
+
+/**
+ * @const UsernamePasswords
+ */
+export const UsernamePasswords: TEntityTypePlural = 'UsernamePasswords';
+
+/**
+ * @const VadResults
+ */
+export const VadResults: TEntityTypePlural = 'VadResults';
+
+/**
+ * @const Vehicles
+ */
+export const Vehicles: TEntityTypePlural = 'Vehicles';
+
+/**
+ * @const Waveforms
+ */
+export const Waveforms: TEntityTypePlural = 'Waveforms';
+
+/**
+ * @const ENTITY_TYPE_PLURAL
+ * 
+ * Entity plural type names
+ */
+export const ENTITY_TYPE_PLURAL: { [TEntityTypePlural]: TEntityTypePlural } = {
+  EntitiesUnknown: EntitiesUnknown,
+  Contacts: Contacts,
+  Devices: Devices,
+  Files: Files,
+  Groups: Groups,
+  Humans: Humans,
+  Locations: Locations,
+  OTPs: OTPs,
+  Operations: Operations,
+  Organizations: Organizations,
+  PostalAddresses: PostalAddresses,
+  SessionTokens: SessionTokens,
+  TOTPs: TOTPs,
+  UsernamePasswords: UsernamePasswords,
+  VadResults: VadResults,
+  Vehicles: Vehicles,
+  Waveforms: Waveforms,
+};
+
+/**
+ * @const ENTITY_TYPE_TO_PLURAL
+ * 
+ * Entity names to plural
+ */
+export const ENTITY_TYPE_TO_PLURAL: { [TEntityType]: TEntityTypePlural } = {
+  EntityUnknown: EntitiesUnknown,
+  Contact: Contacts,
+  Device: Devices,
+  File: Files,
+  Group: Groups,
+  Human: Humans,
+  Location: Locations,
+  OTP: OTPs,
+  Operation: Operations,
+  Organization: Organizations,
+  PostalAddress: PostalAddresses,
+  SessionToken: SessionTokens,
+  TOTP: TOTPs,
+  UsernamePassword: UsernamePasswords,
+  VadResult: VadResults,
+  Vehicle: Vehicles,
+  Waveform: Waveforms,
+};

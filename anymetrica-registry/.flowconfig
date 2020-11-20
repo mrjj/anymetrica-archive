@@ -1,0 +1,14 @@
+[ignore]
+./node_modules/**/*
+./lib
+./dist
+**/__tests__/**
+[include]
+./src
+[libs]
+
+[lints]
+
+[options]
+server.max_workers=2
+[strict]

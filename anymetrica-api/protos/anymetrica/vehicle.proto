@@ -1,0 +1,67 @@
+syntax = "proto3";
+/**
+ * @file protos/anymetrica/vehicle.proto
+ * @package anymetrica.vehicle
+ * @description Vehicle info
+ */
+package anymetrica.vehicle;
+
+option java_package = "com.anymetrica.vehicle";
+
+import "metadata.proto";
+import "request.proto";
+
+// Vehicle type
+enum VehicleType {
+  VEHICLE_UNSPECIFIED = 0;
+  VEHICLE_OTHER = 1;
+
+  // Wheel
+  VEHICLE_CAR = 8;
+  VEHICLE_TRUCK = 9;
+  VEHICLE_TRAILER = 10;
+
+  VEHICLE_MOTORCYCLE = 32;
+
+  VEHICLE_TRACTOR = 64;
+
+  // Watercraft
+  VEHICLE_WATERCRAFT_UNSPECIFIED = 128;
+  VEHICLE_WATERCRAFT_OTHER = 129;
+
+  VEHICLE_WATERCRAFT_SHIP = 140;
+  VEHICLE_WATERCRAFT_BOAT = 141;
+
+  // Aircraft
+  VEHICLE_AIRCRAFT_UNSPECIFIED = 192;
+  VEHICLE_AIRCRAFT_OTHER = 193;
+
+  VEHICLE_AIRCRAFT_PLANE = 224;
+}
+
+// Vehicle
+message Vehicle {
+  // Unique Entity identifier
+  string id = 1;
+
+   // Entity Metadata
+  anymetrica.metadata.Metadata metadata = 2;
+
+  // Vehicle type
+  VehicleType vehicle_type = 8;
+
+  // For testing purposes
+  bool for_testing = 9;
+}
+
+// List of `Vehicle` entities
+message Vehicles {
+  // Request metadata
+  anymetrica.request.RequestMetadata request = 2;
+  // Response metadata
+  anymetrica.request.ResponseMetadata response = 4;
+
+  // Result entities
+
+  repeated Vehicle entities = 8;
+}

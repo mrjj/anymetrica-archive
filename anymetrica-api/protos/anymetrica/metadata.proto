@@ -1,0 +1,62 @@
+syntax = "proto3";
+/**
+ * @file protos/anymetrica/metadata.proto
+ * @package anymetrica.entity
+ * @fileOverview @description This package defines Entity - core of Anymetrica resource model
+ */
+
+package anymetrica.metadata;
+option java_package = "com.anymetrica.metadata";
+
+import public "entity.proto";
+import "google/protobuf/timestamp.proto";
+
+message ValidationMetadata {
+  // Validation result
+  bool is_valid = 1;
+
+  // When entity validity status was defined
+  google.protobuf.Timestamp validation_ts = 4;
+
+  // At which time entity expected to go invalid
+  google.protobuf.Timestamp valid_till_ts = 8;
+
+  // Next scheduled or prescribed validation time
+  google.protobuf.Timestamp next_validation_ts = 12;
+
+  string validation_notes = 16;
+}
+
+// Entity Metadata
+message Metadata {
+  // Entity type. Its supporting field because type info is usually defined at
+  // container level for both - RPC and DB store levels.
+  anymetrica.entity.EntityType type = 8;
+
+  // Surrogate deletion flag
+  bool is_deleted = 12;
+
+  // Text label
+  string label = 14;
+
+  // UTC0 Unix creation timestamp
+  // Relying on [ISO-8601](https://www.iso.org/iso-8601-date-and-time-format.html) and Google external Timestamp standard.
+  google.protobuf.Timestamp created_ts = 16;
+
+  // UTC0 Unix last modification timestamp (including creation)
+  google.protobuf.Timestamp updated_ts = 18;
+
+  // UTC0 Unix surrogate deletion time
+  google.protobuf.Timestamp deleted_ts = 20;
+
+  // Entity or relation validation metadata
+  repeated ValidationMetadata validations = 32;
+}
+
+// Entity with metadata only
+message ShallowEntity {
+  // Unique Entity identifier
+  string id = 1;
+  // Entity Metadata
+  Metadata metadata = 2;
+}

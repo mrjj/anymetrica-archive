@@ -1,0 +1,51 @@
+syntax = "proto3";
+/**
+ * @file protos/anymetrica/location.proto
+ * @package anymetrica.location
+ * @description This package defines location - location information entity
+ */
+package anymetrica.location;
+
+option java_package = "com.anymetrica.location";
+
+import "google/type/latlng.proto";
+import "metadata.proto";
+import "postal_address.proto";
+import "request.proto";
+
+// Location information record
+message Location {
+  // Unique Entity identifier
+  string id = 1;
+
+  // Entity Metadata
+  anymetrica.metadata.Metadata metadata = 2;
+
+  // Single coordinates records
+  google.type.LatLng geo_point_coordinates = 8;
+
+  // Width of geo rect in meters
+  // If width is defined without height then height supposed to be equal width
+  double geo_rect_width_meters = 16;
+
+  // Height of geo rect in meters
+  // If height is defined without width then width supposed to be equal height
+  double geo_rect_height_meters = 17;
+
+  // Geo zone circle radius in meters
+  double geo_circle_radius_meters = 18;
+
+  // Geo polygon coordinates list
+  repeated google.type.LatLng geo_poly_coordinates = 20;
+}
+
+// List of Location information record
+message Locations {
+  // Request metadata
+  anymetrica.request.RequestMetadata request = 2;
+  // Response metadata
+  anymetrica.request.ResponseMetadata response = 4;
+
+  // Result entities
+  repeated Location entities = 8;
+}

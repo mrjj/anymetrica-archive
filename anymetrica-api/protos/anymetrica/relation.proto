@@ -1,0 +1,245 @@
+syntax = "proto3";
+/**
+ * @file relation.proto
+ *
+ * @fileOverview  Key access management entities and types
+ *
+ * @package anymetrica.relation
+ *
+ * @description:
+ *
+ * ## Access levels:
+ *
+ * Access is defined by graph access-type edges and product of resolution is granting or restriction for access/alter
+ * operations on graph.
+ *
+ * Access graph is non-symmetrically directed and Admin -[MANAGE]-> Group not giving group and its members
+ * any info about admin and deeper accessRules.
+ *
+ * Any access edge is defined from `Agent`, `Credential` or `Group` entity toward any possible entity.
+ * `Agent` could alter this edges, `Credential` or `Group` are points for management and access level propagation
+ * not changing anything by themselves.
+ *
+ * There are 4 Access levels and according edge types (See details below in `LevelEnum` description):
+ *
+ * * __RESTRICTED__ - No access granted. This type of edges could be purged automatically,
+ *                    but could be preserved for history management purposes.
+ *
+ * * __READ__       - Defines permission to read information both metadata and payload about
+ *                    entity and same access to everything it represents.
+ *
+ * * __WRITE__      - Defines permission to update content of entity payload not affecting any of its accessRules.
+ *
+ * * __MANAGE__     - Gives full control over entity and its accessRules including is_deleted flag and creation
+ *                    of new access levels.
+ *
+ * On following @example
+ *
+ * ```
+ * AdminX   -[MANAGE]->   DeviceT  (-[WRITE]-> <-[MANAGE]-)  GroupSuperAdmins    -[READ]->   FileZ
+ * ```
+ *
+ * 1. AdminX have only WRITE level access to GroupSuperAdmins.
+ *
+ * 2. Everyone member of GroupSuperAdmins will have the same level access to DeviceW.
+ *
+ * 3. AdminX agent record will not be managed by anyone except DeviceT he/she use.
+ *
+ * Administrative level scenario when administrator access is partially isolated from the content of user's entities.
+ *
+ * The auth system bounds are defined by root Agent and related Credential and root limits they have.
+ *
+ * Example: Logic (under the hood) of registering Admin and associated device registration.
+ *
+ * 1. Root system admin as `Agent` having unlimited resources for this kind of operation is
+ *    creating following records (with some sane time limitations):
+ *
+ *    ```
+ *                                              Credential(reg_code:      CODE            agent_type=HUMAN, is_one_shot=true,  should_auto_regen=false, is_revoked=false)
+ *     Credential(reg_code:)       -[READ]->   Credential(human_creds:   LOGIN_PASSWORD  agent_type=HUMAN, is_one_shot=false, should_auto_regen=true,  is_revoked=true )
+ *     Credential(human_log_pass:) -[READ]->   Credential(session_token: CODE            agent_type=HUMAN, is_one_shot=false, should_auto_regen=true,  is_revoked=true, auto_prolongate_on_seconds=SESSION_EXPIRATION)
+ *     Credential(session_token:) -[MANAGE]->  Agent(human_profile:)  // self-delete or access-promotion are restricted
+ *     Credential(session_token:) -[WRITE]->   Group(company_shared:)
+ *     Credential(session_token:) -[MANAGE]->  Group(private_space:)
+ *     Credential(cam_lease_code: -[MANAGE]->  Group(store_quote1:)
+ *
+ *     Credential(session_token:) -[MANAGE]-> Credential(cam_reg_code:   CODE            agent_type=Recorder, is_one_shot=true,  should_auto_regen=false, is_revoked=false)
+ *     Credential(cam_reg_code:   -[MANAGE]-> Credential(cam_lease:      CODE            agent_type=Recorder, is_one_shot=false, should_auto_regen=true,  is_revoked=true, auto_prolongate_on_seconds=LEASE_EXPIRATION)
+ *     Credential(cam_lease_code: -[MANAGE]-> Agent(cam1:                 Recorder)
+ *     Credential(cam_lease_code: -[MANAGE]-> Group(store_quote1:)
+ *
+ *     Credential(session_token:) -[MANAGE]->  Credential(phone_reg_code:CODE            agent_type=MOBILE_DEVICE, is_one_shot=true,  should_auto_regen=false, is_revoked=false)
+ *     Credential(phone_reg_code: -[MANAGE]->  Credential(phone_lease:   CODE            agent_type=MOBILE_DEVICE, is_one_shot=false, should_auto_regen=true,  is_revoked=true, auto_prolongate_on_seconds=LEASE_EXPIRATION)
+ *     Credential(phone_lease:    -[MANAGE]->  Agent(phone1:              PHONE)
+ *     Credential(phone_lease:    -[MANAGE]->  Group(store_quote1:)
+ *    ```
+ *
+ * 2. All this could be flexible managed via templates when only logic related to how tokens renewal happens is extended.
+ *    Renewal could happen only via manual re-enter of new version, auto-generation and so on.
+ *
+ * 3. Sharing initial reg_code via some helper service like link mailer or just printed Admin starting process.
+ *
+ * 4. Who got code accessing system endpoint (UI or interface) and entered `reg_code` that providing access to the
+ *    pre-created agent entity.
+ *
+ *    As far is should forced auto-renew and invitee could set his own credentials through this.
+ *
+ * 5. After entering self-defined credentials human using them to auto-refresh and obtain session token `Credential`
+ *    that will be be used by device or browser.
+ *
+ * 6. Human getting access over two devices registration codes, allowing devices to got some lease token they will use
+ *    to interact with system.
+ *
+ * 7. DevicesPage are registered like this e.g. exposing QR with `phone_reg_code` to phone and our app installed
+ *    or entering some credentials used every time or reg token to Recorder web UI.
+ *
+ * Pre-creation of such entities volume have huge technical side target - know how big registry will be
+ * with current agents activity level and before real agents will start their additional activity.
+ *
+ * Core logic for most possible access scenarios could be implemented as configured templates.
+ * So core logic will be hardened by not changing frequently against every exact scenario that could happen.
+ *
+ * Limits management (Licensing) could be managed flexible for every level access happens.
+ * Also load from real agents parallel landing activity will be mitigated a little.
+ *
+ * TODO(Ilya): Limits
+ *
+ * Limits are some fixed system resources pool that is initially associated with root agents/credentials.
+ */
+
+package anymetrica.relation;
+option java_package = "com.anymetrica.relation";
+
+import "metadata.proto";
+import "request.proto";
+
+// Access Level types
+enum RelationType {
+
+  // No access granted. This type of edges could be purged automatically, but could be preserved for history management purposes.
+  RESTRICTED = 0;
+
+  // Gives control over read and reset trigger
+  CAN_RESET = 1;
+
+  // Defines ability to read information both metadata and payload about entity and same access to everything it represents.
+  CAN_READ = 3;
+
+  // Defines permission to update content of entity payload not affecting any of its accessRules (including access accessRules? TBD)
+  CAN_WRITE = 7;
+
+  // Gives ability to discover entity.
+  CAN_READ_RELATIONS = 15;
+
+  // Gives ability to re-link entity relations (including access rights).
+  CAN_WRITE_RELATIONS = 31;
+
+  // Entity owner that means all entities related that way should have same lifecycle as user profile.
+  // Ownership supposing wide access but with exception if operation may violate core business logic
+  // or will create some conflict/integrity situation which not possible to resolve for owner user.
+  // E.g. user is owner for his single E-Mail record, but system will reject its deletion request
+  // until any alternative email record that resolving conflict will be provided.
+  OWNS = 64;
+
+  // On permissions level it works like Owner but semantically this does not means that target entity is something
+  // user manages as his own __private thing__ like his named `Human` profile or `Credential` records
+  // so its better for temporary owners or managing public entities.
+  // Also there are supposed to be single owner for entity, but many administrators are possible.
+  // This difference should be considered at UI client applications level and may affect entities traverse order
+  // but `Administrator` = `Owner` at permissions level.
+  ADMINISTRATING = 66;
+
+  // Entity creator, its completely metadata level relation that should not have direct effect on permission level
+  // but may affect API discovery priorities and discovery output filtering (mostly for UI needs)
+  CREATED = 68;
+
+  // Entity acting as separate part of other entity that means access level similar to compound parent
+  HAVE_PART = 72;
+
+  // Organisations and groups could have members
+  HAVE_MEMBER = 78;
+
+  // Operation input and other kinds of inputs
+  INPUT = 80;
+  // Operation output and other kinds of outputs
+  OUTPUT = 82;
+
+  // Work contact
+  CONTACT_WORK = 104;
+  // Work group contact
+  CONTACT_WORK_GROUP = 106;
+  // Personal use contact
+  CONTACT_PERSONAL = 110;
+  // Family contact
+  CONTACT_FAMILY = 112;
+
+  // Contact of organisation related to many agents/agents group
+  CONTACT_ORGANISATION = 116;
+
+  // Family contact
+  CONTACT_NOTICED_USAGE = 120;
+
+  // Don't use this contact against defined agent for live actions
+  CONTACT_DO_NOT_CALL = 128;
+}
+
+// Relation is defined for __subject__ (__from_id__) against any other entity as __object__ (__to_id__)
+message Relation {
+  // Unique Entity identifier
+  string id = 1;
+
+  // Entity Metadata
+  anymetrica.metadata.Metadata metadata = 2;
+
+  // Active __subject__ Id
+  string from_id = 4;
+
+  // Hops over DAG edges from current discovery start point (or current credential entity if none is defined)
+  // till this relation `from` entity being made over the shortest path found, could be considered as something
+  // like e.g. "Tree depth" but on graph structure.
+  int32 from_depth = 8;
+
+  // Hops over DAG edges from current credential entity (Usually the session token)
+  // till this relation `from` entity being made over the shortest path found, could be considered as something
+  // like e.g. "Tree depth" but on graph structure.
+  int32 from_depth_absolute = 10;
+
+  // Relation type
+  // @deprecated
+  RelationType relation_type = 32 [deprecated=true];
+
+  // Relation types (multiple at once)
+  repeated RelationType relation_types = 34;
+
+  // Custom relation types (multiple at once)
+  // TODO: Implement
+  // repeated string custom_relation_types = 36;
+
+  // Passive __object__ Id
+  string to_id = 64;
+
+  // Hops over DAG edges from current discovery start point (or current credential entity if none is defined)
+  // till this relation `to` entity being made over the shortest path found, could be considered as something
+  // like e.g. "Tree depth" but on graph structure.
+  // It may be equal or smaller than `from_depth` depending on current entities DAG topology.
+  int32 to_depth = 66;
+
+  // Hops over DAG edges from current credential entity (Usually the session token)
+  // till this relation `to` entity being made over the shortest path found, could be considered as something
+  // like e.g. "Tree depth" but on graph structure.
+  // It may be equal or smaller than `from_depth_absolute` depending on current entities DAG topology.
+  int32 to_depth_absolute = 68;
+}
+
+// List of `Relation` entities
+message Relations {
+  // Request metadata
+  anymetrica.request.RequestMetadata request = 2;
+  // Response metadata
+  anymetrica.request.ResponseMetadata response = 4;
+
+  // Result relations
+  repeated Relation relations = 6;
+  // Result entities
+  repeated anymetrica.metadata.ShallowEntity entities = 8;
+}

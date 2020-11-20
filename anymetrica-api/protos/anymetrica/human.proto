@@ -1,0 +1,53 @@
+syntax = "proto3";
+/**
+ * @file protos/anymetrica/human.proto
+ * @package anymetrica.human
+ * @description Live human profile
+ */
+package anymetrica.human;
+
+option java_package = "com.anymetrica.human";
+
+import "google/type/date.proto";
+import "metadata.proto";
+import "request.proto";
+
+// Human
+message Human {
+  // Unique Entity identifier
+  string id = 1;
+
+   // Entity Metadata
+  anymetrica.metadata.Metadata metadata = 2;
+
+  // For testing purposes
+  bool for_testing = 9;
+
+  // Full name [deprecated]
+  string full_name = 16;
+
+  // Title
+  string title = 31;
+  // First name
+  string first_name = 32;
+  // Middle name
+  string middle_name = 33;
+  // Last name
+  string last_name = 34;
+  // Name suffix
+  string suffix = 35;
+
+  // Date of birth
+  google.type.Date date_of_birth = 64;
+}
+
+// List of Human entities
+message Humans {
+  // Request metadata
+  anymetrica.request.RequestMetadata request = 2;
+  // Response metadata
+  anymetrica.request.ResponseMetadata response = 4;
+
+  // Result entities
+  repeated Human entities = 8;
+}

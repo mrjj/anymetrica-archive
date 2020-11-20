@@ -1,0 +1,44 @@
+syntax = "proto3";
+/**
+ * @file protos/anymetrica/demo_request.proto
+ * @package anymetrica.demo_request
+ *
+ * This package defines customer demo request data.
+ */
+package anymetrica.demo_request;
+
+option java_package = "com.anymetrica.demo_request";
+
+import "metadata.proto";
+import "request.proto";
+
+// Demo request information
+message DemoRequestInfo {
+  // Unique Entity identifier
+  string id = 1;
+
+   // Entity Metadata
+  anymetrica.metadata.Metadata metadata = 2;
+
+  // Company name
+  string company = 8;
+
+  // Contact email
+  string email = 16;
+
+  // Contact phone
+  string phone = 18;
+
+  // Open form customer description
+  string whoami = 32;
+}
+
+
+// Device entity List
+message DemoRequest {
+  // Request metadata
+  anymetrica.request.RequestMetadata request = 2;
+
+  // Result entities
+  DemoRequestInfo request_info = 8;
+}

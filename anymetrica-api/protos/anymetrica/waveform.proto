@@ -1,0 +1,88 @@
+syntax = "proto3";
+/**
+ * @file protos/anymetrica/waveform.proto
+ * @package anymetrica.waveform
+ *
+ * @description This package defines metadata and content message
+ * for [waveform](https://waveform.prototyping.bbc.co.uk/) data file.
+ */
+
+package anymetrica.waveform;
+option java_package = "com.anymetrica.waveform";
+
+import "metadata.proto";
+import "request.proto";
+import "google/protobuf/timestamp.proto";
+
+// Waveform data file (V1/V2)
+// [format details](https://github.com/bbc/audiowaveform/blob/master/doc/DataFormat.md)
+message Waveform {
+  // Unique identifier
+  string id = 1;
+
+  // Entity Metadata
+  anymetrica.metadata.Metadata metadata = 2;
+
+  // Version
+  //
+  // This field indicates the version number of the waveform data format.
+  // The version 1 and 2 data formats are described here.
+  // If the format changes in future, the Version field will be incremented.
+  int32 version = 16;
+
+  // Flags
+  //
+  // The Flags field describes the format of the waveform data that follows the header.
+  //
+  // |     bit     |              description                  |
+  // | ----------- | ------------------------------------------|
+  // | 0 (lsb)     | 0: 16-bit resolution, 1: 8-bit resolution |
+  // | 1-31 Unused |                                           |
+  //
+  uint32 flags = 17;
+
+  // Sample rate
+  //
+  // Sample rate of original audio file (Hz).
+  int32 sample_rate = 18;
+
+  // Samples per pixel
+  //
+  // Number of audio samples per waveform minimum/maximum pair.
+  int32 samples_per_pixel = 19;
+
+  // Length
+  //
+  // Length of waveform data (number of minimum and maximum value pairs per channel).
+  uint32 length = 20;
+
+  // Channels
+  //
+  // The number of waveform channels present (version 2 only).
+  uint32 channels = 21;
+
+  // Waveform data
+  //
+  // Waveform data follows the header block and consists of pairs of minimum and maximum values that each
+  // represent a range of samples of the original audio (the "samples per pixel" header field).
+  //
+  // The version 1 data format supports only a single audio channel; the audiowaveform program converts stereo audio
+  // to mono when generating waveform data. The version 2 data format supports multiple channels,
+  // where the data from each channel is interleaved.
+  //
+  // For 8-bit data, the waveform data is represented as follows. Each value lies in the range -128 to +127.
+  // For examples and more details visit
+  // [waveform .dat format documentation](https://github.com/bbc/audiowaveform/blob/master/doc/DataFormat.md#waveform-data)
+  bytes data = 32;
+}
+
+// List of Waveform entities
+message Waveforms {
+  // Request metadata
+  anymetrica.request.RequestMetadata request = 2;
+  // Response metadata
+  anymetrica.request.ResponseMetadata response = 4;
+
+  // Result entities
+  repeated Waveform entities = 8;
+}

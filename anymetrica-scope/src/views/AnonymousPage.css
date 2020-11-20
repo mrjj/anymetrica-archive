@@ -1,0 +1,98 @@
+/*@import '~antd/lib/style/themes/default.less';*/
+
+.container {
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+    overflow: auto;
+    color: #FFFFFF;
+}
+
+.content {
+    padding: 32px 0;
+    flex: 1;
+}
+
+.login-form {
+    max-width: 300px;
+    width: 300px;
+}
+
+.login-form-forgot {
+    float: right;
+}
+
+.login-form-button {
+    width: 100%;
+    background: #FFFFFF;
+}
+
+.cookies-consent-header {
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+    height: auto !important;
+    padding: 0;
+}
+
+.cookies-consent-header,
+.cookies-consent {
+    background: #3F51B5;
+}
+
+.cookies-consent {
+    font-size: 0.75em;
+    padding-bottom: 0;
+}
+
+.cookies-consent h1 {
+    font-size: 1.75em;
+    margin-bottom: 0;
+}
+
+.cookies-consent {
+    padding: 1em 2em;
+}
+
+.cookies-consent li {
+    margin: 0;
+}
+
+.cookies-consent ul,
+.cookies-consent li,
+.cookies-consent p,
+.cookies-consent h1,
+.cookies-consent div {
+    color: #FFFFFF;
+    line-height: 1.5em;
+}
+
+.cookies-consent p {
+    margin-bottom: 0;
+}
+
+.cookies-consent h1,
+.cookies-consent ul {
+    margin-bottom: 0.5em;
+}
+
+.cookies-consent h1 {
+    font-weight: 100;
+    margin-bottom: 0;
+}
+
+.form-wrapper {
+    margin: 0 auto;
+    width: 256px;
+    display: flex;
+    min-height: 100%;
+    padding-top: 32px;
+    flex-direction: column;
+    text-align: center;
+    align-items: center;
+}
+
+.submit-demo-form {
+    width: 456px;
+    display: inline-block;
+}

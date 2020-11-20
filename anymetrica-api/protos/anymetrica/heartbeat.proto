@@ -1,0 +1,25 @@
+syntax = "proto3";
+/**
+ * @file protos/anymetrica/heartbeat.proto
+ * @package anymetrica.heartbeat
+ * @description heartbeat message
+ */
+package anymetrica.heartbeat;
+option java_package = "com.anymetrica.heartbeat";
+
+import "google/protobuf/timestamp.proto";
+
+// Heartbeat message
+message Heartbeat {
+  // Client defined request ID number (uint64)
+  uint64 request_id = 1;
+
+  // Client defined request timestamp
+  google.protobuf.Timestamp client_ts = 4;
+
+  // Server defined response timestamp
+  google.protobuf.Timestamp server_ts = 6;
+
+  // Server message (optional)
+  string server_message = 16;
+}

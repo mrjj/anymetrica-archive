@@ -1,0 +1,62 @@
+syntax = "proto3";
+/**
+ * @file protos/anymetrica/contact.proto
+ * @package anymetrica.contact
+ * @description This package defines contact - contact information entity
+ */
+package anymetrica.contact;
+
+option java_package = "com.anymetrica.contact";
+
+import "request.proto";
+import "metadata.proto";
+
+// Type of Contact information record
+enum ContactType {
+  CONTACT_UNSPECIFIED = 0;
+  CONTACT_OTHER = 1;
+
+  CONTACT_PHONE = 16;
+  CONTACT_EMAIL = 17;
+  CONTACT_FAX = 18;
+
+  CONTACT_JABBER = 32;
+  CONTACT_DISCORD = 33;
+  CONTACT_SKYPE = 34;
+  CONTACT_MSN = 35;
+  CONTACT_ICQ = 36;
+
+  CONTACT_FACEBOOK_ID = 128;
+  CONTACT_BADOO_LOGIN = 129;
+  CONTACT_BAIDU_ID = 130;
+  CONTACT_VKONTAKTE_ID = 131;
+}
+
+// Contact information record
+message Contact {
+  // Unique Entity identifier
+  string id = 1;
+
+  // Entity Metadata
+  anymetrica.metadata.Metadata metadata = 2;
+
+  ContactType contact_type = 8;
+  // Contacts data
+  string data = 64;
+
+  string location = 11;
+  string comment = 12;
+
+  bool do_not_call = 17; // Do not use this contact at all
+}
+
+// List of Contact information record
+message Contacts {
+  // Request metadata
+  anymetrica.request.RequestMetadata request = 2;
+  // Response metadata
+  anymetrica.request.ResponseMetadata response = 4;
+
+  // Resulting entities
+  repeated Contact entities = 8;
+}

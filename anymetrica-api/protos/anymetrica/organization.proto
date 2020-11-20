@@ -1,0 +1,42 @@
+/**
+ * @file protos/anymetrica/organization.proto
+ *
+ * @fileOverview Organization entity type
+ *
+ * @package anymetrica.organization
+ */
+syntax = "proto3";
+
+// `Organization` is a credentials grouping unit
+
+package anymetrica.organization;
+option java_package = "com.anymetrica.organization";
+
+import "google/protobuf/timestamp.proto";
+import "metadata.proto";
+import "request.proto";
+
+// Organization record
+message Organization {
+  // Unique Entity identifier
+  string id = 1;
+   // Entity Metadata
+  anymetrica.metadata.Metadata metadata = 2;
+
+  // Name
+  string name = 8;
+
+  // Domain (FQDN-like record
+  string domain = 16;
+}
+
+// List of `Organization` entities
+message Organizations {
+  // Request metadata
+  anymetrica.request.RequestMetadata request = 2;
+  // Response metadata
+  anymetrica.request.ResponseMetadata response = 4;
+
+  // Result entities
+  repeated Organization entities = 8;
+}

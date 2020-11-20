@@ -1,0 +1,47 @@
+syntax = "proto3";
+/**
+ * @file protos/anymetrica/program.proto
+ * @package anymetrica.program
+ * @description Computer program info
+ */
+package anymetrica.program;
+
+option java_package = "com.anymetrica.program";
+
+import "metadata.proto";
+import "request.proto";
+
+// Program generic type
+enum ProgramType {
+  SCRIPT = 0;
+
+  SYSTEM_SERVICE = 16;
+  WEB_SERVICE = 17;
+  EXTERNAL_API = 32;
+}
+
+// Computer Program
+message Program {
+  // Unique Entity identifier
+  string id = 1;
+
+  // Entity Metadata
+  anymetrica.metadata.Metadata metadata = 2;
+
+  // Program type
+  ProgramType program_type = 8;
+
+  // For testing purposes
+  bool for_testing = 9;
+}
+
+// List of `Program` entities
+message Programs {
+  // Request metadata
+  anymetrica.request.RequestMetadata request = 2;
+  // Response metadata
+  anymetrica.request.ResponseMetadata response = 4;
+
+  // Result entities
+  repeated Program entities = 8;
+}

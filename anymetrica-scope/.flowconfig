@@ -1,0 +1,33 @@
+[ignore]
+.*/dist
+.*/coverage
+.*/build
+.*/node_modules/**/*
+.*/node_modules/@webassemblyjs/
+lib
+logs
+build
+
+[include]
+node_modules/anymetrica-utils/
+
+[libs]
+node_modules/
+
+[options]
+module.name_mapper='.*\(.s?css\)' -> 'empty/object'
+module.name_mapper='.*\(.less\)' -> 'empty/object'
+module.name_mapper='.*\(.md\)' -> 'empty/object'
+module.name_mapper='.*\(.otf\)' -> 'empty/object'
+module.name_mapper='.*\(.ogv\)' -> 'empty/object'
+module.name_mapper='.*\(.ogg\)' -> 'empty/object'
+module.name_mapper='.*\(.md\)' -> 'empty/object'
+module.name_mapper='.*\(.graphql\)' -> 'empty/object'
+module.name_mapper='.*\(.query\)' -> 'empty/object'
+module.name_mapper='.*\(.xml\)' -> 'empty/object'
+module.name_mapper='.*\(.xsd\)' -> 'empty/object'
+module.name_mapper='.*\(.xml\)' -> 'empty/object'
+module.name_mapper='.*\(.sql\)' -> 'empty/object'
+esproposal.decorators=ignore
+
+[lints]

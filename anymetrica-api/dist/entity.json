@@ -1,0 +1,136 @@
+{
+  "entities": {
+    "Contact": 23,
+    "DemoRequestInfo": 5,
+    "Device": 21,
+    "File": 6,
+    "Group": 3,
+    "Human": 29,
+    "Location": 27,
+    "OTP": 32,
+    "Operation": 9,
+    "Organization": 11,
+    "PostalAddress": 1,
+    "Relation": 4,
+    "SessionToken": 7,
+    "TOTP": 18,
+    "UsernamePassword": 28,
+    "VadResult": 16,
+    "Vehicle": 20,
+    "Waveform": 2
+  },
+  "entitiesArr": [
+    {
+      "name": "EntityUnknown",
+      "number": 0,
+      "plural": "EntitiesUnknown"
+    },
+    {
+      "name": "Contact",
+      "number": 23,
+      "plural": "Contacts"
+    },
+    {
+      "name": "DemoRequestInfo",
+      "number": 5
+    },
+    {
+      "name": "Device",
+      "number": 21,
+      "plural": "Devices"
+    },
+    {
+      "name": "File",
+      "number": 6,
+      "plural": "Files"
+    },
+    {
+      "name": "Group",
+      "number": 3,
+      "plural": "Groups"
+    },
+    {
+      "name": "Human",
+      "number": 29,
+      "plural": "Humans"
+    },
+    {
+      "name": "Location",
+      "number": 27,
+      "plural": "Locations"
+    },
+    {
+      "name": "OTP",
+      "number": 32,
+      "plural": "OTPs"
+    },
+    {
+      "name": "Operation",
+      "number": 9,
+      "plural": "Operations"
+    },
+    {
+      "name": "Organization",
+      "number": 11,
+      "plural": "Organizations"
+    },
+    {
+      "name": "PostalAddress",
+      "number": 1,
+      "plural": "PostalAddresses"
+    },
+    {
+      "name": "Relation",
+      "number": 4
+    },
+    {
+      "name": "SessionToken",
+      "number": 7,
+      "plural": "SessionTokens"
+    },
+    {
+      "name": "TOTP",
+      "number": 18,
+      "plural": "TOTPs"
+    },
+    {
+      "name": "UsernamePassword",
+      "number": 28,
+      "plural": "UsernamePasswords"
+    },
+    {
+      "name": "VadResult",
+      "number": 16,
+      "plural": "VadResults"
+    },
+    {
+      "name": "Vehicle",
+      "number": 20,
+      "plural": "Vehicles"
+    },
+    {
+      "name": "Waveform",
+      "number": 2,
+      "plural": "Waveforms"
+    }
+  ],
+  "plural": {
+    "Contact": "Contacts",
+    "Device": "Devices",
+    "File": "Files",
+    "Group": "Groups",
+    "Human": "Humans",
+    "Location": "Locations",
+    "OTP": "OTPs",
+    "Operation": "Operations",
+    "Organization": "Organizations",
+    "PostalAddress": "PostalAddresses",
+    "SessionToken": "SessionTokens",
+    "ShallowEntity": "Relations",
+    "TOTP": "TOTPs",
+    "UsernamePassword": "UsernamePasswords",
+    "VadResult": "VadResults",
+    "Vehicle": "Vehicles",
+    "Waveform": "Waveforms"
+  }
+}

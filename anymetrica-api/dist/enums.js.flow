@@ -1,0 +1,2280 @@
+/* @flow */
+/**
+ * @fileOverview Enums flow types
+ */
+
+/**
+ * @section TYPES
+ */
+
+/**
+ * @type TContactType
+ * .anymetrica.contact.ContactType
+ * 
+ * Type of Contact information record
+ */
+export type TContactType = 'CONTACT_UNSPECIFIED' | 'CONTACT_OTHER' | 'CONTACT_PHONE' | 'CONTACT_EMAIL' | 'CONTACT_FAX' | 'CONTACT_JABBER' | 'CONTACT_DISCORD' | 'CONTACT_SKYPE' | 'CONTACT_MSN' | 'CONTACT_ICQ' | 'CONTACT_FACEBOOK_ID' | 'CONTACT_BADOO_LOGIN' | 'CONTACT_BAIDU_ID' | 'CONTACT_VKONTAKTE_ID';
+
+/**
+ * @type TDeviceType
+ * .anymetrica.device.DeviceType
+ * 
+ * Generic device types options
+ * 
+ * [Mostly taken from](https://github.com/roscopecoltran/krakend-admin/blob/f27bc4ee41d133f35301ef2fabf606cdce51b47b/shared/public/downloads/v2/specs/amazonaws.com/mgh/2017-05-31/swagger.proto)
+ */
+export type TDeviceType = 'UNSPECIFIED' | 'OTHER' | 'POLYMORPHIC' | 'PHONE' | 'TABLET' | 'DESKTOP' | 'TAG' | 'BADGE' | 'SMART_WATCH' | 'FITNESS_DEVICE' | 'SOUND_RECORDER' | 'VIDEO_RECORDER' | 'ROBOTIC';
+
+/**
+ * @type TEntityType
+ * .anymetrica.entity.EntityType
+ * 
+ * @enum EntityType
+ * 
+ * Entity type names
+ */
+export type TEntityType = 'EntityUnknown' | 'PostalAddress' | 'Waveform' | 'Group' | 'Relation' | 'DemoRequestInfo' | 'File' | 'SessionToken' | 'Operation' | 'Organization' | 'VadResult' | 'TOTP' | 'Vehicle' | 'Device' | 'Contact' | 'Location' | 'UsernamePassword' | 'Human' | 'OTP';
+
+/**
+ * @type TEntityTypePlural
+ * .anymetrica.entity.EntityTypePlural
+ * 
+ * @enum EntityTypePlural
+ * 
+ * Entity plural type names
+ */
+export type TEntityTypePlural = 'EntitiesUnknown' | 'PostalAddresses' | 'Waveforms' | 'Groups' | 'Files' | 'SessionTokens' | 'Operations' | 'Organizations' | 'VadResults' | 'TOTPs' | 'Vehicles' | 'Devices' | 'Contacts' | 'Locations' | 'UsernamePasswords' | 'Humans' | 'OTPs';
+
+/**
+ * @type TContentType
+ * .anymetrica.file.ContentType
+ * 
+ * [IANA Registered Content Types] https://www.iana.org/assignments/media-types/media-types.xhtml
+ * Content Type is big directory containing Media Type
+ */
+export type TContentType = 'CONTENT_TYPE_UNSPECIFIED' | 'application' | 'audio' | 'example' | 'font' | 'image' | 'message' | 'model' | 'multipart' | 'text' | 'video';
+
+/**
+ * @type THashType
+ * .anymetrica.file.HashType
+ * 
+ * If known, the hash function used to compute this digest.
+ */
+export type THashType = 'HASH_TYPE_UNSPECIFIED' | 'HASH_TYPE_PLAIN_TEXT' | 'HASH_TYPE_MD5' | 'HASH_TYPE_SHA_0_160' | 'HASH_TYPE_SHA_1_160' | 'HASH_TYPE_SHA_2_224' | 'HASH_TYPE_SHA_2_256' | 'HASH_TYPE_SHA_2_384' | 'HASH_TYPE_SHA_2_512' | 'HASH_TYPE_SHA_2_512_256' | 'HASH_TYPE_SHA_2_512_224' | 'HASH_TYPE_SIP_HASH_32' | 'HASH_TYPE_SIP_HASH_64' | 'HASH_TYPE_CITY_64' | 'HASH_TYPE_CITY_128' | 'HASH_TYPE_CITY128_CRC' | 'HASH_TYPE_METRO_32' | 'HASH_TYPE_METRO_64' | 'HASH_TYPE_METRO_128' | 'HASH_TYPE_METRO_128_CRC';
+
+/**
+ * @type TRelationType
+ * .anymetrica.relation.RelationType
+ * 
+ * Access Level types
+ */
+export type TRelationType = 'RESTRICTED' | 'CAN_RESET' | 'CAN_READ' | 'CAN_WRITE' | 'CAN_READ_RELATIONS' | 'CAN_WRITE_RELATIONS' | 'OWNS' | 'ADMINISTRATING' | 'CREATED' | 'HAVE_PART' | 'HAVE_MEMBER' | 'INPUT' | 'OUTPUT' | 'CONTACT_WORK' | 'CONTACT_WORK_GROUP' | 'CONTACT_PERSONAL' | 'CONTACT_FAMILY' | 'CONTACT_ORGANISATION' | 'CONTACT_NOTICED_USAGE' | 'CONTACT_DO_NOT_CALL';
+
+/**
+ * @type TDirection
+ * .anymetrica.request.Direction
+ * 
+ * The sort direction.
+ */
+export type TDirection = 'DIRECTION_UNSPECIFIED' | 'ASCENDING' | 'DESCENDING';
+
+/**
+ * @type TMoreResultsType
+ * .anymetrica.request.MoreResultsType
+ * 
+ * The possible values for the `more_results` field.
+ */
+export type TMoreResultsType = 'MORE_RESULTS_TYPE_UNSPECIFIED' | 'NOT_FINISHED' | 'MORE_RESULTS_AFTER_LIMIT' | 'NO_MORE_RESULTS' | 'MORE_RESULTS_AFTER_CURSOR';
+
+/**
+ * @type TAudioEncoding
+ * .anymetrica.vad.RecognitionConfig.AudioEncoding
+ * 
+ * Audio encoding of the data sent in the audio message. All encodings support
+ * only 1 channel (mono) audio. Only `FLAC` and `WAV` include a header that
+ * describes the bytes of audio that follow the header. The other encodings
+ * are raw audio bytes with no header.
+ * 
+ * For best results, the audio source should be captured and transmitted using
+ * a lossless encoding (`FLAC` or `LINEAR16`). Recognition accuracy may be
+ * reduced if lossy codecs, which include the other codecs listed in
+ * this section, are used to capture or transmit the audio, particularly if
+ * background noise is present.
+ */
+export type TAudioEncoding = 'ENCODING_UNSPECIFIED' | 'LINEAR16' | 'FLAC' | 'MULAW' | 'AMR' | 'AMR_WB' | 'OGG_OPUS' | 'SPEEX_WITH_HEADER_BYTE';
+
+/**
+ * @type TVadEventType
+ * .anymetrica.vad.VadEventType
+ * 
+ * Vad events
+ * https://www.npmjs.com/package/node-vad
+ */
+export type TVadEventType = 'VAD_EVENT_UNSPECIFIED' | 'VAD_EVENT_SILENCE' | 'VAD_EVENT_NOISE' | 'VAD_EVENT_VOICE' | 'VAD_EVENT_VOICE_MULTI';
+
+/**
+ * @type TVehicleType
+ * .anymetrica.vehicle.VehicleType
+ * 
+ * Vehicle type
+ */
+export type TVehicleType = 'VEHICLE_UNSPECIFIED' | 'VEHICLE_OTHER' | 'VEHICLE_CAR' | 'VEHICLE_TRUCK' | 'VEHICLE_TRAILER' | 'VEHICLE_MOTORCYCLE' | 'VEHICLE_TRACTOR' | 'VEHICLE_WATERCRAFT_UNSPECIFIED' | 'VEHICLE_WATERCRAFT_OTHER' | 'VEHICLE_WATERCRAFT_SHIP' | 'VEHICLE_WATERCRAFT_BOAT' | 'VEHICLE_AIRCRAFT_UNSPECIFIED' | 'VEHICLE_AIRCRAFT_OTHER' | 'VEHICLE_AIRCRAFT_PLANE';
+
+
+/**
+ * @section CONSTANTS
+ */
+/**
+ * @fileOverview Enums constants
+ */
+
+
+/**
+ * @section ContactType
+ * .anymetrica.contact.ContactType
+ * 
+ * Type of Contact information record
+ */
+
+/**
+ * @const CONTACT_UNSPECIFIED {{TContactType}}
+ */
+export const CONTACT_UNSPECIFIED: TContactType = 'CONTACT_UNSPECIFIED';
+
+/**
+ * @const CONTACT_OTHER {{TContactType}}
+ */
+export const CONTACT_OTHER: TContactType = 'CONTACT_OTHER';
+
+/**
+ * @const CONTACT_PHONE {{TContactType}}
+ */
+export const CONTACT_PHONE: TContactType = 'CONTACT_PHONE';
+
+/**
+ * @const CONTACT_EMAIL {{TContactType}}
+ */
+export const CONTACT_EMAIL: TContactType = 'CONTACT_EMAIL';
+
+/**
+ * @const CONTACT_FAX {{TContactType}}
+ */
+export const CONTACT_FAX: TContactType = 'CONTACT_FAX';
+
+/**
+ * @const CONTACT_JABBER {{TContactType}}
+ */
+export const CONTACT_JABBER: TContactType = 'CONTACT_JABBER';
+
+/**
+ * @const CONTACT_DISCORD {{TContactType}}
+ */
+export const CONTACT_DISCORD: TContactType = 'CONTACT_DISCORD';
+
+/**
+ * @const CONTACT_SKYPE {{TContactType}}
+ */
+export const CONTACT_SKYPE: TContactType = 'CONTACT_SKYPE';
+
+/**
+ * @const CONTACT_MSN {{TContactType}}
+ */
+export const CONTACT_MSN: TContactType = 'CONTACT_MSN';
+
+/**
+ * @const CONTACT_ICQ {{TContactType}}
+ */
+export const CONTACT_ICQ: TContactType = 'CONTACT_ICQ';
+
+/**
+ * @const CONTACT_FACEBOOK_ID {{TContactType}}
+ */
+export const CONTACT_FACEBOOK_ID: TContactType = 'CONTACT_FACEBOOK_ID';
+
+/**
+ * @const CONTACT_BADOO_LOGIN {{TContactType}}
+ */
+export const CONTACT_BADOO_LOGIN: TContactType = 'CONTACT_BADOO_LOGIN';
+
+/**
+ * @const CONTACT_BAIDU_ID {{TContactType}}
+ */
+export const CONTACT_BAIDU_ID: TContactType = 'CONTACT_BAIDU_ID';
+
+/**
+ * @const CONTACT_VKONTAKTE_ID {{TContactType}}
+ */
+export const CONTACT_VKONTAKTE_ID: TContactType = 'CONTACT_VKONTAKTE_ID';
+
+
+/**
+ * @const ContactType {{ [TContactType]: TContactType }}
+ * 
+ * Type of Contact information record
+ */
+export const ContactType: { [TContactType]: TContactType } = {
+  [CONTACT_UNSPECIFIED]: CONTACT_UNSPECIFIED,
+  [CONTACT_OTHER]: CONTACT_OTHER,
+  [CONTACT_PHONE]: CONTACT_PHONE,
+  [CONTACT_EMAIL]: CONTACT_EMAIL,
+  [CONTACT_FAX]: CONTACT_FAX,
+  [CONTACT_JABBER]: CONTACT_JABBER,
+  [CONTACT_DISCORD]: CONTACT_DISCORD,
+  [CONTACT_SKYPE]: CONTACT_SKYPE,
+  [CONTACT_MSN]: CONTACT_MSN,
+  [CONTACT_ICQ]: CONTACT_ICQ,
+  [CONTACT_FACEBOOK_ID]: CONTACT_FACEBOOK_ID,
+  [CONTACT_BADOO_LOGIN]: CONTACT_BADOO_LOGIN,
+  [CONTACT_BAIDU_ID]: CONTACT_BAIDU_ID,
+  [CONTACT_VKONTAKTE_ID]: CONTACT_VKONTAKTE_ID,
+};
+
+/**
+ * @const ContactTypeArr {{Array<TContactType>}} - values array
+ */
+export const ContactTypeArr: Array<TContactType> = [
+  CONTACT_UNSPECIFIED,
+  CONTACT_OTHER,
+  CONTACT_PHONE,
+  CONTACT_EMAIL,
+  CONTACT_FAX,
+  CONTACT_JABBER,
+  CONTACT_DISCORD,
+  CONTACT_SKYPE,
+  CONTACT_MSN,
+  CONTACT_ICQ,
+  CONTACT_FACEBOOK_ID,
+  CONTACT_BADOO_LOGIN,
+  CONTACT_BAIDU_ID,
+  CONTACT_VKONTAKTE_ID,
+];
+
+/**
+ * @const ContactTypeValueNumbers {{ [TContactType] : number }} - values order
+ */
+export const ContactTypeValueNumbers: { [TContactType] : number } = {
+  CONTACT_UNSPECIFIED: 0,
+  CONTACT_OTHER: 1,
+  CONTACT_PHONE: 16,
+  CONTACT_EMAIL: 17,
+  CONTACT_FAX: 18,
+  CONTACT_JABBER: 32,
+  CONTACT_DISCORD: 33,
+  CONTACT_SKYPE: 34,
+  CONTACT_MSN: 35,
+  CONTACT_ICQ: 36,
+  CONTACT_FACEBOOK_ID: 128,
+  CONTACT_BADOO_LOGIN: 129,
+  CONTACT_BAIDU_ID: 130,
+  CONTACT_VKONTAKTE_ID: 131,
+};
+
+/**
+ * @section DeviceType
+ * .anymetrica.device.DeviceType
+ * 
+ * Generic device types options
+ * 
+ * [Mostly taken from](https://github.com/roscopecoltran/krakend-admin/blob/f27bc4ee41d133f35301ef2fabf606cdce51b47b/shared/public/downloads/v2/specs/amazonaws.com/mgh/2017-05-31/swagger.proto)
+ */
+
+/**
+ * @const UNSPECIFIED {{TDeviceType}}
+ * 
+ * Type not specified
+ */
+export const UNSPECIFIED: TDeviceType = 'UNSPECIFIED';
+
+/**
+ * @const OTHER {{TDeviceType}}
+ * 
+ * Non-standard category
+ */
+export const OTHER: TDeviceType = 'OTHER';
+
+/**
+ * @const POLYMORPHIC {{TDeviceType}}
+ * 
+ * Polymorphic device (e.g. phone emulator)
+ */
+export const POLYMORPHIC: TDeviceType = 'POLYMORPHIC';
+
+/**
+ * @const PHONE {{TDeviceType}}
+ * 
+ * Mobile phone
+ */
+export const PHONE: TDeviceType = 'PHONE';
+
+/**
+ * @const TABLET {{TDeviceType}}
+ * 
+ * Tablet
+ */
+export const TABLET: TDeviceType = 'TABLET';
+
+/**
+ * @const DESKTOP {{TDeviceType}}
+ * 
+ * Desktop/Laptop Computer
+ */
+export const DESKTOP: TDeviceType = 'DESKTOP';
+
+/**
+ * @const TAG {{TDeviceType}}
+ * 
+ * Electronic tag (incl. passive)
+ */
+export const TAG: TDeviceType = 'TAG';
+
+/**
+ * @const BADGE {{TDeviceType}}
+ * 
+ * Electronic badge (incl. passive)
+ */
+export const BADGE: TDeviceType = 'BADGE';
+
+/**
+ * @const SMART_WATCH {{TDeviceType}}
+ * 
+ * Smart Watch
+ */
+export const SMART_WATCH: TDeviceType = 'SMART_WATCH';
+
+/**
+ * @const FITNESS_DEVICE {{TDeviceType}}
+ * 
+ * Generic fitness Device
+ */
+export const FITNESS_DEVICE: TDeviceType = 'FITNESS_DEVICE';
+
+/**
+ * @const SOUND_RECORDER {{TDeviceType}}
+ * 
+ * Sound recording device
+ */
+export const SOUND_RECORDER: TDeviceType = 'SOUND_RECORDER';
+
+/**
+ * @const VIDEO_RECORDER {{TDeviceType}}
+ * 
+ * Video recording device
+ */
+export const VIDEO_RECORDER: TDeviceType = 'VIDEO_RECORDER';
+
+/**
+ * @const ROBOTIC {{TDeviceType}}
+ * 
+ * Robotic device (non-vehicle)
+ */
+export const ROBOTIC: TDeviceType = 'ROBOTIC';
+
+
+/**
+ * @const DeviceType {{ [TDeviceType]: TDeviceType }}
+ * 
+ * Generic device types options
+ * 
+ * [Mostly taken from](https://github.com/roscopecoltran/krakend-admin/blob/f27bc4ee41d133f35301ef2fabf606cdce51b47b/shared/public/downloads/v2/specs/amazonaws.com/mgh/2017-05-31/swagger.proto)
+ */
+export const DeviceType: { [TDeviceType]: TDeviceType } = {
+  /**
+   * Type not specified
+   */
+  [UNSPECIFIED]: UNSPECIFIED,
+  /**
+   * Non-standard category
+   */
+  [OTHER]: OTHER,
+  /**
+   * Polymorphic device (e.g. phone emulator)
+   */
+  [POLYMORPHIC]: POLYMORPHIC,
+  /**
+   * Mobile phone
+   */
+  [PHONE]: PHONE,
+  /**
+   * Tablet
+   */
+  [TABLET]: TABLET,
+  /**
+   * Desktop/Laptop Computer
+   */
+  [DESKTOP]: DESKTOP,
+  /**
+   * Electronic tag (incl. passive)
+   */
+  [TAG]: TAG,
+  /**
+   * Electronic badge (incl. passive)
+   */
+  [BADGE]: BADGE,
+  /**
+   * Smart Watch
+   */
+  [SMART_WATCH]: SMART_WATCH,
+  /**
+   * Generic fitness Device
+   */
+  [FITNESS_DEVICE]: FITNESS_DEVICE,
+  /**
+   * Sound recording device
+   */
+  [SOUND_RECORDER]: SOUND_RECORDER,
+  /**
+   * Video recording device
+   */
+  [VIDEO_RECORDER]: VIDEO_RECORDER,
+  /**
+   * Robotic device (non-vehicle)
+   */
+  [ROBOTIC]: ROBOTIC,
+};
+
+/**
+ * @const DeviceTypeArr {{Array<TDeviceType>}} - values array
+ */
+export const DeviceTypeArr: Array<TDeviceType> = [
+  UNSPECIFIED,
+  OTHER,
+  POLYMORPHIC,
+  PHONE,
+  TABLET,
+  DESKTOP,
+  TAG,
+  BADGE,
+  SMART_WATCH,
+  FITNESS_DEVICE,
+  SOUND_RECORDER,
+  VIDEO_RECORDER,
+  ROBOTIC,
+];
+
+/**
+ * @const DeviceTypeValueNumbers {{ [TDeviceType] : number }} - values order
+ */
+export const DeviceTypeValueNumbers: { [TDeviceType] : number } = {
+  /**
+   * Type not specified
+   */
+  UNSPECIFIED: 0,
+  /**
+   * Non-standard category
+   */
+  OTHER: 1,
+  /**
+   * Polymorphic device (e.g. phone emulator)
+   */
+  POLYMORPHIC: 2,
+  /**
+   * Mobile phone
+   */
+  PHONE: 4,
+  /**
+   * Tablet
+   */
+  TABLET: 8,
+  /**
+   * Desktop/Laptop Computer
+   */
+  DESKTOP: 12,
+  /**
+   * Electronic tag (incl. passive)
+   */
+  TAG: 16,
+  /**
+   * Electronic badge (incl. passive)
+   */
+  BADGE: 18,
+  /**
+   * Smart Watch
+   */
+  SMART_WATCH: 24,
+  /**
+   * Generic fitness Device
+   */
+  FITNESS_DEVICE: 25,
+  /**
+   * Sound recording device
+   */
+  SOUND_RECORDER: 32,
+  /**
+   * Video recording device
+   */
+  VIDEO_RECORDER: 33,
+  /**
+   * Robotic device (non-vehicle)
+   */
+  ROBOTIC: 64,
+};
+
+/**
+ * @section EntityType
+ * .anymetrica.entity.EntityType
+ * 
+ * @enum EntityType
+ * 
+ * Entity type names
+ */
+
+/**
+ * @const EntityUnknown {{TEntityType}}
+ */
+export const EntityUnknown: TEntityType = 'EntityUnknown';
+
+/**
+ * @const PostalAddress {{TEntityType}}
+ */
+export const PostalAddress: TEntityType = 'PostalAddress';
+
+/**
+ * @const Waveform {{TEntityType}}
+ */
+export const Waveform: TEntityType = 'Waveform';
+
+/**
+ * @const Group {{TEntityType}}
+ */
+export const Group: TEntityType = 'Group';
+
+/**
+ * @const Relation {{TEntityType}}
+ */
+export const Relation: TEntityType = 'Relation';
+
+/**
+ * @const DemoRequestInfo {{TEntityType}}
+ */
+export const DemoRequestInfo: TEntityType = 'DemoRequestInfo';
+
+/**
+ * @const File {{TEntityType}}
+ */
+export const File: TEntityType = 'File';
+
+/**
+ * @const SessionToken {{TEntityType}}
+ */
+export const SessionToken: TEntityType = 'SessionToken';
+
+/**
+ * @const Operation {{TEntityType}}
+ */
+export const Operation: TEntityType = 'Operation';
+
+/**
+ * @const Organization {{TEntityType}}
+ */
+export const Organization: TEntityType = 'Organization';
+
+/**
+ * @const VadResult {{TEntityType}}
+ */
+export const VadResult: TEntityType = 'VadResult';
+
+/**
+ * @const TOTP {{TEntityType}}
+ */
+export const TOTP: TEntityType = 'TOTP';
+
+/**
+ * @const Vehicle {{TEntityType}}
+ */
+export const Vehicle: TEntityType = 'Vehicle';
+
+/**
+ * @const Device {{TEntityType}}
+ */
+export const Device: TEntityType = 'Device';
+
+/**
+ * @const Contact {{TEntityType}}
+ */
+export const Contact: TEntityType = 'Contact';
+
+/**
+ * @const Location {{TEntityType}}
+ */
+export const Location: TEntityType = 'Location';
+
+/**
+ * @const UsernamePassword {{TEntityType}}
+ */
+export const UsernamePassword: TEntityType = 'UsernamePassword';
+
+/**
+ * @const Human {{TEntityType}}
+ */
+export const Human: TEntityType = 'Human';
+
+/**
+ * @const OTP {{TEntityType}}
+ */
+export const OTP: TEntityType = 'OTP';
+
+
+/**
+ * @const EntityType {{ [TEntityType]: TEntityType }}
+ * 
+ * @enum EntityType
+ * 
+ * Entity type names
+ */
+export const EntityType: { [TEntityType]: TEntityType } = {
+  [EntityUnknown]: EntityUnknown,
+  [PostalAddress]: PostalAddress,
+  [Waveform]: Waveform,
+  [Group]: Group,
+  [Relation]: Relation,
+  [DemoRequestInfo]: DemoRequestInfo,
+  [File]: File,
+  [SessionToken]: SessionToken,
+  [Operation]: Operation,
+  [Organization]: Organization,
+  [VadResult]: VadResult,
+  [TOTP]: TOTP,
+  [Vehicle]: Vehicle,
+  [Device]: Device,
+  [Contact]: Contact,
+  [Location]: Location,
+  [UsernamePassword]: UsernamePassword,
+  [Human]: Human,
+  [OTP]: OTP,
+};
+
+/**
+ * @const EntityTypeArr {{Array<TEntityType>}} - values array
+ */
+export const EntityTypeArr: Array<TEntityType> = [
+  EntityUnknown,
+  PostalAddress,
+  Waveform,
+  Group,
+  Relation,
+  DemoRequestInfo,
+  File,
+  SessionToken,
+  Operation,
+  Organization,
+  VadResult,
+  TOTP,
+  Vehicle,
+  Device,
+  Contact,
+  Location,
+  UsernamePassword,
+  Human,
+  OTP,
+];
+
+/**
+ * @const EntityTypeValueNumbers {{ [TEntityType] : number }} - values order
+ */
+export const EntityTypeValueNumbers: { [TEntityType] : number } = {
+  EntityUnknown: 0,
+  PostalAddress: 1,
+  Waveform: 2,
+  Group: 3,
+  Relation: 4,
+  DemoRequestInfo: 5,
+  File: 6,
+  SessionToken: 7,
+  Operation: 9,
+  Organization: 11,
+  VadResult: 16,
+  TOTP: 18,
+  Vehicle: 20,
+  Device: 21,
+  Contact: 23,
+  Location: 27,
+  UsernamePassword: 28,
+  Human: 29,
+  OTP: 32,
+};
+
+/**
+ * @section EntityTypePlural
+ * .anymetrica.entity.EntityTypePlural
+ * 
+ * @enum EntityTypePlural
+ * 
+ * Entity plural type names
+ */
+
+/**
+ * @const EntitiesUnknown {{TEntityTypePlural}}
+ */
+export const EntitiesUnknown: TEntityTypePlural = 'EntitiesUnknown';
+
+/**
+ * @const PostalAddresses {{TEntityTypePlural}}
+ */
+export const PostalAddresses: TEntityTypePlural = 'PostalAddresses';
+
+/**
+ * @const Waveforms {{TEntityTypePlural}}
+ */
+export const Waveforms: TEntityTypePlural = 'Waveforms';
+
+/**
+ * @const Groups {{TEntityTypePlural}}
+ */
+export const Groups: TEntityTypePlural = 'Groups';
+
+/**
+ * @const Files {{TEntityTypePlural}}
+ */
+export const Files: TEntityTypePlural = 'Files';
+
+/**
+ * @const SessionTokens {{TEntityTypePlural}}
+ */
+export const SessionTokens: TEntityTypePlural = 'SessionTokens';
+
+/**
+ * @const Operations {{TEntityTypePlural}}
+ */
+export const Operations: TEntityTypePlural = 'Operations';
+
+/**
+ * @const Organizations {{TEntityTypePlural}}
+ */
+export const Organizations: TEntityTypePlural = 'Organizations';
+
+/**
+ * @const VadResults {{TEntityTypePlural}}
+ */
+export const VadResults: TEntityTypePlural = 'VadResults';
+
+/**
+ * @const TOTPs {{TEntityTypePlural}}
+ */
+export const TOTPs: TEntityTypePlural = 'TOTPs';
+
+/**
+ * @const Vehicles {{TEntityTypePlural}}
+ */
+export const Vehicles: TEntityTypePlural = 'Vehicles';
+
+/**
+ * @const Devices {{TEntityTypePlural}}
+ */
+export const Devices: TEntityTypePlural = 'Devices';
+
+/**
+ * @const Contacts {{TEntityTypePlural}}
+ */
+export const Contacts: TEntityTypePlural = 'Contacts';
+
+/**
+ * @const Locations {{TEntityTypePlural}}
+ */
+export const Locations: TEntityTypePlural = 'Locations';
+
+/**
+ * @const UsernamePasswords {{TEntityTypePlural}}
+ */
+export const UsernamePasswords: TEntityTypePlural = 'UsernamePasswords';
+
+/**
+ * @const Humans {{TEntityTypePlural}}
+ */
+export const Humans: TEntityTypePlural = 'Humans';
+
+/**
+ * @const OTPs {{TEntityTypePlural}}
+ */
+export const OTPs: TEntityTypePlural = 'OTPs';
+
+
+/**
+ * @const EntityTypePlural {{ [TEntityTypePlural]: TEntityTypePlural }}
+ * 
+ * @enum EntityTypePlural
+ * 
+ * Entity plural type names
+ */
+export const EntityTypePlural: { [TEntityTypePlural]: TEntityTypePlural } = {
+  [EntitiesUnknown]: EntitiesUnknown,
+  [PostalAddresses]: PostalAddresses,
+  [Waveforms]: Waveforms,
+  [Groups]: Groups,
+  [Files]: Files,
+  [SessionTokens]: SessionTokens,
+  [Operations]: Operations,
+  [Organizations]: Organizations,
+  [VadResults]: VadResults,
+  [TOTPs]: TOTPs,
+  [Vehicles]: Vehicles,
+  [Devices]: Devices,
+  [Contacts]: Contacts,
+  [Locations]: Locations,
+  [UsernamePasswords]: UsernamePasswords,
+  [Humans]: Humans,
+  [OTPs]: OTPs,
+};
+
+/**
+ * @const EntityTypePluralArr {{Array<TEntityTypePlural>}} - values array
+ */
+export const EntityTypePluralArr: Array<TEntityTypePlural> = [
+  EntitiesUnknown,
+  PostalAddresses,
+  Waveforms,
+  Groups,
+  Files,
+  SessionTokens,
+  Operations,
+  Organizations,
+  VadResults,
+  TOTPs,
+  Vehicles,
+  Devices,
+  Contacts,
+  Locations,
+  UsernamePasswords,
+  Humans,
+  OTPs,
+];
+
+/**
+ * @const EntityTypePluralValueNumbers {{ [TEntityTypePlural] : number }} - values order
+ */
+export const EntityTypePluralValueNumbers: { [TEntityTypePlural] : number } = {
+  EntitiesUnknown: 0,
+  PostalAddresses: 1,
+  Waveforms: 2,
+  Groups: 3,
+  Files: 6,
+  SessionTokens: 7,
+  Operations: 9,
+  Organizations: 11,
+  VadResults: 16,
+  TOTPs: 18,
+  Vehicles: 20,
+  Devices: 21,
+  Contacts: 23,
+  Locations: 27,
+  UsernamePasswords: 28,
+  Humans: 29,
+  OTPs: 32,
+};
+
+/**
+ * @section ContentType
+ * .anymetrica.file.ContentType
+ * 
+ * [IANA Registered Content Types] https://www.iana.org/assignments/media-types/media-types.xhtml
+ * Content Type is big directory containing Media Type
+ */
+
+/**
+ * @const CONTENT_TYPE_UNSPECIFIED {{TContentType}}
+ * 
+ * The Content Type has not been specified
+ */
+export const CONTENT_TYPE_UNSPECIFIED: TContentType = 'CONTENT_TYPE_UNSPECIFIED';
+
+/**
+ * @const application {{TContentType}}
+ */
+export const application: TContentType = 'application';
+
+/**
+ * @const audio {{TContentType}}
+ */
+export const audio: TContentType = 'audio';
+
+/**
+ * @const example {{TContentType}}
+ */
+export const example: TContentType = 'example';
+
+/**
+ * @const font {{TContentType}}
+ */
+export const font: TContentType = 'font';
+
+/**
+ * @const image {{TContentType}}
+ */
+export const image: TContentType = 'image';
+
+/**
+ * @const message {{TContentType}}
+ */
+export const message: TContentType = 'message';
+
+/**
+ * @const model {{TContentType}}
+ */
+export const model: TContentType = 'model';
+
+/**
+ * @const multipart {{TContentType}}
+ */
+export const multipart: TContentType = 'multipart';
+
+/**
+ * @const text {{TContentType}}
+ */
+export const text: TContentType = 'text';
+
+/**
+ * @const video {{TContentType}}
+ */
+export const video: TContentType = 'video';
+
+
+/**
+ * @const ContentType {{ [TContentType]: TContentType }}
+ * 
+ * [IANA Registered Content Types] https://www.iana.org/assignments/media-types/media-types.xhtml
+ * Content Type is big directory containing Media Type
+ */
+export const ContentType: { [TContentType]: TContentType } = {
+  /**
+   * The Content Type has not been specified
+   */
+  [CONTENT_TYPE_UNSPECIFIED]: CONTENT_TYPE_UNSPECIFIED,
+  [application]: application,
+  [audio]: audio,
+  [example]: example,
+  [font]: font,
+  [image]: image,
+  [message]: message,
+  [model]: model,
+  [multipart]: multipart,
+  [text]: text,
+  [video]: video,
+};
+
+/**
+ * @const ContentTypeArr {{Array<TContentType>}} - values array
+ */
+export const ContentTypeArr: Array<TContentType> = [
+  CONTENT_TYPE_UNSPECIFIED,
+  application,
+  audio,
+  example,
+  font,
+  image,
+  message,
+  model,
+  multipart,
+  text,
+  video,
+];
+
+/**
+ * @const ContentTypeValueNumbers {{ [TContentType] : number }} - values order
+ */
+export const ContentTypeValueNumbers: { [TContentType] : number } = {
+  /**
+   * The Content Type has not been specified
+   */
+  CONTENT_TYPE_UNSPECIFIED: 0,
+  application: 100,
+  audio: 200,
+  example: 300,
+  font: 400,
+  image: 500,
+  message: 600,
+  model: 700,
+  multipart: 800,
+  text: 900,
+  video: 1000,
+};
+
+/**
+ * @section HashType
+ * .anymetrica.file.HashType
+ * 
+ * If known, the hash function used to compute this digest.
+ */
+
+/**
+ * @const HASH_TYPE_UNSPECIFIED {{THashType}}
+ * 
+ * Unknown
+ */
+export const HASH_TYPE_UNSPECIFIED: THashType = 'HASH_TYPE_UNSPECIFIED';
+
+/**
+ * @const HASH_TYPE_PLAIN_TEXT {{THashType}}
+ * 
+ * Plain Text
+ */
+export const HASH_TYPE_PLAIN_TEXT: THashType = 'HASH_TYPE_PLAIN_TEXT';
+
+/**
+ * @const HASH_TYPE_MD5 {{THashType}}
+ * 
+ * MD5
+ */
+export const HASH_TYPE_MD5: THashType = 'HASH_TYPE_MD5';
+
+/**
+ * @const HASH_TYPE_SHA_0_160 {{THashType}}
+ * 
+ * SHA-0
+ */
+export const HASH_TYPE_SHA_0_160: THashType = 'HASH_TYPE_SHA_0_160';
+
+/**
+ * @const HASH_TYPE_SHA_1_160 {{THashType}}
+ * 
+ * SHA-1
+ */
+export const HASH_TYPE_SHA_1_160: THashType = 'HASH_TYPE_SHA_1_160';
+
+/**
+ * @const HASH_TYPE_SHA_2_224 {{THashType}}
+ * 
+ * SHA-2
+ */
+export const HASH_TYPE_SHA_2_224: THashType = 'HASH_TYPE_SHA_2_224';
+
+/**
+ * @const HASH_TYPE_SHA_2_256 {{THashType}}
+ */
+export const HASH_TYPE_SHA_2_256: THashType = 'HASH_TYPE_SHA_2_256';
+
+/**
+ * @const HASH_TYPE_SHA_2_384 {{THashType}}
+ */
+export const HASH_TYPE_SHA_2_384: THashType = 'HASH_TYPE_SHA_2_384';
+
+/**
+ * @const HASH_TYPE_SHA_2_512 {{THashType}}
+ */
+export const HASH_TYPE_SHA_2_512: THashType = 'HASH_TYPE_SHA_2_512';
+
+/**
+ * @const HASH_TYPE_SHA_2_512_256 {{THashType}}
+ */
+export const HASH_TYPE_SHA_2_512_256: THashType = 'HASH_TYPE_SHA_2_512_256';
+
+/**
+ * @const HASH_TYPE_SHA_2_512_224 {{THashType}}
+ */
+export const HASH_TYPE_SHA_2_512_224: THashType = 'HASH_TYPE_SHA_2_512_224';
+
+/**
+ * @const HASH_TYPE_SIP_HASH_32 {{THashType}}
+ * 
+ * SipHash
+ */
+export const HASH_TYPE_SIP_HASH_32: THashType = 'HASH_TYPE_SIP_HASH_32';
+
+/**
+ * @const HASH_TYPE_SIP_HASH_64 {{THashType}}
+ */
+export const HASH_TYPE_SIP_HASH_64: THashType = 'HASH_TYPE_SIP_HASH_64';
+
+/**
+ * @const HASH_TYPE_CITY_64 {{THashType}}
+ * 
+ * City
+ */
+export const HASH_TYPE_CITY_64: THashType = 'HASH_TYPE_CITY_64';
+
+/**
+ * @const HASH_TYPE_CITY_128 {{THashType}}
+ */
+export const HASH_TYPE_CITY_128: THashType = 'HASH_TYPE_CITY_128';
+
+/**
+ * @const HASH_TYPE_CITY128_CRC {{THashType}}
+ */
+export const HASH_TYPE_CITY128_CRC: THashType = 'HASH_TYPE_CITY128_CRC';
+
+/**
+ * @const HASH_TYPE_METRO_32 {{THashType}}
+ * 
+ * Metro
+ */
+export const HASH_TYPE_METRO_32: THashType = 'HASH_TYPE_METRO_32';
+
+/**
+ * @const HASH_TYPE_METRO_64 {{THashType}}
+ */
+export const HASH_TYPE_METRO_64: THashType = 'HASH_TYPE_METRO_64';
+
+/**
+ * @const HASH_TYPE_METRO_128 {{THashType}}
+ */
+export const HASH_TYPE_METRO_128: THashType = 'HASH_TYPE_METRO_128';
+
+/**
+ * @const HASH_TYPE_METRO_128_CRC {{THashType}}
+ */
+export const HASH_TYPE_METRO_128_CRC: THashType = 'HASH_TYPE_METRO_128_CRC';
+
+
+/**
+ * @const HashType {{ [THashType]: THashType }}
+ * 
+ * If known, the hash function used to compute this digest.
+ */
+export const HashType: { [THashType]: THashType } = {
+  /**
+   * Unknown
+   */
+  [HASH_TYPE_UNSPECIFIED]: HASH_TYPE_UNSPECIFIED,
+  /**
+   * Plain Text
+   */
+  [HASH_TYPE_PLAIN_TEXT]: HASH_TYPE_PLAIN_TEXT,
+  /**
+   * MD5
+   */
+  [HASH_TYPE_MD5]: HASH_TYPE_MD5,
+  /**
+   * SHA-0
+   */
+  [HASH_TYPE_SHA_0_160]: HASH_TYPE_SHA_0_160,
+  /**
+   * SHA-1
+   */
+  [HASH_TYPE_SHA_1_160]: HASH_TYPE_SHA_1_160,
+  /**
+   * SHA-2
+   */
+  [HASH_TYPE_SHA_2_224]: HASH_TYPE_SHA_2_224,
+  [HASH_TYPE_SHA_2_256]: HASH_TYPE_SHA_2_256,
+  [HASH_TYPE_SHA_2_384]: HASH_TYPE_SHA_2_384,
+  [HASH_TYPE_SHA_2_512]: HASH_TYPE_SHA_2_512,
+  [HASH_TYPE_SHA_2_512_256]: HASH_TYPE_SHA_2_512_256,
+  [HASH_TYPE_SHA_2_512_224]: HASH_TYPE_SHA_2_512_224,
+  /**
+   * SipHash
+   */
+  [HASH_TYPE_SIP_HASH_32]: HASH_TYPE_SIP_HASH_32,
+  [HASH_TYPE_SIP_HASH_64]: HASH_TYPE_SIP_HASH_64,
+  /**
+   * City
+   */
+  [HASH_TYPE_CITY_64]: HASH_TYPE_CITY_64,
+  [HASH_TYPE_CITY_128]: HASH_TYPE_CITY_128,
+  [HASH_TYPE_CITY128_CRC]: HASH_TYPE_CITY128_CRC,
+  /**
+   * Metro
+   */
+  [HASH_TYPE_METRO_32]: HASH_TYPE_METRO_32,
+  [HASH_TYPE_METRO_64]: HASH_TYPE_METRO_64,
+  [HASH_TYPE_METRO_128]: HASH_TYPE_METRO_128,
+  [HASH_TYPE_METRO_128_CRC]: HASH_TYPE_METRO_128_CRC,
+};
+
+/**
+ * @const HashTypeArr {{Array<THashType>}} - values array
+ */
+export const HashTypeArr: Array<THashType> = [
+  HASH_TYPE_UNSPECIFIED,
+  HASH_TYPE_PLAIN_TEXT,
+  HASH_TYPE_MD5,
+  HASH_TYPE_SHA_0_160,
+  HASH_TYPE_SHA_1_160,
+  HASH_TYPE_SHA_2_224,
+  HASH_TYPE_SHA_2_256,
+  HASH_TYPE_SHA_2_384,
+  HASH_TYPE_SHA_2_512,
+  HASH_TYPE_SHA_2_512_256,
+  HASH_TYPE_SHA_2_512_224,
+  HASH_TYPE_SIP_HASH_32,
+  HASH_TYPE_SIP_HASH_64,
+  HASH_TYPE_CITY_64,
+  HASH_TYPE_CITY_128,
+  HASH_TYPE_CITY128_CRC,
+  HASH_TYPE_METRO_32,
+  HASH_TYPE_METRO_64,
+  HASH_TYPE_METRO_128,
+  HASH_TYPE_METRO_128_CRC,
+];
+
+/**
+ * @const HashTypeValueNumbers {{ [THashType] : number }} - values order
+ */
+export const HashTypeValueNumbers: { [THashType] : number } = {
+  /**
+   * Unknown
+   */
+  HASH_TYPE_UNSPECIFIED: 0,
+  /**
+   * Plain Text
+   */
+  HASH_TYPE_PLAIN_TEXT: 8,
+  /**
+   * MD5
+   */
+  HASH_TYPE_MD5: 12,
+  /**
+   * SHA-0
+   */
+  HASH_TYPE_SHA_0_160: 16,
+  /**
+   * SHA-1
+   */
+  HASH_TYPE_SHA_1_160: 32,
+  /**
+   * SHA-2
+   */
+  HASH_TYPE_SHA_2_224: 48,
+  HASH_TYPE_SHA_2_256: 49,
+  HASH_TYPE_SHA_2_384: 50,
+  HASH_TYPE_SHA_2_512: 51,
+  HASH_TYPE_SHA_2_512_256: 52,
+  HASH_TYPE_SHA_2_512_224: 53,
+  /**
+   * SipHash
+   */
+  HASH_TYPE_SIP_HASH_32: 64,
+  HASH_TYPE_SIP_HASH_64: 65,
+  /**
+   * City
+   */
+  HASH_TYPE_CITY_64: 80,
+  HASH_TYPE_CITY_128: 81,
+  HASH_TYPE_CITY128_CRC: 82,
+  /**
+   * Metro
+   */
+  HASH_TYPE_METRO_32: 96,
+  HASH_TYPE_METRO_64: 97,
+  HASH_TYPE_METRO_128: 98,
+  HASH_TYPE_METRO_128_CRC: 99,
+};
+
+/**
+ * @section RelationType
+ * .anymetrica.relation.RelationType
+ * 
+ * Access Level types
+ */
+
+/**
+ * @const RESTRICTED {{TRelationType}}
+ * 
+ * No access granted. This type of edges could be purged automatically, but could be preserved for history management purposes.
+ */
+export const RESTRICTED: TRelationType = 'RESTRICTED';
+
+/**
+ * @const CAN_RESET {{TRelationType}}
+ * 
+ * Gives control over read and reset trigger
+ */
+export const CAN_RESET: TRelationType = 'CAN_RESET';
+
+/**
+ * @const CAN_READ {{TRelationType}}
+ * 
+ * Defines ability to read information both metadata and payload about entity and same access to everything it represents.
+ */
+export const CAN_READ: TRelationType = 'CAN_READ';
+
+/**
+ * @const CAN_WRITE {{TRelationType}}
+ * 
+ * Defines permission to update content of entity payload not affecting any of its accessRules (including access accessRules? TBD)
+ */
+export const CAN_WRITE: TRelationType = 'CAN_WRITE';
+
+/**
+ * @const CAN_READ_RELATIONS {{TRelationType}}
+ * 
+ * Gives ability to discover entity.
+ */
+export const CAN_READ_RELATIONS: TRelationType = 'CAN_READ_RELATIONS';
+
+/**
+ * @const CAN_WRITE_RELATIONS {{TRelationType}}
+ * 
+ * Gives ability to re-link entity relations (including access rights).
+ */
+export const CAN_WRITE_RELATIONS: TRelationType = 'CAN_WRITE_RELATIONS';
+
+/**
+ * @const OWNS {{TRelationType}}
+ * 
+ * Entity owner that means all entities related that way should have same lifecycle as user profile.
+ * Ownership supposing wide access but with exception if operation may violate core business logic
+ * or will create some conflict/integrity situation which not possible to resolve for owner user.
+ * E.g. user is owner for his single E-Mail record, but system will reject its deletion request
+ * until any alternative email record that resolving conflict will be provided.
+ */
+export const OWNS: TRelationType = 'OWNS';
+
+/**
+ * @const ADMINISTRATING {{TRelationType}}
+ * 
+ * On permissions level it works like Owner but semantically this does not means that target entity is something
+ * user manages as his own __private thing__ like his named `Human` profile or `Credential` records
+ * so its better for temporary owners or managing public entities.
+ * Also there are supposed to be single owner for entity, but many administrators are possible.
+ * This difference should be considered at UI client applications level and may affect entities traverse order
+ * but `Administrator` = `Owner` at permissions level.
+ */
+export const ADMINISTRATING: TRelationType = 'ADMINISTRATING';
+
+/**
+ * @const CREATED {{TRelationType}}
+ * 
+ * Entity creator, its completely metadata level relation that should not have direct effect on permission level
+ * but may affect API discovery priorities and discovery output filtering (mostly for UI needs)
+ */
+export const CREATED: TRelationType = 'CREATED';
+
+/**
+ * @const HAVE_PART {{TRelationType}}
+ * 
+ * Entity acting as separate part of other entity that means access level similar to compound parent
+ */
+export const HAVE_PART: TRelationType = 'HAVE_PART';
+
+/**
+ * @const HAVE_MEMBER {{TRelationType}}
+ * 
+ * Organisations and groups could have members
+ */
+export const HAVE_MEMBER: TRelationType = 'HAVE_MEMBER';
+
+/**
+ * @const INPUT {{TRelationType}}
+ * 
+ * Operation input and other kinds of inputs
+ */
+export const INPUT: TRelationType = 'INPUT';
+
+/**
+ * @const OUTPUT {{TRelationType}}
+ * 
+ * Operation output and other kinds of outputs
+ */
+export const OUTPUT: TRelationType = 'OUTPUT';
+
+/**
+ * @const CONTACT_WORK {{TRelationType}}
+ * 
+ * Work contact
+ */
+export const CONTACT_WORK: TRelationType = 'CONTACT_WORK';
+
+/**
+ * @const CONTACT_WORK_GROUP {{TRelationType}}
+ * 
+ * Work group contact
+ */
+export const CONTACT_WORK_GROUP: TRelationType = 'CONTACT_WORK_GROUP';
+
+/**
+ * @const CONTACT_PERSONAL {{TRelationType}}
+ * 
+ * Personal use contact
+ */
+export const CONTACT_PERSONAL: TRelationType = 'CONTACT_PERSONAL';
+
+/**
+ * @const CONTACT_FAMILY {{TRelationType}}
+ * 
+ * Family contact
+ */
+export const CONTACT_FAMILY: TRelationType = 'CONTACT_FAMILY';
+
+/**
+ * @const CONTACT_ORGANISATION {{TRelationType}}
+ * 
+ * Contact of organisation related to many agents/agents group
+ */
+export const CONTACT_ORGANISATION: TRelationType = 'CONTACT_ORGANISATION';
+
+/**
+ * @const CONTACT_NOTICED_USAGE {{TRelationType}}
+ * 
+ * Family contact
+ */
+export const CONTACT_NOTICED_USAGE: TRelationType = 'CONTACT_NOTICED_USAGE';
+
+/**
+ * @const CONTACT_DO_NOT_CALL {{TRelationType}}
+ * 
+ * Don't use this contact against defined agent for live actions
+ */
+export const CONTACT_DO_NOT_CALL: TRelationType = 'CONTACT_DO_NOT_CALL';
+
+
+/**
+ * @const RelationType {{ [TRelationType]: TRelationType }}
+ * 
+ * Access Level types
+ */
+export const RelationType: { [TRelationType]: TRelationType } = {
+  /**
+   * No access granted. This type of edges could be purged automatically, but could be preserved for history management purposes.
+   */
+  [RESTRICTED]: RESTRICTED,
+  /**
+   * Gives control over read and reset trigger
+   */
+  [CAN_RESET]: CAN_RESET,
+  /**
+   * Defines ability to read information both metadata and payload about entity and same access to everything it represents.
+   */
+  [CAN_READ]: CAN_READ,
+  /**
+   * Defines permission to update content of entity payload not affecting any of its accessRules (including access accessRules? TBD)
+   */
+  [CAN_WRITE]: CAN_WRITE,
+  /**
+   * Gives ability to discover entity.
+   */
+  [CAN_READ_RELATIONS]: CAN_READ_RELATIONS,
+  /**
+   * Gives ability to re-link entity relations (including access rights).
+   */
+  [CAN_WRITE_RELATIONS]: CAN_WRITE_RELATIONS,
+  /**
+   * Entity owner that means all entities related that way should have same lifecycle as user profile.
+   * Ownership supposing wide access but with exception if operation may violate core business logic
+   * or will create some conflict/integrity situation which not possible to resolve for owner user.
+   * E.g. user is owner for his single E-Mail record, but system will reject its deletion request
+   * until any alternative email record that resolving conflict will be provided.
+   */
+  [OWNS]: OWNS,
+  /**
+   * On permissions level it works like Owner but semantically this does not means that target entity is something
+   * user manages as his own __private thing__ like his named `Human` profile or `Credential` records
+   * so its better for temporary owners or managing public entities.
+   * Also there are supposed to be single owner for entity, but many administrators are possible.
+   * This difference should be considered at UI client applications level and may affect entities traverse order
+   * but `Administrator` = `Owner` at permissions level.
+   */
+  [ADMINISTRATING]: ADMINISTRATING,
+  /**
+   * Entity creator, its completely metadata level relation that should not have direct effect on permission level
+   * but may affect API discovery priorities and discovery output filtering (mostly for UI needs)
+   */
+  [CREATED]: CREATED,
+  /**
+   * Entity acting as separate part of other entity that means access level similar to compound parent
+   */
+  [HAVE_PART]: HAVE_PART,
+  /**
+   * Organisations and groups could have members
+   */
+  [HAVE_MEMBER]: HAVE_MEMBER,
+  /**
+   * Operation input and other kinds of inputs
+   */
+  [INPUT]: INPUT,
+  /**
+   * Operation output and other kinds of outputs
+   */
+  [OUTPUT]: OUTPUT,
+  /**
+   * Work contact
+   */
+  [CONTACT_WORK]: CONTACT_WORK,
+  /**
+   * Work group contact
+   */
+  [CONTACT_WORK_GROUP]: CONTACT_WORK_GROUP,
+  /**
+   * Personal use contact
+   */
+  [CONTACT_PERSONAL]: CONTACT_PERSONAL,
+  /**
+   * Family contact
+   */
+  [CONTACT_FAMILY]: CONTACT_FAMILY,
+  /**
+   * Contact of organisation related to many agents/agents group
+   */
+  [CONTACT_ORGANISATION]: CONTACT_ORGANISATION,
+  /**
+   * Family contact
+   */
+  [CONTACT_NOTICED_USAGE]: CONTACT_NOTICED_USAGE,
+  /**
+   * Don't use this contact against defined agent for live actions
+   */
+  [CONTACT_DO_NOT_CALL]: CONTACT_DO_NOT_CALL,
+};
+
+/**
+ * @const RelationTypeArr {{Array<TRelationType>}} - values array
+ */
+export const RelationTypeArr: Array<TRelationType> = [
+  RESTRICTED,
+  CAN_RESET,
+  CAN_READ,
+  CAN_WRITE,
+  CAN_READ_RELATIONS,
+  CAN_WRITE_RELATIONS,
+  OWNS,
+  ADMINISTRATING,
+  CREATED,
+  HAVE_PART,
+  HAVE_MEMBER,
+  INPUT,
+  OUTPUT,
+  CONTACT_WORK,
+  CONTACT_WORK_GROUP,
+  CONTACT_PERSONAL,
+  CONTACT_FAMILY,
+  CONTACT_ORGANISATION,
+  CONTACT_NOTICED_USAGE,
+  CONTACT_DO_NOT_CALL,
+];
+
+/**
+ * @const RelationTypeValueNumbers {{ [TRelationType] : number }} - values order
+ */
+export const RelationTypeValueNumbers: { [TRelationType] : number } = {
+  /**
+   * No access granted. This type of edges could be purged automatically, but could be preserved for history management purposes.
+   */
+  RESTRICTED: 0,
+  /**
+   * Gives control over read and reset trigger
+   */
+  CAN_RESET: 1,
+  /**
+   * Defines ability to read information both metadata and payload about entity and same access to everything it represents.
+   */
+  CAN_READ: 3,
+  /**
+   * Defines permission to update content of entity payload not affecting any of its accessRules (including access accessRules? TBD)
+   */
+  CAN_WRITE: 7,
+  /**
+   * Gives ability to discover entity.
+   */
+  CAN_READ_RELATIONS: 15,
+  /**
+   * Gives ability to re-link entity relations (including access rights).
+   */
+  CAN_WRITE_RELATIONS: 31,
+  /**
+   * Entity owner that means all entities related that way should have same lifecycle as user profile.
+   * Ownership supposing wide access but with exception if operation may violate core business logic
+   * or will create some conflict/integrity situation which not possible to resolve for owner user.
+   * E.g. user is owner for his single E-Mail record, but system will reject its deletion request
+   * until any alternative email record that resolving conflict will be provided.
+   */
+  OWNS: 64,
+  /**
+   * On permissions level it works like Owner but semantically this does not means that target entity is something
+   * user manages as his own __private thing__ like his named `Human` profile or `Credential` records
+   * so its better for temporary owners or managing public entities.
+   * Also there are supposed to be single owner for entity, but many administrators are possible.
+   * This difference should be considered at UI client applications level and may affect entities traverse order
+   * but `Administrator` = `Owner` at permissions level.
+   */
+  ADMINISTRATING: 66,
+  /**
+   * Entity creator, its completely metadata level relation that should not have direct effect on permission level
+   * but may affect API discovery priorities and discovery output filtering (mostly for UI needs)
+   */
+  CREATED: 68,
+  /**
+   * Entity acting as separate part of other entity that means access level similar to compound parent
+   */
+  HAVE_PART: 72,
+  /**
+   * Organisations and groups could have members
+   */
+  HAVE_MEMBER: 78,
+  /**
+   * Operation input and other kinds of inputs
+   */
+  INPUT: 80,
+  /**
+   * Operation output and other kinds of outputs
+   */
+  OUTPUT: 82,
+  /**
+   * Work contact
+   */
+  CONTACT_WORK: 104,
+  /**
+   * Work group contact
+   */
+  CONTACT_WORK_GROUP: 106,
+  /**
+   * Personal use contact
+   */
+  CONTACT_PERSONAL: 110,
+  /**
+   * Family contact
+   */
+  CONTACT_FAMILY: 112,
+  /**
+   * Contact of organisation related to many agents/agents group
+   */
+  CONTACT_ORGANISATION: 116,
+  /**
+   * Family contact
+   */
+  CONTACT_NOTICED_USAGE: 120,
+  /**
+   * Don't use this contact against defined agent for live actions
+   */
+  CONTACT_DO_NOT_CALL: 128,
+};
+
+/**
+ * @section Direction
+ * .anymetrica.request.Direction
+ * 
+ * The sort direction.
+ */
+
+/**
+ * @const DIRECTION_UNSPECIFIED {{TDirection}}
+ * 
+ * Unspecified. This value must not be used.
+ */
+export const DIRECTION_UNSPECIFIED: TDirection = 'DIRECTION_UNSPECIFIED';
+
+/**
+ * @const ASCENDING {{TDirection}}
+ * 
+ * Ascending.
+ */
+export const ASCENDING: TDirection = 'ASCENDING';
+
+/**
+ * @const DESCENDING {{TDirection}}
+ * 
+ * Descending.
+ */
+export const DESCENDING: TDirection = 'DESCENDING';
+
+
+/**
+ * @const Direction {{ [TDirection]: TDirection }}
+ * 
+ * The sort direction.
+ */
+export const Direction: { [TDirection]: TDirection } = {
+  /**
+   * Unspecified. This value must not be used.
+   */
+  [DIRECTION_UNSPECIFIED]: DIRECTION_UNSPECIFIED,
+  /**
+   * Ascending.
+   */
+  [ASCENDING]: ASCENDING,
+  /**
+   * Descending.
+   */
+  [DESCENDING]: DESCENDING,
+};
+
+/**
+ * @const DirectionArr {{Array<TDirection>}} - values array
+ */
+export const DirectionArr: Array<TDirection> = [
+  DIRECTION_UNSPECIFIED,
+  ASCENDING,
+  DESCENDING,
+];
+
+/**
+ * @const DirectionValueNumbers {{ [TDirection] : number }} - values order
+ */
+export const DirectionValueNumbers: { [TDirection] : number } = {
+  /**
+   * Unspecified. This value must not be used.
+   */
+  DIRECTION_UNSPECIFIED: 0,
+  /**
+   * Ascending.
+   */
+  ASCENDING: 1,
+  /**
+   * Descending.
+   */
+  DESCENDING: 2,
+};
+
+/**
+ * @section MoreResultsType
+ * .anymetrica.request.MoreResultsType
+ * 
+ * The possible values for the `more_results` field.
+ */
+
+/**
+ * @const MORE_RESULTS_TYPE_UNSPECIFIED {{TMoreResultsType}}
+ * 
+ * Unspecified. This value is never used.
+ */
+export const MORE_RESULTS_TYPE_UNSPECIFIED: TMoreResultsType = 'MORE_RESULTS_TYPE_UNSPECIFIED';
+
+/**
+ * @const NOT_FINISHED {{TMoreResultsType}}
+ * 
+ * There may be additional batches to fetch from this query.
+ */
+export const NOT_FINISHED: TMoreResultsType = 'NOT_FINISHED';
+
+/**
+ * @const MORE_RESULTS_AFTER_LIMIT {{TMoreResultsType}}
+ * 
+ * The query is finished, but there may be more results after the limit.
+ */
+export const MORE_RESULTS_AFTER_LIMIT: TMoreResultsType = 'MORE_RESULTS_AFTER_LIMIT';
+
+/**
+ * @const NO_MORE_RESULTS {{TMoreResultsType}}
+ * 
+ * The query is finished, and there are no more results.
+ */
+export const NO_MORE_RESULTS: TMoreResultsType = 'NO_MORE_RESULTS';
+
+/**
+ * @const MORE_RESULTS_AFTER_CURSOR {{TMoreResultsType}}
+ * 
+ * The query is finished, but there may be more results after the end
+ * cursor.
+ */
+export const MORE_RESULTS_AFTER_CURSOR: TMoreResultsType = 'MORE_RESULTS_AFTER_CURSOR';
+
+
+/**
+ * @const MoreResultsType {{ [TMoreResultsType]: TMoreResultsType }}
+ * 
+ * The possible values for the `more_results` field.
+ */
+export const MoreResultsType: { [TMoreResultsType]: TMoreResultsType } = {
+  /**
+   * Unspecified. This value is never used.
+   */
+  [MORE_RESULTS_TYPE_UNSPECIFIED]: MORE_RESULTS_TYPE_UNSPECIFIED,
+  /**
+   * There may be additional batches to fetch from this query.
+   */
+  [NOT_FINISHED]: NOT_FINISHED,
+  /**
+   * The query is finished, but there may be more results after the limit.
+   */
+  [MORE_RESULTS_AFTER_LIMIT]: MORE_RESULTS_AFTER_LIMIT,
+  /**
+   * The query is finished, and there are no more results.
+   */
+  [NO_MORE_RESULTS]: NO_MORE_RESULTS,
+  /**
+   * The query is finished, but there may be more results after the end
+   * cursor.
+   */
+  [MORE_RESULTS_AFTER_CURSOR]: MORE_RESULTS_AFTER_CURSOR,
+};
+
+/**
+ * @const MoreResultsTypeArr {{Array<TMoreResultsType>}} - values array
+ */
+export const MoreResultsTypeArr: Array<TMoreResultsType> = [
+  MORE_RESULTS_TYPE_UNSPECIFIED,
+  NOT_FINISHED,
+  MORE_RESULTS_AFTER_LIMIT,
+  NO_MORE_RESULTS,
+  MORE_RESULTS_AFTER_CURSOR,
+];
+
+/**
+ * @const MoreResultsTypeValueNumbers {{ [TMoreResultsType] : number }} - values order
+ */
+export const MoreResultsTypeValueNumbers: { [TMoreResultsType] : number } = {
+  /**
+   * Unspecified. This value is never used.
+   */
+  MORE_RESULTS_TYPE_UNSPECIFIED: 0,
+  /**
+   * There may be additional batches to fetch from this query.
+   */
+  NOT_FINISHED: 1,
+  /**
+   * The query is finished, but there may be more results after the limit.
+   */
+  MORE_RESULTS_AFTER_LIMIT: 2,
+  /**
+   * The query is finished, and there are no more results.
+   */
+  NO_MORE_RESULTS: 3,
+  /**
+   * The query is finished, but there may be more results after the end
+   * cursor.
+   */
+  MORE_RESULTS_AFTER_CURSOR: 4,
+};
+
+/**
+ * @section AudioEncoding
+ * .anymetrica.vad.RecognitionConfig.AudioEncoding
+ * 
+ * Audio encoding of the data sent in the audio message. All encodings support
+ * only 1 channel (mono) audio. Only `FLAC` and `WAV` include a header that
+ * describes the bytes of audio that follow the header. The other encodings
+ * are raw audio bytes with no header.
+ * 
+ * For best results, the audio source should be captured and transmitted using
+ * a lossless encoding (`FLAC` or `LINEAR16`). Recognition accuracy may be
+ * reduced if lossy codecs, which include the other codecs listed in
+ * this section, are used to capture or transmit the audio, particularly if
+ * background noise is present.
+ */
+
+/**
+ * @const ENCODING_UNSPECIFIED {{TAudioEncoding}}
+ * 
+ * Not specified. Will return result [google.rpc.Code.INVALID_ARGUMENT][google.rpc.Code.INVALID_ARGUMENT].
+ */
+export const ENCODING_UNSPECIFIED: TAudioEncoding = 'ENCODING_UNSPECIFIED';
+
+/**
+ * @const LINEAR16 {{TAudioEncoding}}
+ * 
+ * Uncompressed 16-bit signed little-endian samples (Linear PCM).
+ */
+export const LINEAR16: TAudioEncoding = 'LINEAR16';
+
+/**
+ * @const FLAC {{TAudioEncoding}}
+ * 
+ * [`FLAC`](https://xiph.org/flac/documentation.html) (Free Lossless Audio
+ * Codec) is the recommended encoding because it is
+ * lossless--therefore recognition is not compromised--and
+ * requires only about half the bandwidth of `LINEAR16`. `FLAC` stream
+ * encoding supports 16-bit and 24-bit samples, however, not all fields in
+ * `STREAMINFO` are supported.
+ */
+export const FLAC: TAudioEncoding = 'FLAC';
+
+/**
+ * @const MULAW {{TAudioEncoding}}
+ * 
+ * 8-bit samples that compand 14-bit audio samples using G.711 PCMU/mu-law.
+ */
+export const MULAW: TAudioEncoding = 'MULAW';
+
+/**
+ * @const AMR {{TAudioEncoding}}
+ * 
+ * Adaptive Multi-Rate Narrowband codec. `sample_rate_hertz` must be 8000.
+ */
+export const AMR: TAudioEncoding = 'AMR';
+
+/**
+ * @const AMR_WB {{TAudioEncoding}}
+ * 
+ * Adaptive Multi-Rate Wideband codec. `sample_rate_hertz` must be 16000.
+ */
+export const AMR_WB: TAudioEncoding = 'AMR_WB';
+
+/**
+ * @const OGG_OPUS {{TAudioEncoding}}
+ * 
+ * Opus encoded audio frames in Ogg container
+ * ([OggOpus](https://wiki.xiph.org/OggOpus)).
+ * `sample_rate_hertz` must be 16000.
+ */
+export const OGG_OPUS: TAudioEncoding = 'OGG_OPUS';
+
+/**
+ * @const SPEEX_WITH_HEADER_BYTE {{TAudioEncoding}}
+ * 
+ * Although the use of lossy encodings is not recommended, if a very low
+ * bitrate encoding is required, `OGG_OPUS` is highly preferred over
+ * Speex encoding. The [Speex](https://speex.org/)  encoding supported by
+ * Cloud Speech API has a header byte in each block, as in MIME type
+ * `audio/x-speex-with-header-byte`.
+ * It is a variant of the RTP Speex encoding defined in
+ * [RFC 5574](https://tools.ietf.org/html/rfc5574).
+ * The stream is a sequence of blocks, one block per RTP packet. Each block
+ * starts with a byte containing the length of the block, in bytes, followed
+ * by one or more frames of Speex data, padded to an integral number of
+ * bytes (octets) as specified in RFC 5574. In other words, each RTP header
+ * is replaced with a single byte containing the block length. Only Speex
+ * wideband is supported. `sample_rate_hertz` must be 16000.
+ */
+export const SPEEX_WITH_HEADER_BYTE: TAudioEncoding = 'SPEEX_WITH_HEADER_BYTE';
+
+
+/**
+ * @const AudioEncoding {{ [TAudioEncoding]: TAudioEncoding }}
+ * 
+ * Audio encoding of the data sent in the audio message. All encodings support
+ * only 1 channel (mono) audio. Only `FLAC` and `WAV` include a header that
+ * describes the bytes of audio that follow the header. The other encodings
+ * are raw audio bytes with no header.
+ * 
+ * For best results, the audio source should be captured and transmitted using
+ * a lossless encoding (`FLAC` or `LINEAR16`). Recognition accuracy may be
+ * reduced if lossy codecs, which include the other codecs listed in
+ * this section, are used to capture or transmit the audio, particularly if
+ * background noise is present.
+ */
+export const AudioEncoding: { [TAudioEncoding]: TAudioEncoding } = {
+  /**
+   * Not specified. Will return result [google.rpc.Code.INVALID_ARGUMENT][google.rpc.Code.INVALID_ARGUMENT].
+   */
+  [ENCODING_UNSPECIFIED]: ENCODING_UNSPECIFIED,
+  /**
+   * Uncompressed 16-bit signed little-endian samples (Linear PCM).
+   */
+  [LINEAR16]: LINEAR16,
+  /**
+   * [`FLAC`](https://xiph.org/flac/documentation.html) (Free Lossless Audio
+   * Codec) is the recommended encoding because it is
+   * lossless--therefore recognition is not compromised--and
+   * requires only about half the bandwidth of `LINEAR16`. `FLAC` stream
+   * encoding supports 16-bit and 24-bit samples, however, not all fields in
+   * `STREAMINFO` are supported.
+   */
+  [FLAC]: FLAC,
+  /**
+   * 8-bit samples that compand 14-bit audio samples using G.711 PCMU/mu-law.
+   */
+  [MULAW]: MULAW,
+  /**
+   * Adaptive Multi-Rate Narrowband codec. `sample_rate_hertz` must be 8000.
+   */
+  [AMR]: AMR,
+  /**
+   * Adaptive Multi-Rate Wideband codec. `sample_rate_hertz` must be 16000.
+   */
+  [AMR_WB]: AMR_WB,
+  /**
+   * Opus encoded audio frames in Ogg container
+   * ([OggOpus](https://wiki.xiph.org/OggOpus)).
+   * `sample_rate_hertz` must be 16000.
+   */
+  [OGG_OPUS]: OGG_OPUS,
+  /**
+   * Although the use of lossy encodings is not recommended, if a very low
+   * bitrate encoding is required, `OGG_OPUS` is highly preferred over
+   * Speex encoding. The [Speex](https://speex.org/)  encoding supported by
+   * Cloud Speech API has a header byte in each block, as in MIME type
+   * `audio/x-speex-with-header-byte`.
+   * It is a variant of the RTP Speex encoding defined in
+   * [RFC 5574](https://tools.ietf.org/html/rfc5574).
+   * The stream is a sequence of blocks, one block per RTP packet. Each block
+   * starts with a byte containing the length of the block, in bytes, followed
+   * by one or more frames of Speex data, padded to an integral number of
+   * bytes (octets) as specified in RFC 5574. In other words, each RTP header
+   * is replaced with a single byte containing the block length. Only Speex
+   * wideband is supported. `sample_rate_hertz` must be 16000.
+   */
+  [SPEEX_WITH_HEADER_BYTE]: SPEEX_WITH_HEADER_BYTE,
+};
+
+/**
+ * @const AudioEncodingArr {{Array<TAudioEncoding>}} - values array
+ */
+export const AudioEncodingArr: Array<TAudioEncoding> = [
+  ENCODING_UNSPECIFIED,
+  LINEAR16,
+  FLAC,
+  MULAW,
+  AMR,
+  AMR_WB,
+  OGG_OPUS,
+  SPEEX_WITH_HEADER_BYTE,
+];
+
+/**
+ * @const AudioEncodingValueNumbers {{ [TAudioEncoding] : number }} - values order
+ */
+export const AudioEncodingValueNumbers: { [TAudioEncoding] : number } = {
+  /**
+   * Not specified. Will return result [google.rpc.Code.INVALID_ARGUMENT][google.rpc.Code.INVALID_ARGUMENT].
+   */
+  ENCODING_UNSPECIFIED: 0,
+  /**
+   * Uncompressed 16-bit signed little-endian samples (Linear PCM).
+   */
+  LINEAR16: 1,
+  /**
+   * [`FLAC`](https://xiph.org/flac/documentation.html) (Free Lossless Audio
+   * Codec) is the recommended encoding because it is
+   * lossless--therefore recognition is not compromised--and
+   * requires only about half the bandwidth of `LINEAR16`. `FLAC` stream
+   * encoding supports 16-bit and 24-bit samples, however, not all fields in
+   * `STREAMINFO` are supported.
+   */
+  FLAC: 2,
+  /**
+   * 8-bit samples that compand 14-bit audio samples using G.711 PCMU/mu-law.
+   */
+  MULAW: 3,
+  /**
+   * Adaptive Multi-Rate Narrowband codec. `sample_rate_hertz` must be 8000.
+   */
+  AMR: 4,
+  /**
+   * Adaptive Multi-Rate Wideband codec. `sample_rate_hertz` must be 16000.
+   */
+  AMR_WB: 5,
+  /**
+   * Opus encoded audio frames in Ogg container
+   * ([OggOpus](https://wiki.xiph.org/OggOpus)).
+   * `sample_rate_hertz` must be 16000.
+   */
+  OGG_OPUS: 6,
+  /**
+   * Although the use of lossy encodings is not recommended, if a very low
+   * bitrate encoding is required, `OGG_OPUS` is highly preferred over
+   * Speex encoding. The [Speex](https://speex.org/)  encoding supported by
+   * Cloud Speech API has a header byte in each block, as in MIME type
+   * `audio/x-speex-with-header-byte`.
+   * It is a variant of the RTP Speex encoding defined in
+   * [RFC 5574](https://tools.ietf.org/html/rfc5574).
+   * The stream is a sequence of blocks, one block per RTP packet. Each block
+   * starts with a byte containing the length of the block, in bytes, followed
+   * by one or more frames of Speex data, padded to an integral number of
+   * bytes (octets) as specified in RFC 5574. In other words, each RTP header
+   * is replaced with a single byte containing the block length. Only Speex
+   * wideband is supported. `sample_rate_hertz` must be 16000.
+   */
+  SPEEX_WITH_HEADER_BYTE: 7,
+};
+
+/**
+ * @section VadEventType
+ * .anymetrica.vad.VadEventType
+ * 
+ * Vad events
+ * https://www.npmjs.com/package/node-vad
+ */
+
+/**
+ * @const VAD_EVENT_UNSPECIFIED {{TVadEventType}}
+ */
+export const VAD_EVENT_UNSPECIFIED: TVadEventType = 'VAD_EVENT_UNSPECIFIED';
+
+/**
+ * @const VAD_EVENT_SILENCE {{TVadEventType}}
+ */
+export const VAD_EVENT_SILENCE: TVadEventType = 'VAD_EVENT_SILENCE';
+
+/**
+ * @const VAD_EVENT_NOISE {{TVadEventType}}
+ */
+export const VAD_EVENT_NOISE: TVadEventType = 'VAD_EVENT_NOISE';
+
+/**
+ * @const VAD_EVENT_VOICE {{TVadEventType}}
+ */
+export const VAD_EVENT_VOICE: TVadEventType = 'VAD_EVENT_VOICE';
+
+/**
+ * @const VAD_EVENT_VOICE_MULTI {{TVadEventType}}
+ */
+export const VAD_EVENT_VOICE_MULTI: TVadEventType = 'VAD_EVENT_VOICE_MULTI';
+
+
+/**
+ * @const VadEventType {{ [TVadEventType]: TVadEventType }}
+ * 
+ * Vad events
+ * https://www.npmjs.com/package/node-vad
+ */
+export const VadEventType: { [TVadEventType]: TVadEventType } = {
+  [VAD_EVENT_UNSPECIFIED]: VAD_EVENT_UNSPECIFIED,
+  [VAD_EVENT_SILENCE]: VAD_EVENT_SILENCE,
+  [VAD_EVENT_NOISE]: VAD_EVENT_NOISE,
+  [VAD_EVENT_VOICE]: VAD_EVENT_VOICE,
+  [VAD_EVENT_VOICE_MULTI]: VAD_EVENT_VOICE_MULTI,
+};
+
+/**
+ * @const VadEventTypeArr {{Array<TVadEventType>}} - values array
+ */
+export const VadEventTypeArr: Array<TVadEventType> = [
+  VAD_EVENT_UNSPECIFIED,
+  VAD_EVENT_SILENCE,
+  VAD_EVENT_NOISE,
+  VAD_EVENT_VOICE,
+  VAD_EVENT_VOICE_MULTI,
+];
+
+/**
+ * @const VadEventTypeValueNumbers {{ [TVadEventType] : number }} - values order
+ */
+export const VadEventTypeValueNumbers: { [TVadEventType] : number } = {
+  VAD_EVENT_UNSPECIFIED: 0,
+  VAD_EVENT_SILENCE: 2,
+  VAD_EVENT_NOISE: 4,
+  VAD_EVENT_VOICE: 8,
+  VAD_EVENT_VOICE_MULTI: 16,
+};
+
+/**
+ * @section VehicleType
+ * .anymetrica.vehicle.VehicleType
+ * 
+ * Vehicle type
+ */
+
+/**
+ * @const VEHICLE_UNSPECIFIED {{TVehicleType}}
+ */
+export const VEHICLE_UNSPECIFIED: TVehicleType = 'VEHICLE_UNSPECIFIED';
+
+/**
+ * @const VEHICLE_OTHER {{TVehicleType}}
+ */
+export const VEHICLE_OTHER: TVehicleType = 'VEHICLE_OTHER';
+
+/**
+ * @const VEHICLE_CAR {{TVehicleType}}
+ * 
+ * Wheel
+ */
+export const VEHICLE_CAR: TVehicleType = 'VEHICLE_CAR';
+
+/**
+ * @const VEHICLE_TRUCK {{TVehicleType}}
+ */
+export const VEHICLE_TRUCK: TVehicleType = 'VEHICLE_TRUCK';
+
+/**
+ * @const VEHICLE_TRAILER {{TVehicleType}}
+ */
+export const VEHICLE_TRAILER: TVehicleType = 'VEHICLE_TRAILER';
+
+/**
+ * @const VEHICLE_MOTORCYCLE {{TVehicleType}}
+ */
+export const VEHICLE_MOTORCYCLE: TVehicleType = 'VEHICLE_MOTORCYCLE';
+
+/**
+ * @const VEHICLE_TRACTOR {{TVehicleType}}
+ */
+export const VEHICLE_TRACTOR: TVehicleType = 'VEHICLE_TRACTOR';
+
+/**
+ * @const VEHICLE_WATERCRAFT_UNSPECIFIED {{TVehicleType}}
+ * 
+ * Watercraft
+ */
+export const VEHICLE_WATERCRAFT_UNSPECIFIED: TVehicleType = 'VEHICLE_WATERCRAFT_UNSPECIFIED';
+
+/**
+ * @const VEHICLE_WATERCRAFT_OTHER {{TVehicleType}}
+ */
+export const VEHICLE_WATERCRAFT_OTHER: TVehicleType = 'VEHICLE_WATERCRAFT_OTHER';
+
+/**
+ * @const VEHICLE_WATERCRAFT_SHIP {{TVehicleType}}
+ */
+export const VEHICLE_WATERCRAFT_SHIP: TVehicleType = 'VEHICLE_WATERCRAFT_SHIP';
+
+/**
+ * @const VEHICLE_WATERCRAFT_BOAT {{TVehicleType}}
+ */
+export const VEHICLE_WATERCRAFT_BOAT: TVehicleType = 'VEHICLE_WATERCRAFT_BOAT';
+
+/**
+ * @const VEHICLE_AIRCRAFT_UNSPECIFIED {{TVehicleType}}
+ * 
+ * Aircraft
+ */
+export const VEHICLE_AIRCRAFT_UNSPECIFIED: TVehicleType = 'VEHICLE_AIRCRAFT_UNSPECIFIED';
+
+/**
+ * @const VEHICLE_AIRCRAFT_OTHER {{TVehicleType}}
+ */
+export const VEHICLE_AIRCRAFT_OTHER: TVehicleType = 'VEHICLE_AIRCRAFT_OTHER';
+
+/**
+ * @const VEHICLE_AIRCRAFT_PLANE {{TVehicleType}}
+ */
+export const VEHICLE_AIRCRAFT_PLANE: TVehicleType = 'VEHICLE_AIRCRAFT_PLANE';
+
+
+/**
+ * @const VehicleType {{ [TVehicleType]: TVehicleType }}
+ * 
+ * Vehicle type
+ */
+export const VehicleType: { [TVehicleType]: TVehicleType } = {
+  [VEHICLE_UNSPECIFIED]: VEHICLE_UNSPECIFIED,
+  [VEHICLE_OTHER]: VEHICLE_OTHER,
+  /**
+   * Wheel
+   */
+  [VEHICLE_CAR]: VEHICLE_CAR,
+  [VEHICLE_TRUCK]: VEHICLE_TRUCK,
+  [VEHICLE_TRAILER]: VEHICLE_TRAILER,
+  [VEHICLE_MOTORCYCLE]: VEHICLE_MOTORCYCLE,
+  [VEHICLE_TRACTOR]: VEHICLE_TRACTOR,
+  /**
+   * Watercraft
+   */
+  [VEHICLE_WATERCRAFT_UNSPECIFIED]: VEHICLE_WATERCRAFT_UNSPECIFIED,
+  [VEHICLE_WATERCRAFT_OTHER]: VEHICLE_WATERCRAFT_OTHER,
+  [VEHICLE_WATERCRAFT_SHIP]: VEHICLE_WATERCRAFT_SHIP,
+  [VEHICLE_WATERCRAFT_BOAT]: VEHICLE_WATERCRAFT_BOAT,
+  /**
+   * Aircraft
+   */
+  [VEHICLE_AIRCRAFT_UNSPECIFIED]: VEHICLE_AIRCRAFT_UNSPECIFIED,
+  [VEHICLE_AIRCRAFT_OTHER]: VEHICLE_AIRCRAFT_OTHER,
+  [VEHICLE_AIRCRAFT_PLANE]: VEHICLE_AIRCRAFT_PLANE,
+};
+
+/**
+ * @const VehicleTypeArr {{Array<TVehicleType>}} - values array
+ */
+export const VehicleTypeArr: Array<TVehicleType> = [
+  VEHICLE_UNSPECIFIED,
+  VEHICLE_OTHER,
+  VEHICLE_CAR,
+  VEHICLE_TRUCK,
+  VEHICLE_TRAILER,
+  VEHICLE_MOTORCYCLE,
+  VEHICLE_TRACTOR,
+  VEHICLE_WATERCRAFT_UNSPECIFIED,
+  VEHICLE_WATERCRAFT_OTHER,
+  VEHICLE_WATERCRAFT_SHIP,
+  VEHICLE_WATERCRAFT_BOAT,
+  VEHICLE_AIRCRAFT_UNSPECIFIED,
+  VEHICLE_AIRCRAFT_OTHER,
+  VEHICLE_AIRCRAFT_PLANE,
+];
+
+/**
+ * @const VehicleTypeValueNumbers {{ [TVehicleType] : number }} - values order
+ */
+export const VehicleTypeValueNumbers: { [TVehicleType] : number } = {
+  VEHICLE_UNSPECIFIED: 0,
+  VEHICLE_OTHER: 1,
+  /**
+   * Wheel
+   */
+  VEHICLE_CAR: 8,
+  VEHICLE_TRUCK: 9,
+  VEHICLE_TRAILER: 10,
+  VEHICLE_MOTORCYCLE: 32,
+  VEHICLE_TRACTOR: 64,
+  /**
+   * Watercraft
+   */
+  VEHICLE_WATERCRAFT_UNSPECIFIED: 128,
+  VEHICLE_WATERCRAFT_OTHER: 129,
+  VEHICLE_WATERCRAFT_SHIP: 140,
+  VEHICLE_WATERCRAFT_BOAT: 141,
+  /**
+   * Aircraft
+   */
+  VEHICLE_AIRCRAFT_UNSPECIFIED: 192,
+  VEHICLE_AIRCRAFT_OTHER: 193,
+  VEHICLE_AIRCRAFT_PLANE: 224,
+};
+
+

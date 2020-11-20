@@ -1,0 +1,18 @@
+version: '3.7'
+# Ports example:
+# ports:
+#   - "80:8000" # Map TCP port 8000 in the container to port 80 on the Docker host.
+#   - "443:8443"
+
+services:
+  registry:
+    restart: always
+    image: registry:2
+    ports:
+      - 443:443
+    volumes:
+      - ${REGISTRY_DATA:-/home/docker/registry/data}:/var/lib/registry
+      - ${REGISTRY_HTTP_TLS_CERTIFICATE:-/home/docker/certs/pbc.technology.origin.pem}:/var/lib/registry/certs/registry.pem
+      - ${REGISTRY_HTTP_TLS_KEY:-/home/docker/certs/pbc.technology.origin.key}:/var/lib/registry/certs/registry.key
+      - ${REGISTRY_AUTH_HTPASSWD_PATH:-/home/docker/registry/htpasswd}:/var/lib/registry/htpasswd
+      - ${REGISTRY_CONFIG:-/home/docker/registry/config.yaml:/etc/docker/registry/config.yml}

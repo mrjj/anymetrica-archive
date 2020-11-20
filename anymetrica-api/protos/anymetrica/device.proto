@@ -1,0 +1,154 @@
+syntax = "proto3";
+/**
+ * @file protos/anymetrica/device.proto
+ * @package anymetrica.device
+ * @description Device info
+ */
+package anymetrica.device;
+
+option java_package = "com.anymetrica.device";
+
+import "metadata.proto";
+import "request.proto";
+
+// Generic device types options
+//
+// [Mostly taken from](https://github.com/roscopecoltran/krakend-admin/blob/f27bc4ee41d133f35301ef2fabf606cdce51b47b/shared/public/downloads/v2/specs/amazonaws.com/mgh/2017-05-31/swagger.proto)
+enum DeviceType {
+  // Type not specified
+  UNSPECIFIED = 0;
+
+  // Non-standard category
+  OTHER = 1;
+
+  // Polymorphic device (e.g. phone emulator)
+  POLYMORPHIC = 2;
+
+  // Mobile phone
+  PHONE = 4;
+
+  // Tablet
+  TABLET = 8;
+
+  // Desktop/Laptop Computer
+  DESKTOP = 12;
+
+  // Electronic tag (incl. passive)
+  TAG = 16;
+
+  // Electronic badge (incl. passive)
+  BADGE = 18;
+
+  // Smart Watch
+  SMART_WATCH = 24;
+
+  // Generic fitness Device
+  FITNESS_DEVICE = 25;
+
+  // Sound recording device
+  SOUND_RECORDER = 32;
+
+  // Video recording device
+  VIDEO_RECORDER = 33;
+
+  // Robotic device (non-vehicle)
+  ROBOTIC = 64;
+}
+
+// Device
+message Device {
+  // Unique Entity identifier
+  string id = 1;
+
+   // Entity Metadata
+  anymetrica.metadata.Metadata metadata = 2;
+
+  // Device type
+  DeviceType device_type = 8;
+
+  // Is used for test purposes
+  bool for_testing = 9;
+
+  // Is portable
+  bool is_portable = 16;
+
+  // Possible to wear
+  bool is_wearable = 17;
+
+  // Device configuration arbitrary fields with open text values
+  map<string, string> config = 24;
+
+  // List of supported audio codecs
+  // TODO: Convert to relations
+  repeated string supported_audio_codecs = 32;
+
+  // List of supported video codecs and digital container formats supported
+  //
+  // - [Reference video codecs names list](https://en.wikipedia.org/wiki/Video_file_format)
+  // - [Reference video container formats list](https://en.wikipedia.org/wiki/Comparison_of_video_container_formats)
+  // TODO: Convert to relations
+  repeated string supported_video_codecs = 33;
+
+  // Device is supporting audio recording
+  bool support_audio_recording = 40;
+
+  // Device is supporting video recording
+  bool support_video_recording = 41;
+
+  // MAC Address of NICs
+  // TODO: Convert to relations
+  repeated string mac_addresses = 64;
+
+  // Temporary or leased IPv4 Addresses device is using
+  // TODO: Convert to relations
+  repeated string ipv4_addresses = 65;
+
+  // Temporary or leased IPv6 Addresses device is using
+  // TODO: Convert to relations
+  repeated string ipv6_addresses = 66;
+
+  // Temporary or leased FQDN related to the device
+  // TODO: Convert to relations
+  repeated string fqdns = 67;
+
+  string manufacturer = 128;
+  string model = 129;
+  string sub_model = 130;
+  string revision = 131;
+
+  string manufacturer_site_uri = 140;
+  string amazon_uri = 141;
+  string aliexpress_uri = 142;
+  string alibaba_uri = 143;
+  string ebay_uri = 144;
+  string yandex_market_uri = 145;
+
+  string bios_id = 160;
+  string motherboard_serial_number = 161;
+
+  uint32 audio_channels_count = 200;
+  uint32 audio_inputs_count = 201;
+
+  uint32 video_channels_count = 220;
+  uint32 video_inputs_count = 221;
+
+  string udid = 256; // Universal Device ID
+  string idfv = 257; // Identifier For Vendor
+  string imei = 258; // International Mobile Equipment Identity
+
+  string aid = 287; // Identifier For Advertising
+  string idfa = 288; // Identifier For Advertising
+  string waid = 289; // Windows Advertising ID
+  string aaid = 290; // Android Advertising ID
+}
+
+// Device entity List
+message Devices{
+  // Request metadata
+  anymetrica.request.RequestMetadata request = 2;
+  // Response metadata
+  anymetrica.request.ResponseMetadata response = 4;
+
+  // Result entities
+  repeated Device entities = 8;
+}

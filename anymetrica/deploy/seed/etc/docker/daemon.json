@@ -1,0 +1,17 @@
+{
+  "exec-root": "/home/docker/exec",
+  "data-root": "/home/docker/volumes",
+  "insecure-registries": [
+    "registry.anymetrica.com:5000",
+    "registry.pbc.technology:5000",
+    "registry.anymetrica.com",
+    "registry.pbc.technology"
+  ],
+  "allow-nondistributable-artifacts": [
+    "registry.anymetrica.com:5000",
+    "registry.pbc.technology:5000",
+    "registry.anymetrica.com",
+    "registry.pbc.technology"
+  ],
+  "experimental": true
+}

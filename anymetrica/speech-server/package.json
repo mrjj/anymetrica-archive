@@ -1,0 +1,12 @@
+{
+  "name": "anymetrica-speech-server",
+  "scripts": {
+    "start": "forver start index.js"
+  },
+  "dependencies": {
+    "anymetrica-utils": "../../anymetrica-utils",
+    "execa": "1.0.0",
+    "forever": "0.15.3",
+    "ws": "6.2.0"
+  }
+}

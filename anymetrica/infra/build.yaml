@@ -1,0 +1,15 @@
+- task: doker-registry
+  push: true
+  skip: true
+  tag: registry.pbc.technology/anymetrica/docker-registry:latest
+  dockerfile: ./doker-registry/Dockerfile
+  args:
+    BASE_CONTAINER: 'alpine:3.8'
+
+- task: jupyter-hub
+  push: true
+  tag: registry.pbc.technology/anymetrica/jupyter-hub:latest
+  dockerfile: ./jupyter-hub/Dockerfile
+  args:
+    # 59b402ce701d - Latest on 2019-04-01
+    BASE_CONTAINER: 'jupyter/base-notebook:59b402ce701d'

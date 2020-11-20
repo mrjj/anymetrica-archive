@@ -1,0 +1,36 @@
+{
+  "name": "anymetrica-sdk",
+  "version": "0.1.0",
+  "private": true,
+  "entry": {
+    "index": "./src/index.js"
+  },
+  "description": "Anymetrica SDK - Dev env bootstrapper",
+  "dependencies": {
+    "shelljs": "0.8.3"
+  },
+  "pkg": {
+    "scripts": "build/**/*.js",
+    "assets": [
+      "bin/sdk",
+      "src/index.js"
+    ],
+    "targets": [
+      "node10"
+    ]
+  },
+  "devDependencies": {
+    "pkg": "4.3.7"
+  },
+  "scripts": {
+    "build": "pkg bin/sdk --options max_old_space_size=4096 --out-path build"
+  },
+  "bin": {
+    "sdk": "bin/sdk"
+  },
+  "main": "./src/",
+  "files": [
+    "src/",
+    "bin/sdk"
+  ]
+}

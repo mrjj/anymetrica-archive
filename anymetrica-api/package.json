@@ -1,0 +1,45 @@
+{
+  "name": "anymetrica-api",
+  "version": "0.16.17",
+  "description": "AnyMetrica API package - gRPC API Protocol Buffers schemas and documentation",
+  "browser": "dist/anymetrica-utils.js",
+  "main": "dist/",
+  "author": {
+    "name": "Ilya Kutukov",
+    "email": "post.ilya@gmail.com"
+  },
+  "scripts": {
+    "bootstrap": "npm install",
+    "clean": "rm -rf ./dist && mkdir ./dist && rm -rf ./lib && mkdir ./lib",
+    "ci": "npm run build",
+    "build": "npm run clean && npm run build:entity && npm run build:enums && npm run build:client && npm run build:json && npm run build:json && npm run build:json-module && npm run build:static && npm run build:static-module && npm run build:doc",
+    "build:client": "mkdir -p ./dist && grid-grpc -q gen ./protos/anymetrica/registry.proto ./dist/registry.js",
+    "build:doc": "rm -rf ./doc/api.md && pushd ./protos && node ../scripts/doc.js anymetrica/registry.proto ../docs/api.md && popd",
+    "build:entity": "pushd ./protos && node ../scripts/entity.js anymetrica/registry.proto ../dist/entity && popd && mv -f ./dist/entity.proto ./protos/anymetrica/entity.proto",
+    "build:enums": "pushd ./protos && node ../scripts/enums.js anymetrica/registry.proto ../dist/enums && popd",
+    "build:json": "pbjs --keep-case --target json -o ./dist/registry.json -p ./protos/anymetrica registry.proto",
+    "build:json-module": "pbjs --keep-case --target json-module -o ./dist/registry.json.js -p ./protos/anymetrica registry.proto",
+    "build:static": "pbjs --keep-case --lint --target static -o ./dist/registry.static.js -p ./protos/anymetrica registry.proto",
+    "build:static-module": "pbjs --keep-case --lint --target static-module -o ./dist/registry.static-module.js -p ./protos/anymetrica registry.proto",
+    "build:protobufjs": "rm -rf ./dist/protobufjs && mkdir -p ./dist/protobufjs && cp -r ./node_modules/protobufjs/dist/* ./dist/protobufjs",
+    "release": "./scripts/release.js"
+  },
+  "license": "UNLICENSED",
+  "devDependencies": {
+    "grid-grpc": "https://github.com/mrjj/grid-grpc.git#refs/tags/1.6.7",
+    "json-stable-stringify": "1.0.1",
+    "handlebars": "4.1.0",
+    "protobufjs": "6.8.8",
+    "shelljs": "0.8.3"
+  },
+  "files": [
+    "dist/",
+    "doc/",
+    "protos/"
+  ],
+  "pre-commit": [
+    "foo",
+    "bar",
+    "test"
+  ]
+}

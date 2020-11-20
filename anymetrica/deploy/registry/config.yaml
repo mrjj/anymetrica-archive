@@ -1,0 +1,135 @@
+version: 0.1
+log:
+  accesslog:
+    disabled: true
+  level: info
+  formatter: text
+  fields:
+    service: registry
+    environment: staging
+#  hooks:
+#    - type: mail
+#      disabled: true
+#      levels:
+#        - panic
+#      options:
+#        smtp:
+#          addr: mail.example.com:25
+#          username: mailuser
+#          password: password
+#          insecure: true
+#        from: sender@example.com
+#        to:
+#          - errors@example.com
+storage:
+  filesystem:
+    rootdirectory: /var/lib/registry/data
+    maxthreads: 100
+#  gcs:
+#    bucket: bucketname
+#    keyfile: /path/to/keyfile
+#    rootdirectory: /gcs/object/name/prefix
+#    chunksize: 5242880
+#  s3:
+#    accesskey: awsaccesskey
+#    secretkey: awssecretkey
+#    region: us-west-1
+#    regionendpoint: http://myobjects.local
+#    bucket: bucketname
+#    encrypt: true
+#    keyid: mykeyid
+#    secure: true
+#    v4auth: true
+#    chunksize: 5242880
+#    multipartcopychunksize: 33554432
+#    multipartcopymaxconcurrency: 100
+#    multipartcopythresholdsize: 33554432
+#    rootdirectory: /s3/object/name/prefix
+  delete:
+    enabled: true
+  redirect:
+    disable: false
+  cache:
+    blobdescriptor: inmemory
+  maintenance:
+    uploadpurging:
+      enabled: true
+      age: 168h
+      interval: 24h
+      dryrun: false
+    readonly:
+      enabled: false
+auth:
+  htpasswd:
+    realm: "Registry Realm"
+    path: /var/lib/registry/htpasswd
+#reporting:
+#  bugsnag:
+#    apikey: bugsnagapikey
+#    releasestage: bugsnagreleasestage
+#    endpoint: bugsnagendpoint
+#  newrelic:
+#    licensekey: newreliclicensekey
+#    name: newrelicname
+#    verbose: true
+http:
+  addr: 0.0.0.0:443
+  host: https://registry.anymetrica.com:443
+  secret: 2sciQHhj0YpyMLkJcrG8x32q
+  relativeurls: false
+  tls:
+    certificate: /var/lib/registry/certs/registry.pem
+    key: /var/lib/registry/certs/registry.key
+  debug:
+    addr: localhost:5001
+  headers:
+    X-Content-Type-Options: [nosniff]
+  http2:
+    disabled: false
+#notifications:
+#  endpoints:
+#    - name: alistener
+#      disabled: false
+#      url: https://my.listener.com/event
+#      headers: <http.Header>
+#      timeout: 500
+#      threshold: 5
+#      backoff: 1000
+#      ignoredmediatypes:
+#        - application/octet-stream
+#health:
+#  storagedriver:
+#    enabled: true
+#    interval: 10s
+#    threshold: 3
+#  file:
+#    - file: /path/to/checked/file
+#      interval: 10s
+#  http:
+#    - uri: http://server.to.check/must/return/200
+#      headers:
+#        Authorization: [Basic QWxhZGRpbjpvcGVuIHNlc2FtZQ==]
+#      statuscode: 200
+#      timeout: 3s
+#      interval: 10s
+#      threshold: 3
+#  tcp:
+#    - addr: redis-server.domain.com:6379
+#      timeout: 3s
+#      interval: 10s
+#      threshold: 3
+#proxy:
+#  remoteurl: https://registry-1.docker.io
+#  username: [username]
+#  password: [password]
+#compatibility:
+#  schema1:
+#    signingkeyfile: /etc/registry/key.json
+#validation:
+#  enabled: true
+#  manifests:
+#    urls:
+#      allow:
+#        - ^https?://([^/]+\.)*example\.com/
+#      deny:
+#        - ^https?://www\.example\.com/

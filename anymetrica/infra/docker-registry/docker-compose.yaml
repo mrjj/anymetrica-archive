@@ -1,0 +1,28 @@
+# /home/docker/data
+# /home/docker/auth/htpasswd
+# /home/docker/certs/registry.anymetrica.com.crt;
+# /home/docker/certs/registry.anymetrica.com.key
+version: "3.5"
+services:
+  registry:
+    restart: always
+    build: "."
+    ports:
+      - "5000:5000"
+    environment:
+      - REGISTRY_HTTP_TLS_CERTIFICATE=/certs/registry.anymetrica.com.pem
+      - REGISTRY_HTTP_TLS_KEY=/certs/registry.anymetrica.com.key
+      - REGISTRY_AUTH=htpasswd
+      - REGISTRY_AUTH_HTPASSWD_PATH=/auth/htpasswd
+      - REGISTRY_AUTH_HTPASSWD_REALM=Registry Realm
+      - "REGISTRY_DATA_PATH=/var/lib/registry"
+    volumes:
+      - type: bind
+        source: ./../DATA/registry/
+        target: /var/lib/registry/
+      - type: bind
+        source: ./certs/
+        target: ./certs
+      - type: bind
+        source: ./auth/
+        target: /auth/

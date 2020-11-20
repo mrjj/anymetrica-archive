@@ -1,0 +1,456 @@
+[
+  {
+    "uri": "magnet:?xt=urn:btih:34e2b78745138186976cbc27939b1b34d18bd5b3&tr=http%3A%2F%2Facademictorrents.com%2Fannounce.php&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969",
+    "name": "TIMIT",
+    "description": "The DARPA TIMIT Acoustic-Phonetic Continuous Speech Corpus",
+    "size": 440207227,
+    "md5": "34e2b78745138186976cbc27939b1b34d18bd5b3",
+    "installCmd": "mv -f ./data/lisa/data/timit/raw/TIMIT/* . && rm -rf ./data",
+    "default": true
+  },
+  {
+    "uri": "https://datashare.is.ed.ac.uk/bitstream/handle/10283/2651/VCTK-Corpus.zip",
+    "license": "Creative Commons License: Attribution 4.0 International",
+    "name": "VCTK-Corpus",
+    "description": "English Multi-speaker Corpus for CSTR Voice Cloning Toolkit http://homepages.inf.ed.ac.uk/jyamagis/page3/page58/page58.html https://datashare.is.ed.ac.uk/handle/10283/2651",
+    "size": 10000000000,
+    "md5": "97e31c95ddfce9cf59726e5551414508",
+    "default": true
+  },
+  {
+    "uri": "https://datashare.is.ed.ac.uk/bitstream/handle/10283/3038/DR-VCTK.zip",
+    "license": "Creative Commons License: Attribution 4.0 International",
+    "name": "DR-VCTK",
+    "description": "Device Recorded VCTK (Small subset version)",
+    "size": 1671000000,
+    "md5": "29e93debeb0e779986542229a81ff29b",
+    "default": true
+  },
+  {
+    "uris": [
+      "https://github.com/google/uis-rnn/blob/08750e8d11482e9df1b841c00e33480cda5eb197/data/testing_data.npz",
+      "https://github.com/google/uis-rnn/blob/08750e8d11482e9df1b841c00e33480cda5eb197/data/training_data.npz"
+    ],
+    "name": "UIS-RNN",
+    "description": "Google Unbounded Interleaved-State Recurrent Neural Network (UIS-RNN) algorithm (testing models)",
+    "size": 99914619,
+    "md5": "be58f217055b283e8ffbf1896e7dea00",
+    "default": true
+  },
+  {
+    "uri": "https://s3-us-west-1.amazonaws.com/fasttext-vectors/supervised_models/ag_news.ftz",
+    "name": "ag_news.ftz",
+    "description": "AG News compressed",
+    "size": 1589688
+  },
+  {
+    "uri": "https://github.com/mozilla/DeepSpeech/releases/download/v0.4.1/deepspeech-0.4.1-models.tar.gz",
+    "name": "deepspeech-0.4.1-models",
+    "description": "Mozilla Deep Speech 0.4.1",
+    "size": 1965103828
+  },
+  {
+    "uris": [
+      "http://www.openslr.org/resources/12/dev-clean.tar.gz",
+      "http://www.openslr.org/resources/12/test-clean.tar.gz"
+    ],
+    "name": "LibriSpeech ASR corpus (development set, \"clean\" speech) +test set",
+    "description": "openslr-clean",
+    "description_uris": [
+      "http://www.openslr.org/12",
+      "http://www.openslr.org/resources/12/md5sum.txt"
+    ],
+    "size": 0
+  },
+  {
+    "uris": [
+      "http://www.openslr.org/resources/12/dev-other.tar.gz",
+      "http://www.openslr.org/resources/12/test-other.tar.gz"
+    ],
+    "name": "LibriSpeech ASR corpus (development set, \"other\", more challenging, speech) +test set",
+    "description": "openslr-other",
+    "description_uris": [
+      "http://www.openslr.org/12",
+      "http://www.openslr.org/resources/12/md5sum.txt"
+    ],
+    "size": 0
+  },
+  {
+    "uri": "http://www.openslr.org/resources/12/train-clean-100.tar.gz",
+    "name": "LibriSpeech ASR corpus [6.3G] (training set of 100 hours \"clean\" speech)",
+    "description": "openslr-train-clean-100",
+    "description_uris": [
+      "http://www.openslr.org/12",
+      "http://www.openslr.org/resources/12/md5sum.txt"
+    ],
+    "size": 6300000000
+  },
+  {
+    "uri": "http://www.openslr.org/resources/12/train-clean-360.tar.gz",
+    "name": "LibriSpeech ASR corpus [23G] (training set of 360 hours \"clean\" speech)",
+    "description": "openslr-train-clean-360",
+    "description_uris": [
+      "http://www.openslr.org/12",
+      "http://www.openslr.org/resources/12/md5sum.txt"
+    ],
+    "size": 23000000000
+  },
+  {
+    "uri": "http://www.openslr.org/resources/12/train-other-500.tar.gz",
+    "name": "LibriSpeech ASR corpus [30G] (training set of 500 hours \"other\" speech)",
+    "description": "openslr-train-other-500",
+    "description_uris": [
+      "http://www.openslr.org/12",
+      "http://www.openslr.org/resources/12/md5sum.txt"
+    ],
+    "size": 30000000000
+  },
+  {
+    "uri": "http://www.openslr.org/resources/12/intro-disclaimers.tar.gz",
+    "name": "LibriSpeech ASR corpus (extracted LibriVox announcements for some of the speakers)",
+    "description": "openslr-intro-disclaimers",
+    "description_uris": [
+      "http://www.openslr.org/12",
+      "http://www.openslr.org/resources/12/md5sum.txt"
+    ],
+    "size": 0
+  },
+  {
+    "uri": "http://www.openslr.org/resources/12/original-mp3.tar.gz",
+    "name": "LibriSpeech ASR corpus / [87G] LibriVox mp3 files, from which corpus' audio was extracted",
+    "description": "openslr-librivox-intro-disclaimers",
+    "description_uris": [
+      "http://www.openslr.org/12",
+      "http://www.openslr.org/resources/12/md5sum.txt"
+    ],
+    "size": 87000000000
+  },
+  {
+    "uri": "http://www.openslr.org/resources/12/original-books.tar.gz",
+    "name": "LibriSpeech ASR corpus / Project Gutenberg texts, against which the audio in the corpus was aligned",
+    "description": "openslr-gutenberg-original-books",
+    "description_uris": [
+      "http://www.openslr.org/12",
+      "http://www.openslr.org/resources/12/md5sum.txt"
+    ],
+    "size": 0
+  },
+  {
+    "uri": "http://www.openslr.org/resources/12/raw-metadata.tar.gz",
+    "name": "LibriSpeech ASR corpus / Some extra meta-data produced during the creation of the corpus",
+    "description": "openslr-raw-metadata",
+    "description_uris": [
+      "http://www.openslr.org/12",
+      "http://www.openslr.org/resources/12/md5sum.txt"
+    ],
+    "size": 0
+  },
+  {
+    "uri": "https://s3-us-west-1.amazonaws.com/fasttext-vectors/supervised_models/amazon_review_full.ftz",
+    "name": "amazon_review_full.ftz",
+    "description": "Amazon Review full compressed",
+    "default": true,
+    "size": 1591105
+  },
+  {
+    "uri": "https://s3-us-west-1.amazonaws.com/fasttext-vectors/supervised_models/amazon_review_polarity.ftz",
+    "name": "amazon_review_polarity.ftz",
+    "description": "Amazon Review polarity compressed",
+    "default": true,
+    "size": 1573446
+  },
+  {
+    "uri": "https://s3-us-west-1.amazonaws.com/fasttext-vectors/supervised_models/dbpedia.ftz",
+    "name": "dbpedia.ftz",
+    "description": "DBpedia compressed",
+    "size": 1686797
+  },
+  {
+    "uri": "https://s3-us-west-1.amazonaws.com/fasttext-vectors/supervised_models/sogou_news.ftz",
+    "name": "sogou_news.ftz",
+    "description": "Sogu News compressed",
+    "size": 1455681
+  },
+  {
+    "uri": "https://s3-us-west-1.amazonaws.com/fasttext-vectors/supervised_models/yahoo_answers.ftz",
+    "name": "yahoo_answers.ftz",
+    "description": "Yahoo Answers compressed",
+    "size": 1654445
+  },
+  {
+    "uri": "https://s3-us-west-1.amazonaws.com/fasttext-vectors/supervised_models/yelp_review_polarity.ftz",
+    "name": "yelp_review_polarity",
+    "description": "Yelp Review polarity compressed",
+    "size": 1547836,
+    "default": true
+  },
+  {
+    "uri": "https://s3-us-west-1.amazonaws.com/fasttext-vectors/supervised_models/yelp_review_full.ftz",
+    "name": "yelp_review_full.ftz",
+    "description": "Yelp Review full compressed",
+    "size": 1567286,
+    "default": true
+  },
+  {
+    "uri": "https://s3-us-west-1.amazonaws.com/fasttext-vectors/supervised_models/ag_news.bin",
+    "name": "ag_news.bin",
+    "description": "AG News",
+    "size": 405607193
+  },
+  {
+    "uri": "https://s3-us-west-1.amazonaws.com/fasttext-vectors/supervised_models/amazon_review_full.bin",
+    "name": "amazon_review_full.bin",
+    "description": "Amazon Review full",
+    "default": true,
+    "size": 483742593
+  },
+  {
+    "uri": "https://s3-us-west-1.amazonaws.com/fasttext-vectors/supervised_models/amazon_review_polarity.bin",
+    "name": "amazon_review_polarity.bin",
+    "description": "Amazon Review polarity",
+    "default": true,
+    "size": 493604598
+  },
+  {
+    "uri": "https://s3-us-west-1.amazonaws.com/fasttext-vectors/supervised_models/dbpedia.bin",
+    "name": "dbpedia.bin",
+    "description": "DBpedia",
+    "size": 447481878
+  },
+  {
+    "uri": "https://s3-us-west-1.amazonaws.com/fasttext-vectors/supervised_models/sogou_news.bin",
+    "name": "sogou_news.bin",
+    "description": "Sogou news",
+    "size": 421445471
+  },
+  {
+    "uri": "https://s3-us-west-1.amazonaws.com/fasttext-vectors/supervised_models/yahoo_answers.bin",
+    "name": "yahoo_answers.bin",
+    "description": "Yahoo Answers",
+    "size": 517549567
+  },
+  {
+    "uri": "https://s3-us-west-1.amazonaws.com/fasttext-vectors/supervised_models/yelp_review_polarity.bin",
+    "name": "yelp_review_polarity.bin",
+    "description": "Yelp Review polarity full",
+    "size": 427867393,
+    "default": true
+  },
+  {
+    "uri": "https://s3-us-west-1.amazonaws.com/fasttext-vectors/supervised_models/yelp_review_full.bin",
+    "name": "yelp_review_full.bin",
+    "description": "Yelp Review full",
+    "size": 431292576,
+    "default": true
+  },
+  {
+    "uri": "https://s3-us-west-1.amazonaws.com/fasttext-vectors/crawl-300d-2M.vec.zip",
+    "description": "2 million word vectors trained on Common Crawl (600B tokens).",
+    "name": "crawl-300d-2M.vec",
+    "size": 1523785255
+  },
+  {
+    "uri": "https://s3-us-west-1.amazonaws.com/fasttext-vectors/crawl-300d-2M-subword.zip",
+    "name": "crawl-300d-2M-subword",
+    "description": "2 million word vectors trained with subword information on Common Crawl (600B tokens)",
+    "size": 5828358084
+  },
+  {
+    "uri": "https://s3-us-west-1.amazonaws.com/fasttext-vectors/wiki.en.zip",
+    "name": "wiki.en",
+    "description": "Wiki word vectors English: bin+text",
+    "size": 0,
+    "description_uris": [
+      "https://fasttext.cc/docs/en/pretrained-vectors.html"
+    ]
+  },
+  {
+    "uri": "https://s3-us-west-1.amazonaws.com/fasttext-vectors/wiki.en.vec",
+    "name": "wiki.en.vec",
+    "description": "Wiki word vectors English: text",
+    "size": 0,
+    "description_uris": [
+      "https://fasttext.cc/docs/en/pretrained-vectors.html"
+    ]
+  },
+  {
+    "uri": "https://s3-us-west-1.amazonaws.com/fasttext-vectors/wiki.ru.zip",
+    "name": "wiki.ru",
+    "description": "Wiki word vectors Russian: bin+text",
+    "size": 0,
+    "description_uris": [
+      "https://fasttext.cc/docs/en/pretrained-vectors.html"
+    ]
+  },
+  {
+    "uri": "https://s3-us-west-1.amazonaws.com/fasttext-vectors/wiki.ru.vec",
+    "name": "wiki.ru.vec",
+    "description": "Wiki word vectors Russian: text",
+    "size": 0,
+    "description_uris": [
+      "https://fasttext.cc/docs/en/pretrained-vectors.html"
+    ]
+  },
+  {
+    "uri": "https://s3-us-west-1.amazonaws.com/fasttext-vectors/word-vectors-v2/cc.en.300.vec.gz",
+    "name": "cc.en.300.vec",
+    "description": "Common Crawl EN .vec Trained with CBOW with position-weights, in dimension 300, with character n-grams of length 5, a window of size 5 and 10 negatives",
+    "description_uris": [
+      "https://fasttext.cc/docs/en/crawl-vectors.html"
+    ],
+    "license": "The word vectors are distributed under the Creative Commons Attribution-Share-Alike License 3.0.",
+    "size": 0
+  },
+  {
+    "uri": "https://s3-us-west-1.amazonaws.com/fasttext-vectors/word-vectors-v2/cc.en.300.bin.gz",
+    "name": "cc.en.300.bin",
+    "description": "Common Crawl EN .bin Trained with CBOW with position-weights, in dimension 300, with character n-grams of length 5, a window of size 5 and 10 negatives",
+    "description_uris": [
+      "https://fasttext.cc/docs/en/crawl-vectors.html"
+    ],
+    "license": "The word vectors are distributed under the Creative Commons Attribution-Share-Alike License 3.0.",
+    "size": 0
+  },
+  {
+    "uri": "https://s3-us-west-1.amazonaws.com/fasttext-vectors/word-vectors-v2/cc.ru.300.vec.gz",
+    "name": "cc.ru.300.vec",
+    "description": "Common Crawl RU .vec Trained with CBOW with position-weights, in dimension 300, with character n-grams of length 5, a window of size 5 and 10 negatives",
+    "description_uris": [
+      "https://fasttext.cc/docs/en/crawl-vectors.html"
+    ],
+    "license": "The word vectors are distributed under the Creative Commons Attribution-Share-Alike License 3.0.",
+    "size": 1306357571
+  },
+  {
+    "uri": "https://s3-us-west-1.amazonaws.com/fasttext-vectors/word-vectors-v2/cc.ru.300.bin.gz",
+    "name": "cc.ru.300.bin",
+    "description": "Common Crawl RU .bin Trained with CBOW with position-weights, in dimension 300, with character n-grams of length 5, a window of size 5 and 10 negatives",
+    "description_uris": [
+      "https://fasttext.cc/docs/en/crawl-vectors.html"
+    ],
+    "license": "The word vectors are distributed under the Creative Commons Attribution-Share-Alike License 3.0.",
+    "size": 0
+  },
+  {
+    "uri": "https://s3-us-west-1.amazonaws.com/fasttext-vectors/word-vectors-v2/cc.ru.300.bin.gz",
+    "name": "cc.ru.300.bin",
+    "description": "Common Crawl RU .bin Trained with CBOW with position-weights, in dimension 300, with character n-grams of length 5, a window of size 5 and 10 negatives",
+    "description_uris": [
+      "https://fasttext.cc/docs/en/crawl-vectors.html"
+    ],
+    "license": "The word vectors are distributed under the Creative Commons Attribution-Share-Alike License 3.0.",
+    "size": 0
+  },
+  {
+    "uris": [
+      "minio://test-artifacts/video_sound/arrested_development-01x04.mkv",
+      "minio://test-artifacts/video_sound/arrested_development-01x04.srt"
+    ],
+    "description": "HQ Tv series release to check audio from video extraction",
+    "name": "arrested_development-01x04"
+  },
+  {
+    "uris": [
+      "minio://test-artifacts/video_sound/ideal-01x01.mp4",
+      "minio://test-artifacts/video_sound/ideal-01x01.srt",
+      "minio://test-artifacts/video_sound/ideal-01x02.mp4",
+      "minio://test-artifacts/video_sound/ideal-01x02.srt"
+    ],
+    "description": "Episode of MQ speech rich TV series  to check audio from video extraction",
+    "name": "ideal-01s",
+    "installCmd": "yarn run ml:spectrogram ./DATA/models/ideal-01s/ideal-01x01.mp4 ./DATA/output/ideal-01s/ && yarn run ml:spectrogram ./DATA/models/ideal-01s/ideal-01x02.mp4 ./DATA/output/ideal-01s/"
+  },
+  {
+    "description": "MyStem Linux archives",
+    "name": "mystem-linux",
+    "uris": [
+      "http://download.cdn.yandex.net/mystem/mystem-3.1-linux-64bit.tar.gz",
+      "http://download.cdn.yandex.net/mystem/mystem-3.0-linux3.5-32bit.tar.gz",
+      "http://download.cdn.yandex.net/mystem/mystem-3.0-linux3.1-64bit.tar.gz",
+      "http://download.cdn.yandex.net/mystem/mystem-2.1-linux3.2-64bit.tar.gz",
+      "http://download.cdn.yandex.net/mystem/mystem-2.1-linux3.0-32bit.tar.gz",
+      "http://download.cdn.yandex.net/mystem/mystem-2.1-linux2.6-64bit.tar.gz",
+      "http://download.cdn.yandex.net/mystem/mystem-2.0-linux2.6-64bit.tar.gz",
+      "http://download.cdn.yandex.net/mystem/mystem-2.0-linux2.6-32bit.tar.gz",
+      "http://download.cdn.yandex.net/mystem/mystem-1.0-linux.tgz"
+    ]
+  },
+  {
+    "description": "MyStem MacOS archives",
+    "name": "mystem-macos",
+    "uris": [
+      "http://download.cdn.yandex.net/mystem/mystem-3.1-macosx.tar.gz",
+      "http://download.cdn.yandex.net/mystem/mystem-3.0-macosx10.8.tar.gz",
+      "http://download.cdn.yandex.net/mystem/mystem-2.1-macosx10.8.tar.gz",
+      "http://download.cdn.yandex.net/mystem/mystem-2.0-macosx10.5.tar.gz"
+    ]
+  },
+  {
+    "description": "MyStem FreeBSD archives",
+    "name": "mystem-freebsd",
+    "uris": [
+      "http://download.cdn.yandex.net/mystem/mystem-3.0-freebsd9.2-64bit.tar.gz",
+      "http://download.cdn.yandex.net/mystem/mystem-3.0-freebsd9.0-64bit.tar.gz",
+      "http://download.cdn.yandex.net/mystem/mystem-2.1-freebsd9.0-64bit.tar.gz",
+      "http://download.cdn.yandex.net/mystem/mystem-2.0-freebsd7.2-64bit.tar.gz",
+      "http://download.cdn.yandex.net/mystem/mystem-2.0-freebsd7.2-32bit.tar.gz",
+      "http://download.cdn.yandex.net/mystem/mystem-1.0-freebsd.gz"
+    ]
+  },
+  {
+    "description": "MyStem Windows XP/Windows 7/Windows 8/Windows 10 archives",
+    "name": "mystem-win",
+    "uris": [
+      "http://download.cdn.yandex.net/mystem/mystem-3.1-win-64bit.zip",
+      "http://download.cdn.yandex.net/mystem/mystem-3.0-win7-64bit.zip",
+      "http://download.cdn.yandex.net/mystem/mystem-3.0-win7-32bit.zip",
+      "http://download.cdn.yandex.net/mystem/mystem-2.1-win7-64bit.zip",
+      "http://download.cdn.yandex.net/mystem/mystem-2.1-win7-32bit.zip",
+      "http://download.cdn.yandex.net/mystem/mystem-2.0-win.zip",
+      "http://download.cdn.yandex.net/mystem/mystem-1.0-win.zip"
+    ]
+  },
+  {
+    "description": "Development dataset TUT Sound events 2017, development dataset consists of 24 audio recordings from a single acoustic scene: Street (outdoor), totaling 1:32:08",
+    "name": "tut-2017",
+    "uris": [
+      "https://zenodo.org/record/814831/files/TUT-sound-events-2017-development.audio.1.zip?download=1",
+      "https://zenodo.org/record/814831/files/TUT-sound-events-2017-development.audio.2.zip?download=1",
+      "https://zenodo.org/record/814831/files/TUT-sound-events-2017-development.doc.zip?download=1",
+      "https://zenodo.org/record/814831/files/TUT-sound-events-2017-development.meta.zip?download=1"
+    ]
+  },
+  {
+    "description": "Cross-modal attentional capture with naturalistic sound distractors",
+    "name": "s4hri-attentional-capture-sound-distractors",
+    "uris": [
+      "https://zenodo.org/record/1119022/files/s4hri/attentional-capture-sound-distractors-1.0.zip?download=1"
+    ]
+  },
+  {
+    "description": "DEMAND: a collection of multi-channel recordings of acoustic noise in diverse environments\n",
+    "name": "desc_ov1_split1",
+    "description_uris": [
+      "https://zenodo.org/record/1227121#.XFp5ERkzYmI"
+    ]
+  },
+  {
+    "description": "TUT Sound Events 2018 - Ambisonic, Reverberant and Real-life Impulse Response Dataset",
+    "name": "desc_ov1_split1",
+    "description_uris": [
+      "https://zenodo.org/record/1237793#.XFp4vxkzYmI"
+    ],
+    "uris": [
+      "https://zenodo.org/record/1237793/files/LICENSE?download=1",
+      "https://zenodo.org/record/1237793/files/ov1_split1.zip?download=1",
+      "https://zenodo.org/record/1237793/files/ov1_split8.zip?download=1",
+      "https://zenodo.org/record/1237793/files/ov1_split9.zip?download=1",
+      "https://zenodo.org/record/1237793/files/ov2_split1.zip?download=1",
+      "https://zenodo.org/record/1237793/files/ov2_split8.zip?download=1",
+      "https://zenodo.org/record/1237793/files/ov2_split9.zip?download=1",
+      "https://zenodo.org/record/1237793/files/ov3_split1.zip?download=1",
+      "https://zenodo.org/record/1237793/files/ov3_split8.zip?download=1",
+      "https://zenodo.org/record/1237793/files/ov3_split9.zip?download=1"
+    ]
+  }
+]

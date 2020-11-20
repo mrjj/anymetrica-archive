@@ -1,0 +1,4 @@
+#!/bin/bash
+export PGPORT=${PGPORT:-5432}
+postgres -D $AGDATA -p $PG_PORT -c shared_buffers=512MB -c graph_path='docker_graph'
+

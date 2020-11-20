@@ -1,0 +1,55 @@
+- task: agensgraph
+  push: true
+#  skip: true
+  tag: registry.pbc.technology/anymetrica/agensgraph:v2.1.0
+  comment: 'Agens Graph'
+  dockerfile: agensgraph/2.1.0/Dockerfile
+  args:
+    BASE_CONTAINER: 'centos:7.6.1810'
+
+- task: node
+  push: true
+  tag: registry.pbc.technology/anymetrica/node:10-centos7
+  comment: NodeJS
+  dockerfile: ./node/Dockerfile
+  args:
+    NODE_VERSION: '10.15.0'
+    BASE_CONTAINER: 'centos:7.6.1810'
+
+- task: anymetrica-registry
+  push: true
+  dependsOn: [node]
+  tag: registry.pbc.technology/anymetrica/registry:latest
+  context: ../node_modules/anymetrica-registry
+  comment: 'Anymetrica Registry service'
+  dockerfile: ./anymetrica/Dockerfile
+  args:
+    BASE_CONTAINER: 'registry.pbc.technology/anymetrica/node:10-centos7'
+
+- task: anymetrica-scope
+  push: true
+  dependsOn: [nginx, node]
+  tag: registry.pbc.technology/anymetrica/scope:latest
+  context: ./anymetrica-scope/
+  comment: 'Anymetrica Scope service'
+  dockerfile: ./anymetrica-scope/Dockerfile
+  args:
+    BASE_CONTAINER: 'registry.pbc.technology/anymetrica/nginx:1.15.9-alpine'
+
+- task: mongo
+  push: true
+  tag: registry.pbc.technology/anymetrica/mongo:4.0.6
+  comment: MongoDB 4.0.6 https://raw.githubusercontent.com/docker-library/mongo/0a423591d7243256819edc97cef579206d01f6c7/4.0/docker-entrypoint.sh
+  dockerfile: ./mongo/Dockerfile
+  args:
+    BASE_CONTAINER: 'ubuntu:xenial'
+
+- task: nginx
+  push: true
+  tag: registry.pbc.technology/anymetrica/nginx:1.15.9-alpine
+  comment: Nginx 1.x
+  dockerfile: ./nginx/Dockerfile
+  user: nginx
+  args:
+    BASE_CONTAINER: 'alpine:3.9'
+    NGINX_VERSION: '1.15.9'

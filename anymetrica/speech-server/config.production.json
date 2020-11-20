@@ -1,0 +1,16 @@
+{
+  "ENV": "production",
+  "DEBUG": true,
+  "PORT": 8001,
+  "HOST": "localhost",
+  "AUTO_START": true,
+  "LOG_DIR": "./logs/",
+  "EDGE_FQDN": "speech.anymetrica.com",
+  "EDGE_SCHEMA": "https",
+  "BLOBSTORE_MONGO_DBNAME": "anymetrica-blobstore",
+  "BLOBSTORE_MONGO_HOST": "0.0.0.0",
+  "BLOBSTORE_MONGO_PORT": "27017",
+  "BLOBSTORE_MONGO_USERNAME": "anymetrica-registry",
+  "BLOBSTORE_MONGO_PASSWORD": "YE5AjQsKebRUdGDYOTLuWn50",
+  "SENDGRID_API_KEY": "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",
+}
